@@ -1,0 +1,1143 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id                 BigInt              @id @default(autoincrement())
+  name               String
+  email              String?             @unique
+  phone              String?             @unique
+  publicCode         String?             @unique
+  role               UserRole
+  status             UserStatus          @default(ACTIVE)
+  onboardingStatus   OnboardingStatus    @default(PENDING)
+  createdAt          DateTime            @default(now())
+  addresses          Address[]
+  customerDues       VendorDue[]         @relation("CustomerDues")
+  sessions           AuthSession[]
+  cartItems          Cart[]
+  CouponUsage        CouponUsage[]
+  customerProfile    CustomerProfile?
+  customerBankDetail CustomerBankDetail?
+  inAppNotifications InAppNotification[]
+  notificationLogs   NotificationLog[]
+  orders             Order[]
+  payments           Payment[]
+  raisedComplaintTickets ComplaintTicket[] @relation("ComplaintRaisedByUser")
+  complaintMessages  ComplaintTicketMessage[] @relation("ComplaintMessageSender")
+  reviews            Review[]
+  trialRequests      TrialRequest[]      @relation("CustomerTrialRequests")
+  devices            UserDevice[]
+  passwordAuth       UserPasswordAuth?
+  vendorProfile      VendorProfile?
+  vendorAgreementAcceptance VendorAgreementAcceptance?
+  vendorRegistrationDetail  VendorRegistrationDetail?
+  wishlist           Wishlist[]
+}
+
+model CustomerBankDetail {
+  id            BigInt   @id @default(autoincrement())
+  customerId    BigInt   @unique
+  accountHolder String
+  bankName      String
+  accountNumber String
+  ifscCode      String
+  upiId         String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  customer      User     @relation(fields: [customerId], references: [id], onDelete: Cascade)
+}
+
+model UserDevice {
+  id         BigInt    @id @default(autoincrement())
+  userId     BigInt
+  fcmToken   String    @unique
+  platform   String?
+  isActive   Boolean   @default(true)
+  createdAt  DateTime  @default(now())
+  lastUsedAt DateTime?
+  user       User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([isActive])
+}
+
+model NotificationLog {
+  id        BigInt                     @id @default(autoincrement())
+  userId    BigInt
+  type      NotificationType
+  channel   NotificationChannel
+  status    NotificationDeliveryStatus
+  title     String?
+  message   String
+  provider  String?
+  error     String?
+  metadata  Json?
+  createdAt DateTime                   @default(now())
+  sentAt    DateTime?
+  user      User                       @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, createdAt])
+  @@index([type])
+  @@index([status])
+  @@index([channel])
+}
+
+model InAppNotification {
+  id        String   @id @default(uuid())
+  userId    BigInt
+  type      String
+  title     String
+  message   String
+  data      Json?
+  createdAt DateTime @default(now())
+  readAt    DateTime?
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, createdAt])
+  @@index([userId, readAt])
+  @@index([userId, type, createdAt])
+}
+
+model UserPasswordAuth {
+  userId         BigInt    @id
+  passwordHash   String
+  lastChanged    DateTime
+  failedAttempts Int
+  lockedUntil    DateTime?
+  user           User      @relation(fields: [userId], references: [id])
+}
+
+model AuthSession {
+  id           BigInt   @id @default(autoincrement())
+  userId       BigInt
+  refreshToken String   @unique
+  deviceInfo   String?
+  ipAddress    String?
+  expiresAt    DateTime
+  createdAt    DateTime @default(now())
+  user         User     @relation(fields: [userId], references: [id])
+}
+
+model OtpVerification {
+  phone     String   @id
+  otp       String
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+}
+
+model VendorProfile {
+  id                     BigInt                        @id @default(autoincrement())
+  userId                 BigInt                        @unique
+  shopName               String
+  ownerName              String
+  businessName           String?
+  businessType           String?
+  gstNumber              String?
+  profileImageUrl        String?
+  address                String?
+  city                   String?
+  state                  String?
+  pincode                String?
+  phone                  String?
+  commissionRate         Decimal                       @default(0)
+  commissionPercentage   Decimal                       @default(0)
+  commissionOverridePercentage Decimal?
+  createdAt              DateTime                      @default(now())
+  accountHolder          String?
+  bankName               String?
+  accountNumber          String?
+  ifscCode               String?
+  payoutCycle            String?
+  DamageClaim            DamageClaim[]
+  ordersAsVendor         OrderItem[]                   @relation("VendorOrders")
+  products               Product[]
+  availabilityOverrides  ProductAvailabilityOverride[]
+  qualityChecks          OrderItemQualityCheck[]
+  maintenanceTasks       OrderItemMaintenanceTask[]
+  repairTasks            OrderItemRepairTask[]
+  reviews                Review[]
+  complaintTickets       ComplaintTicket[]
+  trialRequests          TrialRequest[]
+  user                   User                          @relation(fields: [userId], references: [id])
+  settlements            VendorSettlement[]
+  transactions           VendorTransaction[]
+  VendorWallet           VendorWallet?
+  dues                   VendorDue[]
+  currentBadgeAssignment VendorBadgeAssignment?
+  badgeHistory           VendorBadgeHistory[]
+}
+
+model VendorAgreementAcceptance {
+  id                                      BigInt    @id @default(autoincrement())
+  userId                                  BigInt    @unique
+  ownershipDeclarationAccepted            Boolean?
+  acceptPlatformTerms                     Boolean?
+  acceptCommissionAgreement               Boolean?
+  acceptCancellationPolicy                Boolean?
+  acceptDepositRules                      Boolean?
+  shopAgreeOrderHandlingResponsibility    Boolean?
+  shopAgreeQualityStandards               Boolean?
+  shopAgreeReturnHandling                 Boolean?
+  individualAgreePassiveOwnershipModel    Boolean?
+  individualAgreePlatformPricingControl   Boolean?
+  individualAgreeRevenueShare             Boolean?
+  individualAgreeMaintenanceDeductionRules Boolean?
+  createdAt                               DateTime  @default(now())
+  updatedAt                               DateTime  @updatedAt
+  user                                    User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+model VendorRegistrationDetail {
+  id                                      BigInt    @id @default(autoincrement())
+  userId                                  BigInt    @unique
+  vendorCategory                          String?
+  shortBrandDescription                   String?
+  operatingHours                          String?
+  googleBusinessProfileUrl                String?
+  yearsInBusiness                         Int?
+  storeType                               String?
+  workingDays                             Json?
+  trialAvailability                       Boolean?
+  homeDeliveryAvailable                   Boolean?
+  alterationSupportAvailable              Boolean?
+  occupation                              String?
+  ownsMultipleOutfits                     Boolean?
+  preferredPickupMethod                   String?
+  idProofType                             String?
+  shopLogoFileName                        String?
+  shopLogoUrl                             String?
+  idProofFileName                         String?
+  idProofUrl                              String?
+  selfieFileName                          String?
+  selfieUrl                               String?
+  businessProofFileName                   String?
+  businessProofUrl                        String?
+  storeInteriorPhotoFileName              String?
+  storeInteriorPhotoUrl                   String?
+  storeExteriorPhotoFileName              String?
+  storeExteriorPhotoUrl                   String?
+  outfitImageFileName                     String?
+  outfitImageUrl                          String?
+  ownershipDeclarationAccepted            Boolean?
+  digitalConsentName                      String?
+  shopOutfitCount                         Int?
+  shopCategoriesAvailable                 Json?
+  shopTargetAudience                      Json?
+  shopSizeRanges                          Json?
+  shopMinRentalPrice                      Float?
+  shopMaxRentalPrice                      Float?
+  shopInventoryVolume                     Int?
+  outfitCategory                          String?
+  outfitSize                              String?
+  outfitBrand                             String?
+  outfitCondition                         String?
+  outfitOriginalPrice                     Float?
+  outfitAgeOrPurchaseYear                 String?
+  outfitAlterationSupportAvailable        Boolean?
+  expectedPriceRange                      String?
+  individualGeneralAlterationSupport      Boolean?
+  defaultRentalDuration                   Int?
+  cleaningBufferDuration                  Int?
+  acceptPlatformTerms                     Boolean?
+  acceptCommissionAgreement               Boolean?
+  acceptCancellationPolicy                Boolean?
+  acceptDepositRules                      Boolean?
+  shopAgreeOrderHandlingResponsibility    Boolean?
+  shopAgreeQualityStandards               Boolean?
+  shopAgreeReturnHandling                 Boolean?
+  individualAgreePassiveOwnershipModel    Boolean?
+  individualAgreePlatformPricingControl   Boolean?
+  individualAgreeRevenueShare             Boolean?
+  individualAgreeMaintenanceDeductionRules Boolean?
+  accountHolder                           String?
+  bankName                                String?
+  branchName                              String?
+  accountNumber                           String?
+  ifscCode                                String?
+  upiId                                   String?
+  payoutCycle                             String?
+  tagline                                 String?
+  rentalPolicyDays                        Int?
+  defaultDepositPercent                   Float?
+  lateFeePerDay                           Float?
+  cancellationPolicyWindowHours           Int?
+  cleaningTurnaroundDays                  Int?
+  bufferTime                              Int?
+  maxRentalDays                           Int?
+  minRentalDays                           Int?
+  securityDepositMultiplier               Float?
+  autoCancellationHours                   Int?
+  homeDeliveryApplicable                  Boolean?
+  deliveryCharges                         Float?
+  openingTime                             String?
+  closingTime                             String?
+  adminReviewNotes                        Json?
+  lastReviewRequestedAt                   DateTime?
+  lastResubmittedAt                       DateTime?
+  createdAt                               DateTime  @default(now())
+  updatedAt                               DateTime  @updatedAt
+  user                                    User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+model PlatformSetting {
+  id                      String   @id
+  defaultCommission       Decimal  @default(15)
+  individualVendorDefaultCommission Decimal @default(15)
+  goldVendorCommission    Decimal  @default(12)
+  silverVendorCommission  Decimal  @default(13)
+  platinumVendorCommission Decimal @default(10)
+  categoryCommission      Json?
+  location                Json?
+  address                 String?
+  contactNumber           String?
+  whatsappNumber          String?
+  customerCareEmail       String?
+  playStoreUrl            String?
+  appStoreUrl             String?
+  facebookUrl             String?
+  instagramUrl            String?
+  twitterUrl              String?
+  linkedinUrl             String?
+  createdAt               DateTime @default(now())
+  updatedAt               DateTime @updatedAt
+}
+
+model Agreement {
+  id              BigInt                   @id @default(autoincrement())
+  title           String
+  description     String?
+  scope           AgreementScope
+  applicablePanels AgreementPanel[]
+  version         Int                      @default(1)
+  isDeleted       Boolean                  @default(false)
+  deletedAt       DateTime?
+  createdByUserId BigInt?
+  updatedByUserId BigInt?
+  createdAt       DateTime                 @default(now())
+  updatedAt       DateTime                 @updatedAt
+  acceptances     AgreementAcceptance[]
+  history         AgreementVersionHistory[]
+  sections        AgreementSection[]
+
+  @@index([scope, isDeleted, updatedAt])
+  @@index([isDeleted, createdAt])
+}
+
+model AgreementSection {
+  id          BigInt            @id @default(autoincrement())
+  agreementId BigInt
+  title       String
+  description String?
+  sortOrder   Int               @default(0)
+  isDeleted   Boolean           @default(false)
+  deletedAt   DateTime?
+  createdAt   DateTime          @default(now())
+  updatedAt   DateTime          @updatedAt
+  agreement   Agreement         @relation(fields: [agreementId], references: [id], onDelete: Cascade)
+  points      AgreementPoint[]
+
+  @@index([agreementId, sortOrder])
+  @@index([agreementId, isDeleted])
+}
+
+model AgreementPoint {
+  id          BigInt            @id @default(autoincrement())
+  sectionId   BigInt
+  title       String
+  description String
+  sortOrder   Int               @default(0)
+  isActive    Boolean           @default(true)
+  isDeleted   Boolean           @default(false)
+  deletedAt   DateTime?
+  createdAt   DateTime          @default(now())
+  updatedAt   DateTime          @updatedAt
+  section     AgreementSection  @relation(fields: [sectionId], references: [id], onDelete: Cascade)
+
+  @@index([sectionId, sortOrder])
+  @@index([sectionId, isDeleted])
+}
+
+model AgreementVersionHistory {
+  id              BigInt                 @id @default(autoincrement())
+  agreementId     BigInt
+  version         Int
+  action          AgreementHistoryAction
+  changeSummary   String?
+  snapshot        Json
+  createdByUserId BigInt?
+  createdAt       DateTime               @default(now())
+  agreement       Agreement              @relation(fields: [agreementId], references: [id], onDelete: Cascade)
+
+  @@index([agreementId, createdAt])
+  @@index([agreementId, version])
+}
+
+model AgreementAcceptance {
+  id              BigInt      @id @default(autoincrement())
+  agreementId     BigInt
+  userId          BigInt
+  userRole        UserRole
+  acceptedVersion Int
+  acceptedAt      DateTime    @default(now())
+  metadata        Json?
+  agreement       Agreement   @relation(fields: [agreementId], references: [id], onDelete: Cascade)
+
+  @@unique([agreementId, userId, acceptedVersion])
+  @@index([agreementId, userId, acceptedAt])
+  @@index([userId, acceptedAt])
+}
+
+model CustomerProfile {
+  id           BigInt    @id @default(autoincrement())
+  userId       BigInt    @unique
+  email        String?
+  gender       String?
+  dob          DateTime?
+  aadharNumber String?
+  addressLine1 String?
+  landmark     String?
+  pincode      String?
+  city         String?
+  state        String?
+  additionalInfo String?
+  user         User      @relation(fields: [userId], references: [id])
+}
+
+model Address {
+  id          BigInt @id @default(autoincrement())
+  userId      BigInt
+  name        String
+  phone       String
+  city        String
+  state       String
+  pincode     String
+  addressLine String
+  user        User   @relation(fields: [userId], references: [id])
+}
+
+model Category {
+  id       BigInt     @id @default(autoincrement())
+  name     String
+  parentId BigInt?
+  parent   Category?  @relation("CategoryTree", fields: [parentId], references: [id])
+  children Category[] @relation("CategoryTree")
+  products Product[]
+}
+
+model Product {
+  id                    BigInt                        @id @default(autoincrement())
+  vendorId              BigInt
+  categoryId            BigInt
+  name                  String
+  description           String?
+  shortDescription      String?
+  fullDescription       String?
+  descriptionSummary    String?
+  productDetailsFull    Json?
+  rentalPrice           Decimal
+  securityDeposit       Decimal
+  cleaningBufferDays    Int                           @default(0)
+  alterationAvailable   Boolean                       @default(false)
+  damageWaiverAvailable Boolean                       @default(false)
+  status                String
+  createdAt             DateTime                      @default(now())
+  productType           String?
+  occasion              String?
+  brand                 String?
+  gender                String?
+  gst                   Decimal?
+  cartItems             Cart[]
+  items                 OrderItem[]
+  category              Category                      @relation(fields: [categoryId], references: [id])
+  vendor                VendorProfile                 @relation(fields: [vendorId], references: [id])
+  availabilityOverrides ProductAvailabilityOverride[]
+  images                ProductImage[]
+  variants              ProductVariant[]
+  reviews               Review[]
+  trialRequests         TrialRequest[]
+  wishlist              Wishlist[]
+}
+
+model ProductAvailabilityOverride {
+  id        BigInt                   @id @default(autoincrement())
+  vendorId  BigInt
+  productId BigInt
+  variantId BigInt?
+  date      DateTime
+  type      AvailabilityOverrideType
+  note      String?
+  createdAt DateTime                 @default(now())
+  updatedAt DateTime                 @default(now()) @updatedAt
+  product   Product                  @relation(fields: [productId], references: [id])
+  variant   ProductVariant?          @relation(fields: [variantId], references: [id])
+  vendor    VendorProfile            @relation(fields: [vendorId], references: [id])
+
+  @@unique([vendorId, productId, variantId, date])
+  @@index([productId, date])
+  @@index([productId, variantId, date])
+  @@index([variantId, date])
+  @@index([vendorId, date])
+}
+
+model ProductVariant {
+  id            BigInt         @id @default(autoincrement())
+  productId     BigInt
+  size          String
+  sku           String         @unique
+  quantity      Int
+  availabilityOverrides ProductAvailabilityOverride[]
+  cartItems     Cart[]
+  items         OrderItem[]
+  product       Product        @relation(fields: [productId], references: [id])
+  trialRequests TrialRequest[]
+}
+
+model ProductImage {
+  id        BigInt  @id @default(autoincrement())
+  productId BigInt
+  imageUrl  String
+  isCover   Boolean @default(false)
+  product   Product @relation(fields: [productId], references: [id])
+}
+
+model Wishlist {
+  userId    BigInt
+  productId BigInt
+  createdAt DateTime @default(now())
+  product   Product  @relation(fields: [productId], references: [id])
+  user      User     @relation(fields: [userId], references: [id])
+
+  @@id([userId, productId])
+  @@index([productId])
+}
+
+model Cart {
+  id           BigInt          @id @default(autoincrement())
+  userId       BigInt
+  productId    BigInt
+  variantId    BigInt?
+  quantity     Int             @default(1)
+  createdAt    DateTime        @default(now())
+  rentalPeriod String?
+  issueDate    String?
+  returnDate   String?
+  size         String?
+  color        String?
+  imageUrl     String?
+  alterationRequired Boolean   @default(false)
+  alterationCharge   Decimal   @default(0)
+  product      Product         @relation(fields: [productId], references: [id])
+  user         User            @relation(fields: [userId], references: [id])
+  variant      ProductVariant? @relation(fields: [variantId], references: [id])
+
+  @@unique([userId, productId, variantId, issueDate, returnDate, size, color, alterationRequired])
+  @@index([userId])
+  @@index([userId, productId, variantId])
+}
+
+model Order {
+  id            BigInt        @id @default(autoincrement())
+  orderNo       String        @unique
+  customerId    BigInt
+  couponId      BigInt?
+  finalPayable  Decimal
+  paymentStatus PaymentStatus @default(UNPAID)
+  createdAt     DateTime      @default(now())
+  couponUsage   CouponUsage[]
+  Coupon        Coupon?       @relation(fields: [couponId], references: [id])
+  customer      User          @relation(fields: [customerId], references: [id])
+  items         OrderItem[]
+  payments      Payment[]
+  complaints    ComplaintTicket[]
+  refunds       Refund[]
+}
+
+model OrderItem {
+  id                       BigInt              @id @default(autoincrement())
+  orderId                  BigInt
+  productId                BigInt
+  variantId                BigInt
+  vendorId                 BigInt
+  quantity                 Int
+  rentPrice                Decimal
+  deposit                  Decimal
+  alterationRequired       Boolean             @default(false)
+  alterationCharge         Decimal             @default(0)
+  status                   OrderItemStatus     @default(PLACED)
+  fulfillmentType          FulfillmentType     @default(SELF_PICKUP)
+  rentalStartDate          DateTime?
+  returnDueDate            DateTime?
+  returnedAt               DateTime?
+  securityDepositRefunded  Decimal             @default(0)
+  securityDepositHeld      Decimal             @default(0)
+  refundTransferMode       String?
+  refundTransferReference  String?
+  refundTransferredAt      DateTime?
+  refundTransferNotes      String?
+  refundProcessedByAdminId BigInt?
+  DamageClaim              DamageClaim?
+  qualityCheck             OrderItemQualityCheck?
+  maintenanceTask          OrderItemMaintenanceTask?
+  repairTask               OrderItemRepairTask?
+  complaints               ComplaintTicket[]
+  order                    Order               @relation(fields: [orderId], references: [id])
+  product                  Product             @relation(fields: [productId], references: [id])
+  variant                  ProductVariant      @relation(fields: [variantId], references: [id])
+  vendorProfile            VendorProfile       @relation("VendorOrders", fields: [vendorId], references: [id], map: "OrderItem_vendorProfile_fkey")
+  vendorDues               VendorDue[]
+  refunds                  Refund[]
+  reviews                  Review[]
+  vendorTransactions       VendorTransaction[]
+
+  @@index([vendorId, returnDueDate])
+  @@index([status, returnDueDate])
+}
+
+model ComplaintTicket {
+  id               BigInt                  @id @default(autoincrement())
+  complaintNo      String                  @unique
+  raisedByUserId   BigInt
+  raisedByRole     String
+  vendorId         BigInt?
+  orderId          BigInt?
+  orderItemId      BigInt?
+  orderReference   String?
+  category         String
+  subCategory      String?
+  type             String
+  title            String
+  description      String
+  attachments      String[]                @default([])
+  status           String
+  priority         String
+  adminResponse    String?
+  adminRespondedAt DateTime?
+  resolution       String?
+  resolutionNotes  String?
+  feedback         String?
+  createdAt        DateTime                @default(now())
+  updatedAt        DateTime                @updatedAt
+  resolvedAt       DateTime?
+  messages         ComplaintTicketMessage[]
+  order            Order?                  @relation(fields: [orderId], references: [id], onDelete: SetNull)
+  orderItem        OrderItem?              @relation(fields: [orderItemId], references: [id], onDelete: SetNull)
+  raisedByUser     User                    @relation("ComplaintRaisedByUser", fields: [raisedByUserId], references: [id], onDelete: Cascade)
+  vendor           VendorProfile?          @relation(fields: [vendorId], references: [id], onDelete: SetNull)
+
+  @@index([raisedByUserId, createdAt])
+  @@index([vendorId, createdAt])
+  @@index([status, createdAt])
+  @@index([raisedByRole, createdAt])
+}
+
+model ComplaintTicketMessage {
+  id           BigInt          @id @default(autoincrement())
+  complaintId  BigInt
+  senderUserId BigInt?
+  senderRole   String
+  senderName   String
+  message      String
+  attachments  String[]        @default([])
+  isInternal   Boolean         @default(false)
+  createdAt    DateTime        @default(now())
+  complaint    ComplaintTicket @relation(fields: [complaintId], references: [id], onDelete: Cascade)
+  senderUser   User?           @relation("ComplaintMessageSender", fields: [senderUserId], references: [id], onDelete: SetNull)
+
+  @@index([complaintId, createdAt])
+  @@index([senderUserId, createdAt])
+}
+
+model OrderItemQualityCheck {
+  id                 BigInt              @id @default(autoincrement())
+  orderItemId        BigInt              @unique
+  vendorId           BigInt
+  status             QualityCheckStatus  @default(PENDING)
+  outcome            QualityCheckOutcome?
+  damageType         String?
+  estimatedCost      Decimal             @default(0)
+  notes              String?
+  inspectedByAdminId BigInt?
+  inspectedAt        DateTime?
+  createdAt          DateTime            @default(now())
+  updatedAt          DateTime            @updatedAt
+  orderItem          OrderItem           @relation(fields: [orderItemId], references: [id], onDelete: Cascade)
+  vendor             VendorProfile       @relation(fields: [vendorId], references: [id], onDelete: Cascade)
+
+  @@index([vendorId, status, createdAt])
+}
+
+model OrderItemMaintenanceTask {
+  id               BigInt             @id @default(autoincrement())
+  orderItemId      BigInt             @unique
+  vendorId         BigInt
+  taskType         MaintenanceTaskType @default(CLEANING)
+  scheduledDate    DateTime
+  status           TaskWorkflowStatus @default(PENDING)
+  notes            String?
+  createdByAdminId BigInt?
+  createdAt        DateTime           @default(now())
+  updatedAt        DateTime           @updatedAt
+  orderItem        OrderItem          @relation(fields: [orderItemId], references: [id], onDelete: Cascade)
+  vendor           VendorProfile      @relation(fields: [vendorId], references: [id], onDelete: Cascade)
+
+  @@index([vendorId, status, scheduledDate])
+}
+
+model OrderItemRepairTask {
+  id                 BigInt             @id @default(autoincrement())
+  orderItemId        BigInt             @unique
+  vendorId           BigInt
+  issueType          String
+  estimatedCost      Decimal            @default(0)
+  actualCost         Decimal            @default(0)
+  startDate          DateTime?
+  expectedCompletion DateTime?
+  status             TaskWorkflowStatus @default(PENDING)
+  notes              String?
+  createdByAdminId   BigInt?
+  createdAt          DateTime           @default(now())
+  updatedAt          DateTime           @updatedAt
+  orderItem          OrderItem          @relation(fields: [orderItemId], references: [id], onDelete: Cascade)
+  vendor             VendorProfile      @relation(fields: [vendorId], references: [id], onDelete: Cascade)
+
+  @@index([vendorId, status, expectedCompletion])
+}
+
+model Review {
+  id               BigInt        @id @default(autoincrement())
+  customerId       BigInt
+  vendorId         BigInt
+  productId        BigInt
+  orderItemId      BigInt?
+  rating           Int
+  comment          String
+  images           String[]      @default([])
+  status           ReviewStatus  @default(PENDING)
+  moderationReason String?
+  moderatedAt      DateTime?
+  createdAt        DateTime      @default(now())
+  updatedAt        DateTime      @updatedAt
+  customer         User          @relation(fields: [customerId], references: [id])
+  orderItem        OrderItem?    @relation(fields: [orderItemId], references: [id])
+  product          Product       @relation(fields: [productId], references: [id])
+  vendor           VendorProfile @relation(fields: [vendorId], references: [id])
+
+  @@index([customerId])
+  @@index([vendorId])
+  @@index([productId])
+  @@index([status])
+}
+
+model Payment {
+  id                BigInt    @id @default(autoincrement())
+  orderId           BigInt
+  customerId        BigInt
+  amount            Decimal
+  status            String
+  provider          String?   @default("INTERNAL")
+  providerOrderId   String?
+  providerPaymentId String?   @unique
+  currency          String?   @default("INR")
+  totalAmount       Decimal?
+  rentalAmount      Decimal?
+  depositAmount     Decimal?
+  capturedAmount    Decimal?
+  refundedAmount    Decimal   @default(0)
+  captureStatus     String?   @default("INITIATED")
+  paymentMeta       Json?
+  paidAt            DateTime?
+  customer          User      @relation(fields: [customerId], references: [id])
+  order             Order     @relation(fields: [orderId], references: [id])
+  refunds           Refund[]
+}
+
+model VendorTransaction {
+  id             BigInt          @id @default(autoincrement())
+  vendorId       BigInt
+  orderItemId    BigInt
+  type           TransactionType
+  amount         Decimal
+  createdAt      DateTime        @default(now())
+  vendorWalletId BigInt?
+  orderItem      OrderItem       @relation(fields: [orderItemId], references: [id])
+  vendor         VendorProfile   @relation(fields: [vendorId], references: [id])
+  VendorWallet   VendorWallet?   @relation(fields: [vendorWalletId], references: [id])
+}
+
+model VendorSettlement {
+  id                BigInt        @id @default(autoincrement())
+  vendorId          BigInt
+  amount            Decimal
+  status            String
+  periodFrom        DateTime?
+  periodTo          DateTime?
+  rentalAmount      Decimal       @default(0)
+  lateFeeAmount     Decimal       @default(0)
+  damageAmount      Decimal       @default(0)
+  commissionAmount  Decimal       @default(0)
+  netPayable        Decimal       @default(0)
+  transferMode      String?
+  transferReference String?
+  paidAt            DateTime?
+  paidByAdminId     BigInt?
+  notes             String?
+  createdAt         DateTime      @default(now())
+  vendor            VendorProfile @relation(fields: [vendorId], references: [id])
+}
+
+model Refund {
+  id                 BigInt     @id @default(autoincrement())
+  paymentId          BigInt
+  orderId            BigInt
+  orderItemId        BigInt?
+  amount             Decimal
+  status             String
+  reason             String?
+  providerRefundId   String?    @unique
+  idempotencyKey     String?    @unique
+  providerResponse   Json?
+  processedByAdminId BigInt?
+  processedAt        DateTime?
+  createdAt          DateTime   @default(now())
+  updatedAt          DateTime   @updatedAt
+  payment            Payment    @relation(fields: [paymentId], references: [id], onDelete: Cascade)
+  order              Order      @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  orderItem          OrderItem? @relation(fields: [orderItemId], references: [id], onDelete: SetNull)
+
+  @@index([paymentId, createdAt])
+  @@index([orderId, createdAt])
+  @@index([status])
+}
+
+model VendorDue {
+  id                BigInt        @id @default(autoincrement())
+  orderItemId       BigInt
+  customerId        BigInt
+  vendorId          BigInt
+  amount            Decimal
+  reason            String
+  status            String        @default("PENDING")
+  paymentLink       String?
+  notes             String?
+  resolvedByAdminId BigInt?
+  settledAt         DateTime?
+  createdAt         DateTime      @default(now())
+  updatedAt         DateTime      @updatedAt
+  customer          User          @relation("CustomerDues", fields: [customerId], references: [id], onDelete: Cascade)
+  orderItem         OrderItem     @relation(fields: [orderItemId], references: [id], onDelete: Cascade)
+  vendor            VendorProfile @relation(fields: [vendorId], references: [id], onDelete: Cascade)
+
+  @@index([customerId, status, createdAt])
+  @@index([vendorId, status, createdAt])
+  @@index([orderItemId])
+}
+
+model Coupon {
+  id            BigInt        @id @default(autoincrement())
+  code          String        @unique
+  discountType  DiscountType
+  discountValue Decimal
+  validityDays  Int           @default(30)
+  isActive      Boolean       @default(true)
+  createdAt     DateTime      @default(now())
+  usage         CouponUsage[]
+  Order         Order[]
+}
+
+model CouponUsage {
+  id       BigInt   @id @default(autoincrement())
+  couponId BigInt
+  userId   BigInt
+  orderId  BigInt
+  usedAt   DateTime @default(now())
+  coupon   Coupon   @relation(fields: [couponId], references: [id])
+  order    Order    @relation(fields: [orderId], references: [id])
+  User     User     @relation(fields: [userId], references: [id])
+}
+
+model VendorWallet {
+  id                BigInt              @id @default(autoincrement())
+  vendorId          BigInt              @unique
+  VendorTransaction VendorTransaction[]
+  VendorProfile     VendorProfile       @relation(fields: [vendorId], references: [id])
+}
+
+model TrialRequest {
+  id              BigInt             @id @default(autoincrement())
+  customerId      BigInt
+  vendorId        BigInt
+  productId       BigInt
+  variantId       BigInt?
+  preferredDate   DateTime?
+  status          TrialRequestStatus @default(PENDING)
+  trialCode       String?            @unique
+  rejectionReason String?
+  respondedAt     DateTime?
+  completedAt     DateTime?
+  createdAt       DateTime           @default(now())
+  updatedAt       DateTime           @updatedAt
+  customer        User               @relation("CustomerTrialRequests", fields: [customerId], references: [id])
+  product         Product            @relation(fields: [productId], references: [id])
+  variant         ProductVariant?    @relation(fields: [variantId], references: [id])
+  vendor          VendorProfile      @relation(fields: [vendorId], references: [id])
+
+  @@index([vendorId, status])
+  @@index([customerId, status])
+  @@index([productId])
+}
+
+model DamageClaim {
+  id              BigInt            @id @default(autoincrement())
+  orderItemId     BigInt            @unique
+  vendorId        BigInt
+  adminId         BigInt?
+  damageType      String
+  repairCost      Decimal
+  photoProof      String[]          @default([])
+  vendorNotes     String?
+  status          DamageClaimStatus @default(PENDING)
+  approvedAmount  Decimal           @default(0)
+  adminNotes      String?
+  rejectionReason String?
+  createdAt       DateTime          @default(now())
+  reviewedAt      DateTime?
+  OrderItem       OrderItem         @relation(fields: [orderItemId], references: [id])
+  VendorProfile   VendorProfile     @relation(fields: [vendorId], references: [id])
+
+  @@index([status, createdAt])
+  @@index([vendorId, status])
+}
+
+model BadgeRule {
+  id                       String                  @id
+  name                     String
+  imageUrl                 String?
+  minOrders                Int
+  minRating                Float                   @default(0)
+  maxLatePercent           Float                   @default(100)
+  maxDamagePercent         Float                   @default(100)
+  maxCancellationPercent   Float                   @default(100)
+  minRepeatCustomerPercent Float                   @default(0)
+  maxPolicyViolations      Int                     @default(9999)
+  isDefault                Boolean                 @default(false)
+  isActive                 Boolean                 @default(true)
+  priority                 Int                     @default(0)
+  createdAt                DateTime                @default(now())
+  updatedAt                DateTime                @updatedAt
+  currentAssignments       VendorBadgeAssignment[]
+  historyEntries           VendorBadgeHistory[]
+}
+
+model VendorBadgeAssignment {
+  vendorId          BigInt
+  badgeRuleId       String
+  source            BadgeAssignmentSource
+  assignedByAdminId BigInt?
+  assignedAt        DateTime              @default(now())
+  lastEvaluatedAt   DateTime?
+  metricsSnapshot   Json?
+  badgeRule         BadgeRule             @relation(fields: [badgeRuleId], references: [id], onDelete: Restrict)
+  vendor            VendorProfile         @relation(fields: [vendorId], references: [id], onDelete: Cascade)
+
+  @@id([vendorId])
+  @@index([badgeRuleId])
+}
+
+model VendorBadgeHistory {
+  id                BigInt                @id @default(autoincrement())
+  vendorId          BigInt
+  badgeRuleId       String?
+  source            BadgeAssignmentSource
+  assignedByAdminId BigInt?
+  assignedAt        DateTime              @default(now())
+  metricsSnapshot   Json?
+  badgeRule         BadgeRule?            @relation(fields: [badgeRuleId], references: [id], onDelete: SetNull)
+  vendor            VendorProfile         @relation(fields: [vendorId], references: [id], onDelete: Cascade)
+
+  @@index([vendorId, assignedAt])
+  @@index([badgeRuleId, assignedAt])
+}
+
+enum UserRole {
+  ADMIN
+  ADMIN_AS_VENDOR
+  VENDOR
+  INDIVIDUAL_VENDOR
+  CUSTOMER
+}
+
+enum UserStatus {
+  ACTIVE
+  BLOCKED
+}
+
+enum OnboardingStatus {
+  PENDING
+  APPROVED
+  REJECTED
+  SUSPENDED
+}
+
+enum PaymentStatus {
+  UNPAID
+  PAID
+  REFUND_PENDING
+  REFUNDED
+}
+
+enum FulfillmentType {
+  SELF_PICKUP
+  HOME_DELIVERY
+}
+
+enum OrderItemStatus {
+  PLACED
+  BOOKED
+  ACCEPTED
+  REJECTED
+  DISPATCHED
+  DELIVERED
+  RETURN_REQUESTED
+  RETURN_RECEIVED
+  INSPECTED_GOOD
+  INSPECTED_DAMAGED
+  INSPECTED_LOST
+  COMPLETED
+  CANCELLED
+  RENTAL_CONFIRMED
+  READY_FOR_PICKUP
+  PICKED_UP
+  OUT_FOR_DELIVERY
+  RETURN_SCHEDULED
+  RETURNED
+  DAMAGE_REVIEW
+  SECURITY_DEPOSIT_REFUNDED
+  LATE_RETURN
+}
+
+enum TransactionType {
+  CREDIT
+  DEBIT
+}
+
+enum DiscountType {
+  FLAT
+  PERCENT
+}
+
+enum TrialRequestStatus {
+  PENDING
+  ACCEPTED
+  STARTED
+  REJECTED
+  COMPLETED
+  NO_SHOW
+}
+
+enum AvailabilityOverrideType {
+  BLOCKED
+  MAINTENANCE
+}
+
+enum QualityCheckStatus {
+  PENDING
+  IN_PROGRESS
+  COMPLETED
+}
+
+enum QualityCheckOutcome {
+  PASSED
+  REPAIR
+  DAMAGE
+}
+
+enum TaskWorkflowStatus {
+  PENDING
+  IN_PROGRESS
+  COMPLETED
+  CANCELLED
+}
+
+enum MaintenanceTaskType {
+  CLEANING
+}
+
+enum ReviewStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+enum NotificationType {
+  OTP
+  TRIAL_BOOKED
+  TRIAL_APPROVED
+  TRIAL_REMINDER
+  FINAL_REMINDER
+  TRIAL_CANCELLED
+  BOOKING_CANCELLED
+  VENDOR_UNAVAILABLE
+  RESCHEDULED
+  ORDER_PLACED_VENDOR
+  ORDER_ACCEPTED_CUSTOMER
+  ORDER_REJECTED_CUSTOMER
+  REVIEW_SUBMITTED
+  REVIEW_INVALID_PRODUCT
+  ADMIN_VENDOR_ORDER
+  ADMIN_VENDOR_INVENTORY
+  ADMIN_VENDOR_FINANCE
+  ADMIN_VENDOR_PRODUCT
+  ADMIN_VENDOR_SUPPORT
+  ADMIN_VENDOR_SYSTEM
+}
+
+enum NotificationChannel {
+  FCM
+  SMS
+  EMAIL
+}
+
+enum NotificationDeliveryStatus {
+  SENT
+  FAILED
+}
+
+enum DamageClaimStatus {
+  PENDING
+  APPROVED_FULL
+  APPROVED_PARTIAL
+  REJECTED
+}
+
+enum BadgeAssignmentSource {
+  AUTO
+  MANUAL
+}
+
+enum AgreementScope {
+  GLOBAL
+  PANEL_SPECIFIC
+}
+
+enum AgreementPanel {
+  ADMIN
+  ADMIN_AS_VENDOR
+  VENDOR
+  INDIVIDUAL_VENDOR
+  CUSTOMER
+}
+
+enum AgreementHistoryAction {
+  CREATED
+  UPDATED
+  SOFT_DELETED
+}

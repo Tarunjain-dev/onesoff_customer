@@ -1,0 +1,70 @@
+/*
+You are building authentication module for a rental marketplace backend using:
+
+Node.js + Express + TypeScript + Prisma + PostgreSQL + JWT + bcrypt
+
+Business rules:
+
+ROLES:
+- ADMIN login using email + password
+- CUSTOMER login using email OR phone + password
+- VENDOR login using phone + OTP
+
+DATABASE:
+Use Prisma client from "@/config/db"
+
+TABLES USED:
+User
+UserPasswordAuth
+AuthSession
+
+AUTH FLOW:
+
+1) Register Customer
+- accept name, email/phone, password
+- hash password with bcrypt
+- create User role CUSTOMER
+- create UserPasswordAuth record
+
+2) Login (Customer/Admin)
+- find user by email OR phone
+- verify password
+- generate JWT access token (15 min)
+- generate refresh token (7 days)
+- store refresh token in AuthSession table
+
+3) Vendor Send OTP
+- find vendor by phone
+- generate 6 digit otp
+- store verification with short expiry
+- return success
+
+4) Vendor Verify OTP
+- verify otp from persisted verification record
+- generate access token + refresh token
+- store session
+
+5) Refresh Token
+- verify refresh token exists in DB
+- issue new access token
+
+6) Logout
+- delete refresh token from DB
+
+SECURITY RULES:
+- Never return password
+- Throw error if user BLOCKED
+- Only allow login matching role
+- JWT payload: { userId, role }
+
+OUTPUT:
+Write clean service class AuthService with methods:
+registerCustomer
+login
+sendVendorOtp
+verifyVendorOtp
+refreshToken
+logout
+
+Use async/await and proper error handling.
+*/

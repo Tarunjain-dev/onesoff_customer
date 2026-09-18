@@ -1,0 +1,3868 @@
+{
+  "1": [
+    {
+      "id": "legacy-137",
+      "userId": "1",
+      "type": "ORDER_PLACED_VENDOR",
+      "title": "Refund reminder pending review",
+      "message": "Admin as Vendor requested refund follow-up for ORD1778501931596DA0B - product now.",
+      "data": {
+        "source": "ADMIN_AS_VENDOR_FINANCE_REMINDER",
+        "orderId": "29",
+        "orderItemId": "39"
+      },
+      "createdAt": "2026-05-13T09:54:10.759Z",
+      "readAt": "2026-05-20T09:53:23.323Z"
+    },
+    {
+      "id": "8d87beca-f795-40db-a4f2-c509c89389fd",
+      "userId": "1",
+      "type": "ORDER_PLACED_VENDOR",
+      "title": "Refund reminder pending review",
+      "message": "Admin as Vendor requested refund follow-up for ORD1778501931596DA0B - product now.",
+      "data": {
+        "orderItemId": "39",
+        "orderId": "29",
+        "source": "ADMIN_AS_VENDOR_FINANCE_REMINDER"
+      },
+      "createdAt": "2026-05-13T09:54:10.753Z",
+      "readAt": "2026-05-20T09:53:32.715Z"
+    },
+    {
+      "id": "legacy-135",
+      "userId": "1",
+      "type": "ORDER_PLACED_VENDOR",
+      "title": "Refund reminder pending review",
+      "message": "Admin as Vendor requested refund follow-up for ORD1778501931596DA0B - product now.",
+      "data": {
+        "source": "ADMIN_AS_VENDOR_FINANCE_REMINDER",
+        "orderId": "29",
+        "orderItemId": "39"
+      },
+      "createdAt": "2026-05-13T09:53:56.742Z",
+      "readAt": null
+    },
+    {
+      "id": "2dd34c17-0369-4c3c-b402-1a782a4f94cc",
+      "userId": "1",
+      "type": "ORDER_PLACED_VENDOR",
+      "title": "Refund reminder pending review",
+      "message": "Admin as Vendor requested refund follow-up for ORD1778501931596DA0B - product now.",
+      "data": {
+        "orderItemId": "39",
+        "orderId": "29",
+        "source": "ADMIN_AS_VENDOR_FINANCE_REMINDER"
+      },
+      "createdAt": "2026-05-13T09:53:56.726Z",
+      "readAt": null
+    }
+  ],
+  "4": [
+    {
+      "id": "5401b048-7aff-4214-a652-24fd8eb2b734",
+      "userId": "4",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Security deposit reviewed",
+      "message": "Refund decision completed for order item 23. Refund amount: Rs 15000.",
+      "data": {
+        "orderItemId": "23",
+        "refundAmount": "15000"
+      },
+      "createdAt": "2026-05-07T10:52:48.165Z",
+      "readAt": null
+    },
+    {
+      "id": "legacy-23",
+      "userId": "4",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order status updated",
+      "message": "Order item 23 status changed to RETURNED.",
+      "data": {},
+      "createdAt": "2026-05-05T05:45:56.237Z",
+      "readAt": null
+    },
+    {
+      "id": "legacy-22",
+      "userId": "4",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order status updated",
+      "message": "Order item 23 status changed to RETURN SCHEDULED.",
+      "data": {},
+      "createdAt": "2026-05-05T05:45:53.574Z",
+      "readAt": null
+    },
+    {
+      "id": "legacy-21",
+      "userId": "4",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order status updated",
+      "message": "Order item 23 status changed to PICKED UP.",
+      "data": {},
+      "createdAt": "2026-05-05T05:45:49.852Z",
+      "readAt": null
+    },
+    {
+      "id": "legacy-20",
+      "userId": "4",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order status updated",
+      "message": "Order item 23 status changed to READY FOR PICKUP.",
+      "data": {},
+      "createdAt": "2026-05-05T05:45:47.084Z",
+      "readAt": null
+    },
+    {
+      "id": "legacy-19",
+      "userId": "4",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order accepted",
+      "message": "Great! Your order has been accepted by the vendor. Order Item: 23",
+      "data": {},
+      "createdAt": "2026-05-05T05:45:41.436Z",
+      "readAt": null
+    },
+    {
+      "id": "legacy-18",
+      "userId": "4",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order placed",
+      "message": "Your order 13 has been placed successfully and is pending vendor confirmation.",
+      "data": {},
+      "createdAt": "2026-05-05T05:43:15.847Z",
+      "readAt": null
+    }
+  ],
+  "5": [
+    {
+      "id": "legacy-293",
+      "userId": "5",
+      "type": "ADMIN_VENDOR_PRODUCT",
+      "title": "Vendor accepted approved 2 pricing",
+      "message": "new was accepted by the individual vendor and is now live.",
+      "data": {
+        "status": "LIVE",
+        "vendorId": "24",
+        "productId": "69"
+      },
+      "createdAt": "2026-05-19T13:02:08.663Z",
+      "readAt": "2026-05-20T05:30:47.718Z"
+    },
+    {
+      "id": "legacy-287",
+      "userId": "5",
+      "type": "ADMIN_VENDOR_PRODUCT",
+      "title": "Product sent for vendor confirmation",
+      "message": "sfsdfsdf moved to Approved 2 and is waiting for vendor agreement.",
+      "data": {
+        "status": "PENDING_VENDOR_AGREEMENT",
+        "vendorId": "26",
+        "productId": "65"
+      },
+      "createdAt": "2026-05-19T12:55:57.774Z",
+      "readAt": "2026-05-20T05:30:47.718Z"
+    },
+    {
+      "id": "legacy-281",
+      "userId": "5",
+      "type": "ADMIN_VENDOR_PRODUCT",
+      "title": "Product approved for stage 1",
+      "message": "sfsdfsdf moved to Approved 1.",
+      "data": {
+        "status": "APPROVED_1",
+        "vendorId": "26",
+        "productId": "65"
+      },
+      "createdAt": "2026-05-19T12:55:39.735Z",
+      "readAt": "2026-05-20T05:30:47.718Z"
+    },
+    {
+      "id": "legacy-275",
+      "userId": "5",
+      "type": "ADMIN_VENDOR_PRODUCT",
+      "title": "Product approved for stage 1",
+      "message": "sfsdfsdf moved to Approved 1.",
+      "data": {
+        "status": "APPROVED_1",
+        "vendorId": "26",
+        "productId": "65"
+      },
+      "createdAt": "2026-05-19T12:55:26.430Z",
+      "readAt": "2026-05-20T05:30:47.718Z"
+    },
+    {
+      "id": "legacy-269",
+      "userId": "5",
+      "type": "ADMIN_VENDOR_PRODUCT",
+      "title": "Product sent for vendor confirmation",
+      "message": "new moved to Approved 2 and is waiting for vendor agreement.",
+      "data": {
+        "status": "PENDING_VENDOR_AGREEMENT",
+        "vendorId": "24",
+        "productId": "69"
+      },
+      "createdAt": "2026-05-19T12:53:17.700Z",
+      "readAt": "2026-05-20T05:30:47.718Z"
+    },
+    {
+      "id": "legacy-263",
+      "userId": "5",
+      "type": "ADMIN_VENDOR_PRODUCT",
+      "title": "Product approved for stage 1",
+      "message": "new moved to Approved 1.",
+      "data": {
+        "status": "APPROVED_1",
+        "vendorId": "24",
+        "productId": "69"
+      },
+      "createdAt": "2026-05-19T12:52:55.066Z",
+      "readAt": "2026-05-20T05:30:47.718Z"
+    },
+    {
+      "id": "legacy-257",
+      "userId": "5",
+      "type": "ADMIN_VENDOR_PRODUCT",
+      "title": "New product approval request",
+      "message": "new was submitted by shivam.",
+      "data": {
+        "status": "INACTIVE",
+        "vendorId": "24",
+        "productId": "69"
+      },
+      "createdAt": "2026-05-19T12:30:45.924Z",
+      "readAt": "2026-05-20T05:30:47.718Z"
+    },
+    {
+      "id": "legacy-252",
+      "userId": "5",
+      "type": "ADMIN_VENDOR_PRODUCT",
+      "title": "New product approval request",
+      "message": "sfsdfsdf was submitted by Faizal.",
+      "data": {
+        "status": "INACTIVE",
+        "vendorId": "26",
+        "productId": "65"
+      },
+      "createdAt": "2026-05-19T12:18:20.391Z",
+      "readAt": "2026-05-20T05:30:47.718Z"
+    },
+    {
+      "id": "c9856ae2-2ea1-4ab9-9a61-fa2b00845814",
+      "userId": "5",
+      "type": "ADMIN_VENDOR_PRODUCT",
+      "title": "New product approval request",
+      "message": "sfsdfsdf was submitted by Faizal.",
+      "data": {
+        "productId": "65",
+        "status": "INACTIVE",
+        "vendorId": "26"
+      },
+      "createdAt": "2026-05-19T12:18:20.378Z",
+      "readAt": "2026-05-20T05:30:47.718Z"
+    },
+    {
+      "id": "legacy-233",
+      "userId": "5",
+      "type": "ADMIN_VENDOR_PRODUCT",
+      "title": "Product sent for vendor confirmation",
+      "message": "sariii moved to Approved 2 and is waiting for vendor agreement.",
+      "data": {
+        "status": "PENDING_VENDOR_AGREEMENT",
+        "vendorId": "28",
+        "productId": "54"
+      },
+      "createdAt": "2026-05-19T10:30:10.091Z",
+      "readAt": "2026-05-20T05:30:47.718Z"
+    },
+    {
+      "id": "legacy-223",
+      "userId": "5",
+      "type": "ADMIN_VENDOR_PRODUCT",
+      "title": "Product approved for stage 1",
+      "message": "sariii moved to Approved 1.",
+      "data": {
+        "status": "APPROVED_1",
+        "vendorId": "28",
+        "productId": "54"
+      },
+      "createdAt": "2026-05-18T10:41:52.865Z",
+      "readAt": "2026-05-19T09:16:35.028Z"
+    },
+    {
+      "id": "legacy-215",
+      "userId": "5",
+      "type": "ADMIN_VENDOR_PRODUCT",
+      "title": "New product approval request",
+      "message": "sariii was submitted by jeetesh.",
+      "data": {
+        "status": "INACTIVE",
+        "vendorId": "28",
+        "productId": "54"
+      },
+      "createdAt": "2026-05-18T09:01:38.969Z",
+      "readAt": "2026-05-18T10:04:49.182Z"
+    },
+    {
+      "id": "legacy-209",
+      "userId": "5",
+      "type": "ADMIN_VENDOR_PRODUCT",
+      "title": "Product rejected",
+      "message": "dress was rejected in the approval workflow.",
+      "data": {
+        "status": "REJECTED",
+        "vendorId": "14",
+        "productId": "52"
+      },
+      "createdAt": "2026-05-18T06:55:43.226Z",
+      "readAt": "2026-05-18T07:03:25.094Z"
+    },
+    {
+      "id": "legacy-203",
+      "userId": "5",
+      "type": "ADMIN_VENDOR_PRODUCT",
+      "title": "Vendor accepted approved 2 pricing",
+      "message": "Saree was accepted by the individual vendor and is now live.",
+      "data": {
+        "status": "LIVE",
+        "vendorId": "28",
+        "productId": "51"
+      },
+      "createdAt": "2026-05-18T05:55:31.658Z",
+      "readAt": "2026-05-18T06:52:17.001Z"
+    },
+    {
+      "id": "legacy-197",
+      "userId": "5",
+      "type": "ADMIN_VENDOR_PRODUCT",
+      "title": "Product sent for vendor confirmation",
+      "message": "Saree moved to Approved 2 and is waiting for vendor agreement.",
+      "data": {
+        "status": "PENDING_VENDOR_AGREEMENT",
+        "vendorId": "28",
+        "productId": "51"
+      },
+      "createdAt": "2026-05-18T05:54:52.272Z",
+      "readAt": "2026-05-18T06:52:17.001Z"
+    },
+    {
+      "id": "legacy-191",
+      "userId": "5",
+      "type": "ADMIN_VENDOR_PRODUCT",
+      "title": "Product approved for stage 1",
+      "message": "Saree moved to Approved 1.",
+      "data": {
+        "status": "APPROVED_1",
+        "vendorId": "28",
+        "productId": "51"
+      },
+      "createdAt": "2026-05-18T05:54:26.522Z",
+      "readAt": "2026-05-18T06:52:17.001Z"
+    },
+    {
+      "id": "legacy-185",
+      "userId": "5",
+      "type": "ADMIN_VENDOR_PRODUCT",
+      "title": "New product approval request",
+      "message": "Saree was submitted by jeetesh.",
+      "data": {
+        "status": "INACTIVE",
+        "vendorId": "28",
+        "productId": "51"
+      },
+      "createdAt": "2026-05-18T05:50:48.557Z",
+      "readAt": "2026-05-18T06:52:17.001Z"
+    },
+    {
+      "id": "legacy-179",
+      "userId": "5",
+      "type": "ADMIN_VENDOR_PRODUCT",
+      "title": "Withdrawal approved",
+      "message": "jeans  withdrawal was approved and the product is now inactive.",
+      "data": {
+        "status": "WITHDRAWAL",
+        "vendorId": "24",
+        "productId": "26"
+      },
+      "createdAt": "2026-05-17T19:44:10.502Z",
+      "readAt": "2026-05-18T06:52:17.001Z"
+    },
+    {
+      "id": "legacy-175",
+      "userId": "5",
+      "type": "ADMIN_VENDOR_PRODUCT",
+      "title": "Withdrawal request received",
+      "message": "coatt now has a withdrawal request from the individual vendor.",
+      "data": {
+        "status": "WITHDRAWAL",
+        "vendorId": "4",
+        "productId": "47"
+      },
+      "createdAt": "2026-05-17T19:42:44.466Z",
+      "readAt": "2026-05-18T06:52:17.001Z"
+    },
+    {
+      "id": "legacy-160",
+      "userId": "5",
+      "type": "ADMIN_VENDOR_ORDER",
+      "title": "New trial request",
+      "message": "A trial request was created for jeans . Preferred date: 15/5/2026.",
+      "data": {
+        "status": "PENDING",
+        "productId": "26",
+        "trialRequestId": "11"
+      },
+      "createdAt": "2026-05-15T08:48:00.984Z",
+      "readAt": "2026-05-15T09:57:16.479Z"
+    },
+    {
+      "id": "f11b9811-5d0b-45f0-a743-9a7fc92db4f9",
+      "userId": "5",
+      "type": "ADMIN_VENDOR_PRODUCT",
+      "title": "Withdrawal request received",
+      "message": "jeans  now has a withdrawal request from the individual vendor.",
+      "data": {
+        "productId": "26",
+        "status": "WITHDRAWAL",
+        "vendorId": "24"
+      },
+      "createdAt": "2026-05-14T09:13:40.280Z",
+      "readAt": "2026-05-14T13:54:02.370Z"
+    }
+  ],
+  "7": [
+    {
+      "id": "29f91f57-c382-4996-bde8-3c220b85edf4",
+      "userId": "7",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Security deposit reviewed",
+      "message": "Refund decision completed for order item 26. Refund amount: Rs 352.",
+      "data": {
+        "orderItemId": "26",
+        "refundAmount": "352"
+      },
+      "createdAt": "2026-05-21T09:48:36.704Z",
+      "readAt": null
+    },
+    {
+      "id": "legacy-327",
+      "userId": "7",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Security deposit reviewed",
+      "message": "Refund decision completed for order item 45. Refund amount: Rs 1200.",
+      "data": {
+        "orderItemId": "45",
+        "refundAmount": "1200"
+      },
+      "createdAt": "2026-05-20T09:34:41.589Z",
+      "readAt": "2026-05-20T10:12:37.242Z"
+    },
+    {
+      "id": "legacy-325",
+      "userId": "7",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order status updated",
+      "message": "Order item 45 status changed to RETURNED.",
+      "data": {
+        "status": "RETURNED",
+        "orderItemId": "45"
+      },
+      "createdAt": "2026-05-20T09:16:02.665Z",
+      "readAt": "2026-05-20T10:12:37.242Z"
+    },
+    {
+      "id": "legacy-323",
+      "userId": "7",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order status updated",
+      "message": "Order item 45 status changed to RETURN SCHEDULED.",
+      "data": {
+        "status": "RETURN_SCHEDULED",
+        "orderItemId": "45"
+      },
+      "createdAt": "2026-05-20T09:15:57.094Z",
+      "readAt": "2026-05-20T10:12:37.242Z"
+    },
+    {
+      "id": "legacy-321",
+      "userId": "7",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order status updated",
+      "message": "Order item 45 status changed to PICKED UP.",
+      "data": {
+        "status": "PICKED_UP",
+        "orderItemId": "45"
+      },
+      "createdAt": "2026-05-20T09:15:52.553Z",
+      "readAt": "2026-05-20T10:12:37.242Z"
+    },
+    {
+      "id": "legacy-319",
+      "userId": "7",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order status updated",
+      "message": "Order item 45 status changed to READY FOR PICKUP.",
+      "data": {
+        "status": "READY_FOR_PICKUP",
+        "orderItemId": "45"
+      },
+      "createdAt": "2026-05-20T09:15:46.320Z",
+      "readAt": "2026-05-20T10:12:37.242Z"
+    },
+    {
+      "id": "legacy-317",
+      "userId": "7",
+      "type": "TRIAL_APPROVED",
+      "title": "Trial started",
+      "message": "Your trial for Party wear lehenga has started. The vendor will mark it completed after the item is returned.",
+      "data": {
+        "productId": "50",
+        "trialRequestId": "16"
+      },
+      "createdAt": "2026-05-20T09:09:41.422Z",
+      "readAt": "2026-05-20T09:10:39.862Z"
+    },
+    {
+      "id": "25205e76-edd2-4cae-bc29-77763c64cffa",
+      "userId": "7",
+      "type": "TRIAL_APPROVED",
+      "title": "Trial started",
+      "message": "Your trial for Party wear lehenga has started. The vendor will mark it completed after the item is returned.",
+      "data": {
+        "trialRequestId": "16",
+        "productId": "50"
+      },
+      "createdAt": "2026-05-20T09:09:41.401Z",
+      "readAt": "2026-05-20T09:10:39.862Z"
+    },
+    {
+      "id": "legacy-315",
+      "userId": "7",
+      "type": "TRIAL_APPROVED",
+      "title": "Trial request accepted",
+      "message": "Your trial request for Party wear lehenga is accepted. Your code: TRL-SGQNRYAH",
+      "data": {
+        "productId": "50",
+        "trialCode": "TRL-SGQNRYAH",
+        "trialRequestId": "16"
+      },
+      "createdAt": "2026-05-20T08:50:56.764Z",
+      "readAt": "2026-05-20T08:51:21.490Z"
+    },
+    {
+      "id": "c2f8c36f-df28-49b2-98dd-38b7ef9905fa",
+      "userId": "7",
+      "type": "TRIAL_APPROVED",
+      "title": "Trial request accepted",
+      "message": "Your trial request for Party wear lehenga is accepted. Your code: TRL-SGQNRYAH",
+      "data": {
+        "trialRequestId": "16",
+        "productId": "50",
+        "trialCode": "TRL-SGQNRYAH"
+      },
+      "createdAt": "2026-05-20T08:50:56.759Z",
+      "readAt": "2026-05-20T08:51:21.490Z"
+    },
+    {
+      "id": "legacy-309",
+      "userId": "7",
+      "type": "TRIAL_APPROVED",
+      "title": "Trial started",
+      "message": "Your trial for Dress Gownn has started. The vendor will mark it completed after the item is returned.",
+      "data": {
+        "trialRequestId": "14"
+      },
+      "createdAt": "2026-05-20T07:05:32.993Z",
+      "readAt": "2026-05-20T07:30:40.189Z"
+    },
+    {
+      "id": "legacy-307",
+      "userId": "7",
+      "type": "TRIAL_APPROVED",
+      "title": "Trial request accepted",
+      "message": "Your trial request for Dress Gownn is accepted. Your code: TRL-9PALE5RZ",
+      "data": {
+        "productId": "53",
+        "trialCode": "TRL-9PALE5RZ",
+        "trialRequestId": "14"
+      },
+      "createdAt": "2026-05-20T07:04:33.889Z",
+      "readAt": "2026-05-20T07:30:40.189Z"
+    },
+    {
+      "id": "legacy-305",
+      "userId": "7",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order booked",
+      "message": "Your order 33 has been booked successfully. The vendor will update pickup and return steps here.",
+      "data": {
+        "orderId": "33"
+      },
+      "createdAt": "2026-05-20T06:03:16.245Z",
+      "readAt": "2026-05-20T07:03:39.815Z"
+    },
+    {
+      "id": "legacy-249",
+      "userId": "7",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order status updated",
+      "message": "Order item 43 status changed to RETURNED.",
+      "data": {
+        "status": "RETURNED",
+        "orderItemId": "43"
+      },
+      "createdAt": "2026-05-19T10:39:50.690Z",
+      "readAt": "2026-05-19T10:42:13.111Z"
+    },
+    {
+      "id": "909e2a79-5af6-42ad-84e4-39c8441a507a",
+      "userId": "7",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order status updated",
+      "message": "Order item 43 status changed to RETURNED.",
+      "data": {
+        "orderItemId": "43",
+        "status": "RETURNED"
+      },
+      "createdAt": "2026-05-19T10:39:50.684Z",
+      "readAt": "2026-05-19T10:42:13.111Z"
+    },
+    {
+      "id": "legacy-247",
+      "userId": "7",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order status updated",
+      "message": "Order item 43 status changed to RETURN SCHEDULED.",
+      "data": {
+        "status": "RETURN_SCHEDULED",
+        "orderItemId": "43"
+      },
+      "createdAt": "2026-05-19T10:39:47.505Z",
+      "readAt": "2026-05-19T10:42:13.111Z"
+    },
+    {
+      "id": "6a1fd0e0-a177-4946-90d4-e4e5d074a91d",
+      "userId": "7",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order status updated",
+      "message": "Order item 43 status changed to RETURN SCHEDULED.",
+      "data": {
+        "orderItemId": "43",
+        "status": "RETURN_SCHEDULED"
+      },
+      "createdAt": "2026-05-19T10:39:47.500Z",
+      "readAt": "2026-05-19T10:42:13.111Z"
+    },
+    {
+      "id": "legacy-245",
+      "userId": "7",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order status updated",
+      "message": "Order item 43 status changed to PICKED UP.",
+      "data": {
+        "status": "PICKED_UP",
+        "orderItemId": "43"
+      },
+      "createdAt": "2026-05-19T10:39:44.830Z",
+      "readAt": "2026-05-19T10:42:13.111Z"
+    },
+    {
+      "id": "ba634133-b417-4fe6-81bd-06cf3616845f",
+      "userId": "7",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order status updated",
+      "message": "Order item 43 status changed to PICKED UP.",
+      "data": {
+        "orderItemId": "43",
+        "status": "PICKED_UP"
+      },
+      "createdAt": "2026-05-19T10:39:44.826Z",
+      "readAt": "2026-05-19T10:42:13.111Z"
+    },
+    {
+      "id": "legacy-243",
+      "userId": "7",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order status updated",
+      "message": "Order item 43 status changed to READY FOR PICKUP.",
+      "data": {
+        "status": "READY_FOR_PICKUP",
+        "orderItemId": "43"
+      },
+      "createdAt": "2026-05-19T10:39:41.737Z",
+      "readAt": "2026-05-19T10:42:13.111Z"
+    },
+    {
+      "id": "8b5c4eb7-76aa-408a-b763-e999036c79bd",
+      "userId": "7",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order status updated",
+      "message": "Order item 43 status changed to READY FOR PICKUP.",
+      "data": {
+        "orderItemId": "43",
+        "status": "READY_FOR_PICKUP"
+      },
+      "createdAt": "2026-05-19T10:39:41.726Z",
+      "readAt": "2026-05-19T10:42:13.111Z"
+    },
+    {
+      "id": "legacy-241",
+      "userId": "7",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order booked",
+      "message": "Your order 31 has been booked successfully. The vendor will update pickup and return steps here.",
+      "data": {
+        "orderId": "31"
+      },
+      "createdAt": "2026-05-19T10:34:58.660Z",
+      "readAt": "2026-05-19T10:42:13.111Z"
+    },
+    {
+      "id": "b5f93dc6-9e97-43dd-b027-b443130e2dd5",
+      "userId": "7",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order booked",
+      "message": "Your order 31 has been booked successfully. The vendor will update pickup and return steps here.",
+      "data": {
+        "orderId": "31"
+      },
+      "createdAt": "2026-05-19T10:34:58.654Z",
+      "readAt": "2026-05-19T10:42:13.111Z"
+    },
+    {
+      "id": "legacy-231",
+      "userId": "7",
+      "type": "TRIAL_APPROVED",
+      "title": "Trial completed",
+      "message": "Your trial for blazer has been completed successfully.",
+      "data": {
+        "trialRequestId": "6"
+      },
+      "createdAt": "2026-05-19T06:01:34.224Z",
+      "readAt": "2026-05-19T10:42:13.111Z"
+    },
+    {
+      "id": "2114987c-58af-46ac-9dcf-10c663b244a0",
+      "userId": "7",
+      "type": "TRIAL_APPROVED",
+      "title": "Trial completed",
+      "message": "Your trial for blazer has been completed successfully.",
+      "data": {
+        "trialRequestId": "6"
+      },
+      "createdAt": "2026-05-19T06:01:34.176Z",
+      "readAt": "2026-05-19T10:42:13.111Z"
+    },
+    {
+      "id": "legacy-229",
+      "userId": "7",
+      "type": "TRIAL_APPROVED",
+      "title": "Trial started",
+      "message": "Your trial for blazer has started. The vendor will mark it completed after the item is returned.",
+      "data": {
+        "trialRequestId": "6"
+      },
+      "createdAt": "2026-05-18T13:17:14.647Z",
+      "readAt": "2026-05-19T10:42:13.111Z"
+    },
+    {
+      "id": "legacy-227",
+      "userId": "7",
+      "type": "TRIAL_APPROVED",
+      "title": "Trial request accepted",
+      "message": "Your trial request for blazer is accepted. Your code: TRL-O5Z9M7N6",
+      "data": {
+        "productId": "21",
+        "trialCode": "TRL-O5Z9M7N6",
+        "trialRequestId": "6"
+      },
+      "createdAt": "2026-05-18T13:16:38.383Z",
+      "readAt": "2026-05-19T10:42:13.111Z"
+    },
+    {
+      "id": "legacy-169",
+      "userId": "7",
+      "type": "TRIAL_APPROVED",
+      "title": "Trial completed",
+      "message": "Your trial for jeans  has been completed successfully.",
+      "data": {
+        "trialRequestId": "11"
+      },
+      "createdAt": "2026-05-15T08:49:37.540Z",
+      "readAt": "2026-05-15T09:27:52.567Z"
+    },
+    {
+      "id": "6c06d434-8822-45df-95b6-1e240c13c0f1",
+      "userId": "7",
+      "type": "TRIAL_APPROVED",
+      "title": "Trial completed",
+      "message": "Your trial for jeans  has been completed successfully.",
+      "data": {
+        "trialRequestId": "11"
+      },
+      "createdAt": "2026-05-15T08:49:37.538Z",
+      "readAt": "2026-05-15T08:51:05.400Z"
+    },
+    {
+      "id": "legacy-167",
+      "userId": "7",
+      "type": "TRIAL_APPROVED",
+      "title": "Trial started",
+      "message": "Your trial for jeans  has started. The vendor will mark it completed after the item is returned.",
+      "data": {
+        "trialRequestId": "11"
+      },
+      "createdAt": "2026-05-15T08:49:28.028Z",
+      "readAt": "2026-05-15T09:27:52.567Z"
+    },
+    {
+      "id": "af83a673-121e-4497-8f6b-a55d83b3c8be",
+      "userId": "7",
+      "type": "TRIAL_APPROVED",
+      "title": "Trial started",
+      "message": "Your trial for jeans  has started. The vendor will mark it completed after the item is returned.",
+      "data": {
+        "trialRequestId": "11"
+      },
+      "createdAt": "2026-05-15T08:49:28.026Z",
+      "readAt": "2026-05-15T08:51:05.400Z"
+    },
+    {
+      "id": "legacy-165",
+      "userId": "7",
+      "type": "TRIAL_APPROVED",
+      "title": "Trial request accepted",
+      "message": "Your trial request for jeans  is accepted. Your code: TRL-LUHYNV3Q",
+      "data": {
+        "productId": "26",
+        "trialCode": "TRL-LUHYNV3Q",
+        "trialRequestId": "11"
+      },
+      "createdAt": "2026-05-15T08:49:15.068Z",
+      "readAt": "2026-05-15T09:27:52.567Z"
+    },
+    {
+      "id": "29bb02f6-7bb7-4fa4-9b6a-d4de51e0640f",
+      "userId": "7",
+      "type": "TRIAL_APPROVED",
+      "title": "Trial request accepted",
+      "message": "Your trial request for jeans  is accepted. Your code: TRL-LUHYNV3Q",
+      "data": {
+        "trialRequestId": "11",
+        "productId": "26",
+        "trialCode": "TRL-LUHYNV3Q"
+      },
+      "createdAt": "2026-05-15T08:49:15.062Z",
+      "readAt": "2026-05-15T08:51:05.400Z"
+    },
+    {
+      "id": "legacy-153",
+      "userId": "7",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Security deposit reviewed",
+      "message": "Refund decision completed for order item 34. Refund amount: Rs 2400.",
+      "data": {
+        "orderItemId": "34",
+        "refundAmount": "2400"
+      },
+      "createdAt": "2026-05-14T13:58:07.173Z",
+      "readAt": "2026-05-15T09:27:52.567Z"
+    },
+    {
+      "id": "7c2787a2-fcca-4472-9199-81255e0670df",
+      "userId": "7",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Security deposit reviewed",
+      "message": "Refund decision completed for order item 34. Refund amount: Rs 2400.",
+      "data": {
+        "orderItemId": "34",
+        "refundAmount": "2400"
+      },
+      "createdAt": "2026-05-14T13:58:07.169Z",
+      "readAt": "2026-05-15T08:51:05.400Z"
+    },
+    {
+      "id": "legacy-143",
+      "userId": "7",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Security deposit reviewed",
+      "message": "Refund decision completed for order item 37. Refund amount: Rs 292.8.",
+      "data": {
+        "orderItemId": "37",
+        "refundAmount": "292.8"
+      },
+      "createdAt": "2026-05-14T06:41:46.202Z",
+      "readAt": "2026-05-15T09:27:52.567Z"
+    },
+    {
+      "id": "6130c65e-6a0a-47e6-b786-3b68d44994a6",
+      "userId": "7",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Security deposit reviewed",
+      "message": "Refund decision completed for order item 37. Refund amount: Rs 292.8.",
+      "data": {
+        "orderItemId": "37",
+        "refundAmount": "292.8"
+      },
+      "createdAt": "2026-05-14T06:41:46.193Z",
+      "readAt": "2026-05-15T08:51:05.400Z"
+    },
+    {
+      "id": "legacy-139",
+      "userId": "7",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Security deposit reviewed",
+      "message": "Refund decision completed for order item 39. Refund amount: Rs 240.",
+      "data": {
+        "orderItemId": "39",
+        "refundAmount": "240"
+      },
+      "createdAt": "2026-05-14T06:08:24.252Z",
+      "readAt": "2026-05-15T09:27:52.567Z"
+    },
+    {
+      "id": "legacy-133",
+      "userId": "7",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order status updated",
+      "message": "Order item 37 status changed to RETURNED.",
+      "data": {
+        "status": "RETURNED",
+        "orderItemId": "37"
+      },
+      "createdAt": "2026-05-13T07:08:59.379Z",
+      "readAt": "2026-05-15T09:27:52.567Z"
+    },
+    {
+      "id": "81f31c51-ad0b-477e-9a9f-c6b79278c3bc",
+      "userId": "7",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order status updated",
+      "message": "Order item 37 status changed to RETURNED.",
+      "data": {
+        "orderItemId": "37",
+        "status": "RETURNED"
+      },
+      "createdAt": "2026-05-13T07:08:59.375Z",
+      "readAt": "2026-05-14T06:21:47.288Z"
+    },
+    {
+      "id": "legacy-131",
+      "userId": "7",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order status updated",
+      "message": "Order item 37 status changed to RETURN SCHEDULED.",
+      "data": {
+        "status": "RETURN_SCHEDULED",
+        "orderItemId": "37"
+      },
+      "createdAt": "2026-05-13T07:08:56.613Z",
+      "readAt": "2026-05-15T09:27:52.567Z"
+    },
+    {
+      "id": "3fbbc77d-8e2a-4087-bdcb-3632efb341fc",
+      "userId": "7",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order status updated",
+      "message": "Order item 37 status changed to RETURN SCHEDULED.",
+      "data": {
+        "orderItemId": "37",
+        "status": "RETURN_SCHEDULED"
+      },
+      "createdAt": "2026-05-13T07:08:56.599Z",
+      "readAt": "2026-05-14T06:21:47.288Z"
+    },
+    {
+      "id": "legacy-129",
+      "userId": "7",
+      "type": "TRIAL_APPROVED",
+      "title": "Trial completed",
+      "message": "Your trial for jeans  has been completed successfully.",
+      "data": {
+        "trialRequestId": "10"
+      },
+      "createdAt": "2026-05-12T12:43:01.325Z",
+      "readAt": "2026-05-15T09:27:52.567Z"
+    },
+    {
+      "id": "a4dda4aa-12a4-44cf-ae0c-9d5ddaf95ca7",
+      "userId": "7",
+      "type": "TRIAL_APPROVED",
+      "title": "Trial completed",
+      "message": "Your trial for jeans  has been completed successfully.",
+      "data": {
+        "trialRequestId": "10"
+      },
+      "createdAt": "2026-05-12T12:43:01.311Z",
+      "readAt": "2026-05-14T06:21:47.288Z"
+    },
+    {
+      "id": "legacy-127",
+      "userId": "7",
+      "type": "TRIAL_APPROVED",
+      "title": "Trial request accepted",
+      "message": "Your trial request for jeans  is accepted. Your code: TRL-0ME15Y9D",
+      "data": {
+        "productId": "26",
+        "trialCode": "TRL-0ME15Y9D",
+        "trialRequestId": "10"
+      },
+      "createdAt": "2026-05-12T12:42:34.067Z",
+      "readAt": "2026-05-15T09:27:52.567Z"
+    },
+    {
+      "id": "33cf2555-59ae-48cb-adfe-d549533b5577",
+      "userId": "7",
+      "type": "TRIAL_APPROVED",
+      "title": "Trial request accepted",
+      "message": "Your trial request for jeans  is accepted. Your code: TRL-0ME15Y9D",
+      "data": {
+        "trialRequestId": "10",
+        "productId": "26",
+        "trialCode": "TRL-0ME15Y9D"
+      },
+      "createdAt": "2026-05-12T12:42:34.038Z",
+      "readAt": "2026-05-14T06:21:47.288Z"
+    },
+    {
+      "id": "legacy-123",
+      "userId": "7",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order status updated",
+      "message": "Order item 37 status changed to PICKED UP.",
+      "data": {
+        "status": "PICKED_UP",
+        "orderItemId": "37"
+      },
+      "createdAt": "2026-05-12T12:25:45.151Z",
+      "readAt": "2026-05-15T09:27:52.567Z"
+    },
+    {
+      "id": "legacy-121",
+      "userId": "7",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order status updated",
+      "message": "Order item 37 status changed to READY FOR PICKUP.",
+      "data": {
+        "status": "READY_FOR_PICKUP",
+        "orderItemId": "37"
+      },
+      "createdAt": "2026-05-12T12:24:40.789Z",
+      "readAt": "2026-05-15T09:27:52.567Z"
+    },
+    {
+      "id": "legacy-119",
+      "userId": "7",
+      "type": "TRIAL_APPROVED",
+      "title": "Trial completed",
+      "message": "Your trial for saree has been completed successfully.",
+      "data": {
+        "trialRequestId": "9"
+      },
+      "createdAt": "2026-05-12T11:58:59.584Z",
+      "readAt": "2026-05-15T09:27:52.567Z"
+    },
+    {
+      "id": "5a859a65-58b6-4297-b5ed-e5e14fcd6fe6",
+      "userId": "7",
+      "type": "TRIAL_APPROVED",
+      "title": "Trial completed",
+      "message": "Your trial for saree has been completed successfully.",
+      "data": {
+        "trialRequestId": "9"
+      },
+      "createdAt": "2026-05-12T11:58:59.579Z",
+      "readAt": "2026-05-14T06:21:47.288Z"
+    },
+    {
+      "id": "legacy-117",
+      "userId": "7",
+      "type": "TRIAL_APPROVED",
+      "title": "Trial request accepted",
+      "message": "Your trial request for saree is accepted. Your code: TRL-4J9Y9SC5",
+      "data": {
+        "productId": "25",
+        "trialCode": "TRL-4J9Y9SC5",
+        "trialRequestId": "9"
+      },
+      "createdAt": "2026-05-12T11:58:36.754Z",
+      "readAt": "2026-05-15T09:27:52.567Z"
+    },
+    {
+      "id": "eab0856e-a376-4875-beff-e94ae5a2f090",
+      "userId": "7",
+      "type": "TRIAL_APPROVED",
+      "title": "Trial request accepted",
+      "message": "Your trial request for saree is accepted. Your code: TRL-4J9Y9SC5",
+      "data": {
+        "trialRequestId": "9",
+        "productId": "25",
+        "trialCode": "TRL-4J9Y9SC5"
+      },
+      "createdAt": "2026-05-12T11:58:36.742Z",
+      "readAt": "2026-05-14T06:21:47.288Z"
+    },
+    {
+      "id": "legacy-113",
+      "userId": "7",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order status changed by admin",
+      "message": "Order ORD1778501931596DA0B status has been updated to RETURNED by admin.",
+      "data": {
+        "status": "RETURNED",
+        "orderId": "29"
+      },
+      "createdAt": "2026-05-12T06:29:56.030Z",
+      "readAt": "2026-05-15T09:27:52.567Z"
+    },
+    {
+      "id": "c0d1c5be-edb6-435b-9b5f-8f86629a1d76",
+      "userId": "7",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order status changed by admin",
+      "message": "Order ORD1778501931596DA0B status has been updated to RETURNED by admin.",
+      "data": {
+        "orderId": "29",
+        "status": "RETURNED"
+      },
+      "createdAt": "2026-05-12T06:29:56.023Z",
+      "readAt": "2026-05-12T09:01:23.784Z"
+    },
+    {
+      "id": "legacy-111",
+      "userId": "7",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order status changed by admin",
+      "message": "Order ORD1778501931596DA0B status has been updated to PICKED UP by admin.",
+      "data": {
+        "status": "PICKED_UP",
+        "orderId": "29"
+      },
+      "createdAt": "2026-05-11T13:30:33.340Z",
+      "readAt": "2026-05-15T09:27:52.567Z"
+    },
+    {
+      "id": "7b794c52-efff-4831-a51e-816036f0e863",
+      "userId": "7",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order status changed by admin",
+      "message": "Order ORD1778501931596DA0B status has been updated to PICKED UP by admin.",
+      "data": {
+        "orderId": "29",
+        "status": "PICKED_UP"
+      },
+      "createdAt": "2026-05-11T13:30:33.304Z",
+      "readAt": "2026-05-12T09:01:23.784Z"
+    },
+    {
+      "id": "legacy-109",
+      "userId": "7",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order status updated",
+      "message": "Order item 25 status changed to RETURNED.",
+      "data": {
+        "status": "RETURNED",
+        "orderItemId": "25"
+      },
+      "createdAt": "2026-05-11T13:21:58.069Z",
+      "readAt": "2026-05-15T09:27:52.567Z"
+    },
+    {
+      "id": "5bdbb7b7-7a2e-479b-85f8-174b518d58c6",
+      "userId": "7",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order status updated",
+      "message": "Order item 25 status changed to RETURNED.",
+      "data": {
+        "orderItemId": "25",
+        "status": "RETURNED"
+      },
+      "createdAt": "2026-05-11T13:21:58.068Z",
+      "readAt": "2026-05-12T09:01:23.784Z"
+    },
+    {
+      "id": "legacy-107",
+      "userId": "7",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order status updated",
+      "message": "Order item 25 status changed to RETURN SCHEDULED.",
+      "data": {
+        "status": "RETURN_SCHEDULED",
+        "orderItemId": "25"
+      },
+      "createdAt": "2026-05-11T13:21:55.019Z",
+      "readAt": "2026-05-15T09:27:52.567Z"
+    },
+    {
+      "id": "af5ffdb5-aa5f-4cf7-9d9b-e3c1572126f5",
+      "userId": "7",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order status updated",
+      "message": "Order item 25 status changed to RETURN SCHEDULED.",
+      "data": {
+        "orderItemId": "25",
+        "status": "RETURN_SCHEDULED"
+      },
+      "createdAt": "2026-05-11T13:21:55.017Z",
+      "readAt": "2026-05-12T09:01:23.784Z"
+    },
+    {
+      "id": "legacy-105",
+      "userId": "7",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order status updated",
+      "message": "Order item 25 status changed to PICKED UP.",
+      "data": {
+        "status": "PICKED_UP",
+        "orderItemId": "25"
+      },
+      "createdAt": "2026-05-11T13:21:51.905Z",
+      "readAt": "2026-05-15T09:27:52.567Z"
+    },
+    {
+      "id": "26339c00-2858-4caa-9655-7bc21e40e744",
+      "userId": "7",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order status updated",
+      "message": "Order item 25 status changed to PICKED UP.",
+      "data": {
+        "orderItemId": "25",
+        "status": "PICKED_UP"
+      },
+      "createdAt": "2026-05-11T13:21:51.902Z",
+      "readAt": "2026-05-12T09:01:23.784Z"
+    },
+    {
+      "id": "legacy-103",
+      "userId": "7",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order status updated",
+      "message": "Order item 25 status changed to READY FOR PICKUP.",
+      "data": {
+        "status": "READY_FOR_PICKUP",
+        "orderItemId": "25"
+      },
+      "createdAt": "2026-05-11T13:21:42.004Z",
+      "readAt": "2026-05-15T09:27:52.567Z"
+    },
+    {
+      "id": "ab42dce9-d863-401a-a02b-8e10d8e2ba40",
+      "userId": "7",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order status updated",
+      "message": "Order item 25 status changed to READY FOR PICKUP.",
+      "data": {
+        "orderItemId": "25",
+        "status": "READY_FOR_PICKUP"
+      },
+      "createdAt": "2026-05-11T13:21:42.002Z",
+      "readAt": "2026-05-12T09:01:23.784Z"
+    },
+    {
+      "id": "legacy-101",
+      "userId": "7",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order status updated",
+      "message": "Order item 34 status changed to RETURNED.",
+      "data": {
+        "status": "RETURNED",
+        "orderItemId": "34"
+      },
+      "createdAt": "2026-05-11T13:20:29.541Z",
+      "readAt": "2026-05-15T09:27:52.567Z"
+    },
+    {
+      "id": "7ad32d6f-386e-449e-ad21-9ce83a30c319",
+      "userId": "7",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order status updated",
+      "message": "Order item 34 status changed to RETURNED.",
+      "data": {
+        "orderItemId": "34",
+        "status": "RETURNED"
+      },
+      "createdAt": "2026-05-11T13:20:29.539Z",
+      "readAt": "2026-05-12T09:01:23.784Z"
+    },
+    {
+      "id": "legacy-99",
+      "userId": "7",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order status updated",
+      "message": "Order item 34 status changed to RETURN SCHEDULED.",
+      "data": {
+        "status": "RETURN_SCHEDULED",
+        "orderItemId": "34"
+      },
+      "createdAt": "2026-05-11T13:20:26.594Z",
+      "readAt": "2026-05-15T09:27:52.567Z"
+    },
+    {
+      "id": "1dea328b-a177-4228-a828-72cc50bf100b",
+      "userId": "7",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order status updated",
+      "message": "Order item 34 status changed to RETURN SCHEDULED.",
+      "data": {
+        "orderItemId": "34",
+        "status": "RETURN_SCHEDULED"
+      },
+      "createdAt": "2026-05-11T13:20:26.592Z",
+      "readAt": "2026-05-12T09:01:23.784Z"
+    },
+    {
+      "id": "legacy-97",
+      "userId": "7",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order status updated",
+      "message": "Order item 34 status changed to PICKED UP.",
+      "data": {
+        "status": "PICKED_UP",
+        "orderItemId": "34"
+      },
+      "createdAt": "2026-05-11T13:20:10.962Z",
+      "readAt": "2026-05-15T09:27:52.567Z"
+    },
+    {
+      "id": "1610761c-a639-48bf-84a3-5765fe725269",
+      "userId": "7",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order status updated",
+      "message": "Order item 34 status changed to PICKED UP.",
+      "data": {
+        "orderItemId": "34",
+        "status": "PICKED_UP"
+      },
+      "createdAt": "2026-05-11T13:20:10.960Z",
+      "readAt": "2026-05-12T09:01:23.784Z"
+    },
+    {
+      "id": "legacy-95",
+      "userId": "7",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order status updated",
+      "message": "Order item 34 status changed to READY FOR PICKUP.",
+      "data": {
+        "status": "READY_FOR_PICKUP",
+        "orderItemId": "34"
+      },
+      "createdAt": "2026-05-11T13:20:04.504Z",
+      "readAt": "2026-05-15T09:27:52.567Z"
+    },
+    {
+      "id": "5dfa19b1-6670-487b-bec9-dd7f6e2d3ccb",
+      "userId": "7",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order status updated",
+      "message": "Order item 34 status changed to READY FOR PICKUP.",
+      "data": {
+        "orderItemId": "34",
+        "status": "READY_FOR_PICKUP"
+      },
+      "createdAt": "2026-05-11T13:20:04.498Z",
+      "readAt": "2026-05-12T09:01:23.784Z"
+    },
+    {
+      "id": "legacy-93",
+      "userId": "7",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order placed",
+      "message": "Your order 29 has been placed successfully and is pending vendor confirmation.",
+      "data": {
+        "orderId": "29"
+      },
+      "createdAt": "2026-05-11T12:19:40.918Z",
+      "readAt": "2026-05-15T09:27:52.567Z"
+    },
+    {
+      "id": "b40a4233-63fb-431b-bee4-0c021b4c77e8",
+      "userId": "7",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order placed",
+      "message": "Your order 29 has been placed successfully and is pending vendor confirmation.",
+      "data": {
+        "orderId": "29"
+      },
+      "createdAt": "2026-05-11T12:19:40.901Z",
+      "readAt": "2026-05-12T05:00:13.559Z"
+    },
+    {
+      "id": "legacy-89",
+      "userId": "7",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order placed",
+      "message": "Your order 27 has been placed successfully and is pending vendor confirmation.",
+      "data": {
+        "orderId": "27"
+      },
+      "createdAt": "2026-05-11T10:27:26.392Z",
+      "readAt": "2026-05-15T09:27:52.567Z"
+    },
+    {
+      "id": "legacy-85",
+      "userId": "7",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order placed",
+      "message": "Your order 26 has been placed successfully and is pending vendor confirmation.",
+      "data": {
+        "orderId": "26"
+      },
+      "createdAt": "2026-05-11T10:15:30.338Z",
+      "readAt": "2026-05-15T09:27:52.567Z"
+    },
+    {
+      "id": "legacy-81",
+      "userId": "7",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order placed",
+      "message": "Your order 25 has been placed successfully and is pending vendor confirmation.",
+      "data": {
+        "orderId": "25"
+      },
+      "createdAt": "2026-05-11T09:14:24.073Z",
+      "readAt": "2026-05-15T09:27:52.567Z"
+    },
+    {
+      "id": "legacy-77",
+      "userId": "7",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order placed",
+      "message": "Your order 24 has been placed successfully and is pending vendor confirmation.",
+      "data": {
+        "orderId": "24"
+      },
+      "createdAt": "2026-05-11T07:19:46.143Z",
+      "readAt": "2026-05-15T09:27:52.567Z"
+    },
+    {
+      "id": "legacy-73",
+      "userId": "7",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order status changed by admin",
+      "message": "Order ORD1778243389577RSPS status has been updated to SECURITY DEPOSIT REFUNDED by admin.",
+      "data": {
+        "status": "SECURITY_DEPOSIT_REFUNDED",
+        "orderId": "16"
+      },
+      "createdAt": "2026-05-11T05:24:36.962Z",
+      "readAt": "2026-05-15T09:27:52.567Z"
+    },
+    {
+      "id": "8e642e17-c3c9-416d-8d3c-848402cd1725",
+      "userId": "7",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order status changed by admin",
+      "message": "Order ORD1778243389577RSPS status has been updated to SECURITY DEPOSIT REFUNDED by admin.",
+      "data": {
+        "orderId": "16",
+        "status": "SECURITY_DEPOSIT_REFUNDED"
+      },
+      "createdAt": "2026-05-11T05:24:36.955Z",
+      "readAt": "2026-05-12T05:00:13.559Z"
+    },
+    {
+      "id": "legacy-71",
+      "userId": "7",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order status changed by admin",
+      "message": "Order ORD1778246028347ZQTG status has been updated to SECURITY DEPOSIT REFUNDED by admin.",
+      "data": {
+        "status": "SECURITY_DEPOSIT_REFUNDED",
+        "orderId": "19"
+      },
+      "createdAt": "2026-05-11T05:18:02.336Z",
+      "readAt": "2026-05-15T09:27:52.567Z"
+    },
+    {
+      "id": "81f14495-6010-40c2-99f6-3344bf4c0da3",
+      "userId": "7",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order status changed by admin",
+      "message": "Order ORD1778246028347ZQTG status has been updated to SECURITY DEPOSIT REFUNDED by admin.",
+      "data": {
+        "orderId": "19",
+        "status": "SECURITY_DEPOSIT_REFUNDED"
+      },
+      "createdAt": "2026-05-11T05:18:02.330Z",
+      "readAt": "2026-05-12T05:00:13.559Z"
+    },
+    {
+      "id": "legacy-69",
+      "userId": "7",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order status changed by admin",
+      "message": "Order ORD177824385727167RH status has been updated to SECURITY DEPOSIT REFUNDED by admin.",
+      "data": {
+        "status": "SECURITY_DEPOSIT_REFUNDED",
+        "orderId": "17"
+      },
+      "createdAt": "2026-05-11T05:14:32.463Z",
+      "readAt": "2026-05-15T09:27:52.567Z"
+    },
+    {
+      "id": "1b70efac-6d47-42da-9e9d-94b545c0fe74",
+      "userId": "7",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order status changed by admin",
+      "message": "Order ORD177824385727167RH status has been updated to SECURITY DEPOSIT REFUNDED by admin.",
+      "data": {
+        "orderId": "17",
+        "status": "SECURITY_DEPOSIT_REFUNDED"
+      },
+      "createdAt": "2026-05-11T05:14:32.460Z",
+      "readAt": "2026-05-12T05:00:13.559Z"
+    },
+    {
+      "id": "legacy-67",
+      "userId": "7",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order status changed by admin",
+      "message": "Order ORD177824385727167RH status has been updated to SECURITY DEPOSIT REFUNDED by admin.",
+      "data": {
+        "status": "SECURITY_DEPOSIT_REFUNDED",
+        "orderId": "17"
+      },
+      "createdAt": "2026-05-11T05:14:28.793Z",
+      "readAt": "2026-05-15T09:27:52.567Z"
+    },
+    {
+      "id": "59bc9f20-4a04-4d37-b579-94eb17b473d2",
+      "userId": "7",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order status changed by admin",
+      "message": "Order ORD177824385727167RH status has been updated to SECURITY DEPOSIT REFUNDED by admin.",
+      "data": {
+        "orderId": "17",
+        "status": "SECURITY_DEPOSIT_REFUNDED"
+      },
+      "createdAt": "2026-05-11T05:14:28.786Z",
+      "readAt": "2026-05-12T05:00:13.559Z"
+    },
+    {
+      "id": "legacy-65",
+      "userId": "7",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order status changed by admin",
+      "message": "Order ORD1778246028347ZQTG status has been updated to RETURNED by admin.",
+      "data": {
+        "status": "RETURNED",
+        "orderId": "19"
+      },
+      "createdAt": "2026-05-11T05:11:12.816Z",
+      "readAt": "2026-05-15T09:27:52.567Z"
+    },
+    {
+      "id": "5edd2408-8a1f-45e0-88cc-f8bedccc9611",
+      "userId": "7",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order status changed by admin",
+      "message": "Order ORD1778246028347ZQTG status has been updated to RETURNED by admin.",
+      "data": {
+        "orderId": "19",
+        "status": "RETURNED"
+      },
+      "createdAt": "2026-05-11T05:11:12.810Z",
+      "readAt": "2026-05-12T05:00:13.559Z"
+    },
+    {
+      "id": "legacy-63",
+      "userId": "7",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order status changed by admin",
+      "message": "Order ORD1778246028347ZQTG status has been updated to RETURNED by admin.",
+      "data": {
+        "status": "RETURNED",
+        "orderId": "19"
+      },
+      "createdAt": "2026-05-11T05:10:53.067Z",
+      "readAt": "2026-05-15T09:27:52.567Z"
+    },
+    {
+      "id": "c8854c8e-2f8d-442b-ba28-c79254f8d321",
+      "userId": "7",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order status changed by admin",
+      "message": "Order ORD1778246028347ZQTG status has been updated to RETURNED by admin.",
+      "data": {
+        "orderId": "19",
+        "status": "RETURNED"
+      },
+      "createdAt": "2026-05-11T05:10:53.062Z",
+      "readAt": "2026-05-12T05:00:13.559Z"
+    },
+    {
+      "id": "legacy-61",
+      "userId": "7",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order status changed by admin",
+      "message": "Order ORD1778246028347ZQTG status has been updated to PICKED UP by admin.",
+      "data": {
+        "status": "PICKED_UP",
+        "orderId": "19"
+      },
+      "createdAt": "2026-05-11T05:10:48.117Z",
+      "readAt": "2026-05-15T09:27:52.567Z"
+    },
+    {
+      "id": "3b7a5787-7195-4f84-b3b0-296a8801b94b",
+      "userId": "7",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order status changed by admin",
+      "message": "Order ORD1778246028347ZQTG status has been updated to PICKED UP by admin.",
+      "data": {
+        "orderId": "19",
+        "status": "PICKED_UP"
+      },
+      "createdAt": "2026-05-11T05:10:48.112Z",
+      "readAt": "2026-05-12T05:00:13.559Z"
+    },
+    {
+      "id": "legacy-59",
+      "userId": "7",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order status changed by admin",
+      "message": "Order ORD1778246028347ZQTG status has been updated to PICKED UP by admin.",
+      "data": {
+        "status": "PICKED_UP",
+        "orderId": "19"
+      },
+      "createdAt": "2026-05-11T05:10:36.188Z",
+      "readAt": "2026-05-15T09:27:52.567Z"
+    },
+    {
+      "id": "e6751792-3189-4d46-9413-3b0287ae0cc7",
+      "userId": "7",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order status changed by admin",
+      "message": "Order ORD1778246028347ZQTG status has been updated to PICKED UP by admin.",
+      "data": {
+        "orderId": "19",
+        "status": "PICKED_UP"
+      },
+      "createdAt": "2026-05-11T05:10:36.159Z",
+      "readAt": "2026-05-12T05:00:13.559Z"
+    },
+    {
+      "id": "legacy-57",
+      "userId": "7",
+      "type": "TRIAL_APPROVED",
+      "title": "Trial completed",
+      "message": "Your trial for blazer has been completed successfully.",
+      "data": {
+        "trialRequestId": "8"
+      },
+      "createdAt": "2026-05-09T11:07:23.922Z",
+      "readAt": "2026-05-15T09:27:52.567Z"
+    },
+    {
+      "id": "legacy-55",
+      "userId": "7",
+      "type": "TRIAL_APPROVED",
+      "title": "Trial request accepted",
+      "message": "Your trial request for blazer is accepted. Your code: TRL-D7IFVQUF",
+      "data": {
+        "productId": "24",
+        "trialCode": "TRL-D7IFVQUF",
+        "trialRequestId": "8"
+      },
+      "createdAt": "2026-05-09T11:05:23.607Z",
+      "readAt": "2026-05-15T09:27:52.567Z"
+    },
+    {
+      "id": "legacy-49",
+      "userId": "7",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order placed",
+      "message": "Your order 21 has been placed successfully and is pending vendor confirmation.",
+      "data": {
+        "orderId": "21"
+      },
+      "createdAt": "2026-05-09T09:02:09.313Z",
+      "readAt": "2026-05-15T09:27:52.567Z"
+    },
+    {
+      "id": "legacy-43",
+      "userId": "7",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order status changed by admin",
+      "message": "Order ORD177824385727167RH status has been updated to REJECTED by admin.",
+      "data": {
+        "status": "REJECTED",
+        "orderId": "17"
+      },
+      "createdAt": "2026-05-08T13:07:37.369Z",
+      "readAt": "2026-05-15T09:27:52.567Z"
+    },
+    {
+      "id": "292cda69-874b-4067-bc0e-2c1fb1432c15",
+      "userId": "7",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order status changed by admin",
+      "message": "Order ORD177824385727167RH status has been updated to REJECTED by admin.",
+      "data": {
+        "orderId": "17",
+        "status": "REJECTED"
+      },
+      "createdAt": "2026-05-08T13:07:37.363Z",
+      "readAt": "2026-05-09T11:06:16.120Z"
+    },
+    {
+      "id": "legacy-41",
+      "userId": "7",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order placed",
+      "message": "Your order 17 has been placed successfully and is pending vendor confirmation.",
+      "data": {
+        "orderId": "17"
+      },
+      "createdAt": "2026-05-08T12:38:23.158Z",
+      "readAt": "2026-05-15T09:27:52.567Z"
+    },
+    {
+      "id": "e0fc835e-fe1f-4ba8-b88d-241dbca927ac",
+      "userId": "7",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order placed",
+      "message": "Your order 17 has been placed successfully and is pending vendor confirmation.",
+      "data": {
+        "orderId": "17"
+      },
+      "createdAt": "2026-05-08T12:38:23.151Z",
+      "readAt": "2026-05-09T11:06:16.120Z"
+    },
+    {
+      "id": "legacy-37",
+      "userId": "7",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order placed",
+      "message": "Your order 16 has been placed successfully and is pending vendor confirmation.",
+      "data": {
+        "orderId": "16"
+      },
+      "createdAt": "2026-05-08T12:30:24.249Z",
+      "readAt": "2026-05-15T09:27:52.567Z"
+    },
+    {
+      "id": "beba0d73-bfb3-4ba3-8468-20416dde696a",
+      "userId": "7",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order placed",
+      "message": "Your order 16 has been placed successfully and is pending vendor confirmation.",
+      "data": {
+        "orderId": "16"
+      },
+      "createdAt": "2026-05-08T12:30:24.244Z",
+      "readAt": "2026-05-09T11:06:16.120Z"
+    },
+    {
+      "id": "legacy-33",
+      "userId": "7",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order placed",
+      "message": "Your order 15 has been placed successfully and is pending vendor confirmation.",
+      "data": {
+        "orderId": "15"
+      },
+      "createdAt": "2026-05-08T12:26:34.746Z",
+      "readAt": "2026-05-15T09:27:52.567Z"
+    },
+    {
+      "id": "11800931-bf37-4e45-b5e8-86b8a567c3be",
+      "userId": "7",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order placed",
+      "message": "Your order 15 has been placed successfully and is pending vendor confirmation.",
+      "data": {
+        "orderId": "15"
+      },
+      "createdAt": "2026-05-08T12:26:34.736Z",
+      "readAt": "2026-05-09T11:06:16.120Z"
+    },
+    {
+      "id": "b0a4072e-f340-4e8f-a24e-b5ca7096e74e",
+      "userId": "7",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order status changed by admin",
+      "message": "Order ORD17778983928720E1B status has been updated to SECURITY DEPOSIT REFUNDED by admin.",
+      "data": {
+        "orderId": "12",
+        "status": "SECURITY_DEPOSIT_REFUNDED"
+      },
+      "createdAt": "2026-05-05T05:32:39.186Z",
+      "readAt": "2026-05-07T10:04:52.291Z"
+    },
+    {
+      "id": "c6f02978-6afd-4169-b0c9-59c7d416a042",
+      "userId": "7",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order status changed by admin",
+      "message": "Order ORD17778983928720E1B status has been updated to DAMAGE REVIEW by admin.",
+      "data": {
+        "orderId": "12",
+        "status": "DAMAGE_REVIEW"
+      },
+      "createdAt": "2026-05-05T05:32:31.976Z",
+      "readAt": "2026-05-07T10:04:52.291Z"
+    },
+    {
+      "id": "ad25cd7d-0fc8-4ce1-ac81-816fe0271163",
+      "userId": "7",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order status changed by admin",
+      "message": "Order ORD17778983928720E1B status has been updated to RETURNED by admin.",
+      "data": {
+        "orderId": "12",
+        "status": "RETURNED"
+      },
+      "createdAt": "2026-05-05T05:32:13.399Z",
+      "readAt": "2026-05-07T10:04:52.291Z"
+    },
+    {
+      "id": "8dd3cd7e-97a6-4a54-a7c1-b7aacef4dd1f",
+      "userId": "7",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order status changed by admin",
+      "message": "Order ORD17778983928720E1B status has been updated to RETURN SCHEDULED by admin.",
+      "data": {
+        "orderId": "12",
+        "status": "RETURN_SCHEDULED"
+      },
+      "createdAt": "2026-05-05T05:32:09.651Z",
+      "readAt": "2026-05-07T10:04:52.291Z"
+    },
+    {
+      "id": "505e45f6-d9bf-40a8-8f7c-4d8811a88f6c",
+      "userId": "7",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order status changed by admin",
+      "message": "Order ORD17778983928720E1B status has been updated to DELIVERED by admin.",
+      "data": {
+        "orderId": "12",
+        "status": "DELIVERED"
+      },
+      "createdAt": "2026-05-05T05:31:58.651Z",
+      "readAt": "2026-05-07T10:04:52.291Z"
+    },
+    {
+      "id": "7876d1bd-e9f8-4685-9f0a-c5bf3199fda2",
+      "userId": "7",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order status changed by admin",
+      "message": "Order ORD17778983928720E1B status has been updated to OUT FOR DELIVERY by admin.",
+      "data": {
+        "orderId": "12",
+        "status": "OUT_FOR_DELIVERY"
+      },
+      "createdAt": "2026-05-05T05:31:54.298Z",
+      "readAt": "2026-05-07T10:04:52.291Z"
+    },
+    {
+      "id": "463e4154-c1f2-4fa5-a82b-df6cdf4d5756",
+      "userId": "7",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order status changed by admin",
+      "message": "Order ORD17778983928720E1B status has been updated to PICKED UP by admin.",
+      "data": {
+        "orderId": "12",
+        "status": "PICKED_UP"
+      },
+      "createdAt": "2026-05-04T13:22:54.532Z",
+      "readAt": "2026-05-07T10:04:52.291Z"
+    }
+  ],
+  "13": [
+    {
+      "id": "legacy-171",
+      "userId": "13",
+      "type": "TRIAL_BOOKED",
+      "title": "New trial request",
+      "message": "New trial request for saree. Preferred date: 16/5/2026.",
+      "data": {
+        "productId": "25",
+        "trialRequestId": "12"
+      },
+      "createdAt": "2026-05-16T17:53:41.762Z",
+      "readAt": null
+    },
+    {
+      "id": "legacy-145",
+      "userId": "13",
+      "type": "ORDER_PLACED_VENDOR",
+      "title": "Return completed",
+      "message": "Return workflow is completed for order item 37.",
+      "data": {
+        "orderItemId": "37"
+      },
+      "createdAt": "2026-05-14T06:41:46.821Z",
+      "readAt": null
+    },
+    {
+      "id": "c8091710-83b6-4043-8c17-6ec01d684894",
+      "userId": "13",
+      "type": "ORDER_PLACED_VENDOR",
+      "title": "Return completed",
+      "message": "Return workflow is completed for order item 37.",
+      "data": {
+        "orderItemId": "37"
+      },
+      "createdAt": "2026-05-14T06:41:46.815Z",
+      "readAt": "2026-05-14T06:42:12.003Z"
+    },
+    {
+      "id": "legacy-115",
+      "userId": "13",
+      "type": "TRIAL_BOOKED",
+      "title": "New trial request",
+      "message": "New trial request for saree. Preferred date: 12/5/2026.",
+      "data": {
+        "productId": "25",
+        "trialRequestId": "9"
+      },
+      "createdAt": "2026-05-12T11:57:47.094Z",
+      "readAt": null
+    },
+    {
+      "id": "legacy-87",
+      "userId": "13",
+      "type": "ORDER_PLACED_VENDOR",
+      "title": "New order received",
+      "message": "New order received! Order ID: 27. Please accept within 24 hours.",
+      "data": {
+        "orderId": "27"
+      },
+      "createdAt": "2026-05-11T10:27:25.499Z",
+      "readAt": null
+    },
+    {
+      "id": "05a3465d-c858-458a-b6fb-b92c6061608b",
+      "userId": "13",
+      "type": "ORDER_PLACED_VENDOR",
+      "title": "New order received",
+      "message": "New order received! Order ID: 27. Please accept within 24 hours.",
+      "data": {
+        "orderId": "27"
+      },
+      "createdAt": "2026-05-11T10:27:25.490Z",
+      "readAt": "2026-05-13T07:41:32.519Z"
+    },
+    {
+      "id": "legacy-53",
+      "userId": "13",
+      "type": "TRIAL_BOOKED",
+      "title": "New trial request",
+      "message": "New trial request for blazer. Preferred date: 9/5/2026.",
+      "data": {
+        "productId": "24",
+        "trialRequestId": "8"
+      },
+      "createdAt": "2026-05-09T11:03:42.975Z",
+      "readAt": null
+    },
+    {
+      "id": "0f4082e1-55fe-433d-9650-aa79445f73ea",
+      "userId": "13",
+      "type": "TRIAL_BOOKED",
+      "title": "New trial request",
+      "message": "New trial request for blazer. Preferred date: 9/5/2026.",
+      "data": {
+        "trialRequestId": "8",
+        "productId": "24"
+      },
+      "createdAt": "2026-05-09T11:03:42.972Z",
+      "readAt": "2026-05-13T07:41:32.519Z"
+    },
+    {
+      "id": "legacy-47",
+      "userId": "13",
+      "type": "ORDER_PLACED_VENDOR",
+      "title": "New order received",
+      "message": "New order received! Order ID: 21. Please accept within 24 hours.",
+      "data": {
+        "orderId": "21"
+      },
+      "createdAt": "2026-05-09T09:02:08.418Z",
+      "readAt": null
+    },
+    {
+      "id": "e90999ac-9b6b-4406-89d5-c8fd44be86c3",
+      "userId": "13",
+      "type": "ORDER_PLACED_VENDOR",
+      "title": "New order received",
+      "message": "New order received! Order ID: 21. Please accept within 24 hours.",
+      "data": {
+        "orderId": "21"
+      },
+      "createdAt": "2026-05-09T09:02:08.408Z",
+      "readAt": "2026-05-13T07:41:32.519Z"
+    }
+  ],
+  "14": [
+    {
+      "id": "legacy-329",
+      "userId": "14",
+      "type": "ORDER_PLACED_VENDOR",
+      "title": "Return completed",
+      "message": "Return workflow is completed for order item 45.",
+      "data": {
+        "orderItemId": "45"
+      },
+      "createdAt": "2026-05-20T09:34:44.026Z",
+      "readAt": null
+    },
+    {
+      "id": "legacy-313",
+      "userId": "14",
+      "type": "TRIAL_BOOKED",
+      "title": "New trial request",
+      "message": "New trial request for Party wear lehenga. Preferred date: 20/5/2026.",
+      "data": {
+        "productId": "50",
+        "trialRequestId": "16"
+      },
+      "createdAt": "2026-05-20T08:50:35.196Z",
+      "readAt": "2026-05-20T09:09:36.479Z"
+    },
+    {
+      "id": "b996eb86-cfe6-42b9-80df-2137fa43eb84",
+      "userId": "14",
+      "type": "TRIAL_BOOKED",
+      "title": "New trial request",
+      "message": "New trial request for Party wear lehenga. Preferred date: 20/5/2026.",
+      "data": {
+        "trialRequestId": "16",
+        "productId": "50"
+      },
+      "createdAt": "2026-05-20T08:50:35.187Z",
+      "readAt": "2026-05-20T09:09:36.479Z"
+    },
+    {
+      "id": "legacy-311",
+      "userId": "14",
+      "type": "TRIAL_BOOKED",
+      "title": "New trial request",
+      "message": "New trial request for Party wear lehenga. Preferred date: 20/5/2026.",
+      "data": {
+        "productId": "50",
+        "trialRequestId": "15"
+      },
+      "createdAt": "2026-05-20T08:50:30.187Z",
+      "readAt": "2026-05-20T09:09:36.479Z"
+    },
+    {
+      "id": "a03780a1-137a-4215-924a-44dc3ae63ed7",
+      "userId": "14",
+      "type": "TRIAL_BOOKED",
+      "title": "New trial request",
+      "message": "New trial request for Party wear lehenga. Preferred date: 20/5/2026.",
+      "data": {
+        "trialRequestId": "15",
+        "productId": "50"
+      },
+      "createdAt": "2026-05-20T08:50:30.180Z",
+      "readAt": "2026-05-20T09:09:36.479Z"
+    },
+    {
+      "id": "legacy-303",
+      "userId": "14",
+      "type": "ORDER_PLACED_VENDOR",
+      "title": "New order received",
+      "message": "New order received! Order ID: 33. Please accept within 24 hours.",
+      "data": {
+        "orderId": "33"
+      },
+      "createdAt": "2026-05-20T06:03:15.023Z",
+      "readAt": "2026-05-20T06:35:48.145Z"
+    },
+    {
+      "id": "legacy-301",
+      "userId": "14",
+      "type": "TRIAL_BOOKED",
+      "title": "New trial request",
+      "message": "New trial request for Dress Gownn. Preferred date: 20/5/2026.",
+      "data": {
+        "productId": "53",
+        "trialRequestId": "14"
+      },
+      "createdAt": "2026-05-20T05:58:57.059Z",
+      "readAt": "2026-05-20T06:35:48.145Z"
+    },
+    {
+      "id": "legacy-299",
+      "userId": "14",
+      "type": "TRIAL_BOOKED",
+      "title": "New trial request",
+      "message": "New trial request for Dress Gownn. Preferred date: 20/5/2026.",
+      "data": {
+        "productId": "53",
+        "trialRequestId": "13"
+      },
+      "createdAt": "2026-05-20T05:58:54.218Z",
+      "readAt": "2026-05-20T06:35:48.145Z"
+    },
+    {
+      "id": "legacy-239",
+      "userId": "14",
+      "type": "ORDER_PLACED_VENDOR",
+      "title": "New order received",
+      "message": "New order received! Order ID: 31. Please accept within 24 hours.",
+      "data": {
+        "orderId": "31"
+      },
+      "createdAt": "2026-05-19T10:34:57.334Z",
+      "readAt": "2026-05-20T06:35:48.145Z"
+    },
+    {
+      "id": "c3f7b9b8-b116-46fd-a32c-4a425e1161bd",
+      "userId": "14",
+      "type": "ORDER_PLACED_VENDOR",
+      "title": "New order received",
+      "message": "New order received! Order ID: 31. Please accept within 24 hours.",
+      "data": {
+        "orderId": "31"
+      },
+      "createdAt": "2026-05-19T10:34:57.326Z",
+      "readAt": "2026-05-20T06:35:48.145Z"
+    },
+    {
+      "id": "legacy-155",
+      "userId": "14",
+      "type": "ORDER_PLACED_VENDOR",
+      "title": "Return completed",
+      "message": "Return workflow is completed for order item 34.",
+      "data": {
+        "orderItemId": "34"
+      },
+      "createdAt": "2026-05-14T13:58:08.229Z",
+      "readAt": "2026-05-15T10:22:24.941Z"
+    },
+    {
+      "id": "71fa404c-cc3b-4878-815a-6fc30e9418a2",
+      "userId": "14",
+      "type": "ORDER_PLACED_VENDOR",
+      "title": "Return completed",
+      "message": "Return workflow is completed for order item 34.",
+      "data": {
+        "orderItemId": "34"
+      },
+      "createdAt": "2026-05-14T13:58:08.226Z",
+      "readAt": "2026-05-15T05:47:27.068Z"
+    },
+    {
+      "id": "legacy-75",
+      "userId": "14",
+      "type": "ORDER_PLACED_VENDOR",
+      "title": "New order received",
+      "message": "New order received! Order ID: 24. Please accept within 24 hours.",
+      "data": {
+        "orderId": "24"
+      },
+      "createdAt": "2026-05-11T07:19:39.989Z",
+      "readAt": "2026-05-15T10:22:24.941Z"
+    },
+    {
+      "id": "993279d4-efab-4c8b-a5f9-25474e7f5166",
+      "userId": "14",
+      "type": "ORDER_PLACED_VENDOR",
+      "title": "New order received",
+      "message": "New order received! Order ID: 24. Please accept within 24 hours.",
+      "data": {
+        "orderId": "24"
+      },
+      "createdAt": "2026-05-11T07:19:39.981Z",
+      "readAt": "2026-05-14T12:54:26.165Z"
+    },
+    {
+      "id": "legacy-45",
+      "userId": "14",
+      "type": "TRIAL_BOOKED",
+      "title": "New trial request",
+      "message": "New trial request for blazer. Preferred date: 9/5/2026.",
+      "data": {
+        "productId": "21",
+        "trialRequestId": "6"
+      },
+      "createdAt": "2026-05-09T07:00:35.880Z",
+      "readAt": "2026-05-15T10:22:24.941Z"
+    },
+    {
+      "id": "3aa8f461-6f7c-4289-b822-40cd8e2ba3df",
+      "userId": "14",
+      "type": "TRIAL_BOOKED",
+      "title": "New trial request",
+      "message": "New trial request for blazer. Preferred date: 9/5/2026.",
+      "data": {
+        "trialRequestId": "6",
+        "productId": "21"
+      },
+      "createdAt": "2026-05-09T07:00:35.874Z",
+      "readAt": "2026-05-14T12:54:26.165Z"
+    },
+    {
+      "id": "legacy-31",
+      "userId": "14",
+      "type": "ORDER_PLACED_VENDOR",
+      "title": "New order received",
+      "message": "New order received! Order ID: 15. Please accept within 24 hours.",
+      "data": {
+        "orderId": "15"
+      },
+      "createdAt": "2026-05-08T12:26:33.551Z",
+      "readAt": "2026-05-15T10:22:24.941Z"
+    },
+    {
+      "id": "1190a560-bf21-4138-a9a9-6fee555290e6",
+      "userId": "14",
+      "type": "ORDER_PLACED_VENDOR",
+      "title": "Return completed",
+      "message": "Return workflow is completed for order item 23.",
+      "data": {
+        "orderItemId": "23"
+      },
+      "createdAt": "2026-05-07T10:52:49.316Z",
+      "readAt": "2026-05-14T12:54:26.165Z"
+    }
+  ],
+  "23": [
+    {
+      "id": "e2948dd3-22bd-4065-aff7-24e1655c863b",
+      "userId": "23",
+      "type": "ADMIN_VENDOR_ORDER",
+      "title": "Return completed",
+      "message": "Return workflow was completed for order item 26 on individual-vendor inventory.",
+      "data": {
+        "orderItemId": "26",
+        "status": "COMPLETED"
+      },
+      "createdAt": "2026-05-21T09:48:38.348Z",
+      "readAt": null
+    },
+    {
+      "id": "edb34364-5504-419b-b68c-c2a7b6722acf",
+      "userId": "23",
+      "type": "ADMIN_VENDOR_PRODUCT",
+      "title": "New product approval request",
+      "message": "new was submitted by shivam.",
+      "data": {
+        "productId": "69",
+        "status": "INACTIVE",
+        "vendorId": "24"
+      },
+      "createdAt": "2026-05-19T12:30:45.905Z",
+      "readAt": null
+    },
+    {
+      "id": "e04988c4-24d0-49f8-9c63-5ea8cf80a87a",
+      "userId": "23",
+      "type": "ADMIN_VENDOR_PRODUCT",
+      "title": "Product sent for vendor confirmation",
+      "message": "sariii moved to Approved 2 and is waiting for vendor agreement.",
+      "data": {
+        "productId": "54",
+        "status": "PENDING_VENDOR_AGREEMENT",
+        "vendorId": "28"
+      },
+      "createdAt": "2026-05-19T10:30:10.061Z",
+      "readAt": null
+    },
+    {
+      "id": "94d50821-091f-4c6f-937f-c5225c82fdcd",
+      "userId": "23",
+      "type": "ADMIN_VENDOR_PRODUCT",
+      "title": "Product approved for stage 1",
+      "message": "sariii moved to Approved 1.",
+      "data": {
+        "productId": "54",
+        "status": "APPROVED_1",
+        "vendorId": "28"
+      },
+      "createdAt": "2026-05-18T10:41:52.861Z",
+      "readAt": null
+    },
+    {
+      "id": "ce587696-10db-496f-b351-5e5e0f59d1ae",
+      "userId": "23",
+      "type": "ADMIN_VENDOR_PRODUCT",
+      "title": "New product approval request",
+      "message": "Saree was submitted by jeetesh.",
+      "data": {
+        "productId": "51",
+        "status": "INACTIVE",
+        "vendorId": "28"
+      },
+      "createdAt": "2026-05-18T05:50:48.549Z",
+      "readAt": null
+    },
+    {
+      "id": "cba54f6c-f977-4622-bb80-7e5105a73f23",
+      "userId": "23",
+      "type": "ADMIN_VENDOR_ORDER",
+      "title": "New trial request",
+      "message": "A trial request was created for jeans . Preferred date: 15/5/2026.",
+      "data": {
+        "productId": "26",
+        "trialRequestId": "11",
+        "status": "PENDING"
+      },
+      "createdAt": "2026-05-15T08:48:00.974Z",
+      "readAt": null
+    },
+    {
+      "id": "028b49c9-852f-4411-a868-64d2dc4e85bd",
+      "userId": "23",
+      "type": "ADMIN_VENDOR_PRODUCT",
+      "title": "Withdrawal request received",
+      "message": "jeans  now has a withdrawal request from the individual vendor.",
+      "data": {
+        "productId": "26",
+        "status": "WITHDRAWAL",
+        "vendorId": "24"
+      },
+      "createdAt": "2026-05-14T09:13:40.280Z",
+      "readAt": null
+    }
+  ],
+  "24": [
+    {
+      "id": "8cbc51d3-a393-4737-bf0b-114d3e7bff95",
+      "userId": "24",
+      "type": "INDIVIDUAL_VENDOR_PRODUCT_ADDED",
+      "title": "Product added successfully",
+      "message": "new has been added successfully. Current status: Inactive.",
+      "data": {
+        "productId": "69",
+        "status": "INACTIVE"
+      },
+      "createdAt": "2026-05-19T12:30:44.658Z",
+      "readAt": "2026-05-20T05:15:12.017Z"
+    },
+    {
+      "id": "2df63c89-6e62-4825-a2ee-ab1cfe099da0",
+      "userId": "24",
+      "type": "TRIAL_BOOKED",
+      "title": "New trial request",
+      "message": "New trial request for jeans . Preferred date: 15/5/2026.",
+      "data": {
+        "trialRequestId": "11",
+        "productId": "26"
+      },
+      "createdAt": "2026-05-15T08:48:00.956Z",
+      "readAt": null
+    },
+    {
+      "id": "efbefe8b-6ac0-4e38-9c7c-33cfa35b96ee",
+      "userId": "24",
+      "type": "INDIVIDUAL_VENDOR_PRODUCT_STATUS_CHANGED",
+      "title": "Product status changed",
+      "message": "demoproduct status changed to Inactive.",
+      "data": {
+        "productId": "41",
+        "status": "INACTIVE"
+      },
+      "createdAt": "2026-05-14T09:10:37.480Z",
+      "readAt": "2026-05-14T09:13:44.753Z"
+    },
+    {
+      "id": "afad4ee9-89b4-4e70-9c0d-efc586f9c3c1",
+      "userId": "24",
+      "type": "INDIVIDUAL_VENDOR_PRODUCT_STATUS_CHANGED",
+      "title": "Product status changed",
+      "message": "demoproduct status changed to Active.",
+      "data": {
+        "productId": "41",
+        "status": "ACTIVE"
+      },
+      "createdAt": "2026-05-14T09:10:02.496Z",
+      "readAt": "2026-05-14T09:13:44.753Z"
+    },
+    {
+      "id": "afe968c4-36de-4a41-b1c0-055dffe7b125",
+      "userId": "24",
+      "type": "INDIVIDUAL_VENDOR_PRODUCT_STATUS_CHANGED",
+      "title": "Product status changed",
+      "message": "jeans status changed to Active.",
+      "data": {
+        "productId": "26",
+        "status": "ACTIVE"
+      },
+      "createdAt": "2026-05-12T11:43:21.838Z",
+      "readAt": "2026-05-13T05:09:52.335Z"
+    },
+    {
+      "id": "c9a3ef28-b929-4f2a-a405-4442a92075c7",
+      "userId": "24",
+      "type": "INDIVIDUAL_VENDOR_PRODUCT_STATUS_CHANGED",
+      "title": "Product status changed",
+      "message": "jeans status changed to Inactive.",
+      "data": {
+        "productId": "26",
+        "status": "INACTIVE"
+      },
+      "createdAt": "2026-05-12T11:42:49.834Z",
+      "readAt": "2026-05-13T05:09:52.335Z"
+    },
+    {
+      "id": "91351077-86cb-4b40-bf5c-330c358ecf15",
+      "userId": "24",
+      "type": "INDIVIDUAL_VENDOR_PRODUCT_STATUS_CHANGED",
+      "title": "Product status changed",
+      "message": "jeans status changed to Active.",
+      "data": {
+        "productId": "26",
+        "status": "ACTIVE"
+      },
+      "createdAt": "2026-05-12T11:13:39.984Z",
+      "readAt": "2026-05-13T05:09:52.335Z"
+    },
+    {
+      "id": "77dd0a40-77de-4b28-aae9-87f148c2d445",
+      "userId": "24",
+      "type": "INDIVIDUAL_VENDOR_PRODUCT_STATUS_CHANGED",
+      "title": "Product status changed",
+      "message": "skirt status changed to Withdrawal.",
+      "data": {
+        "productId": "40",
+        "status": "WITHDRAWAL"
+      },
+      "createdAt": "2026-05-12T10:54:25.893Z",
+      "readAt": "2026-05-12T11:11:24.676Z"
+    },
+    {
+      "id": "e07de3e6-cb74-496d-ba87-a5ee9f357e24",
+      "userId": "24",
+      "type": "INDIVIDUAL_VENDOR_PRODUCT_STATUS_CHANGED",
+      "title": "Product status changed",
+      "message": "skirt status changed to Active.",
+      "data": {
+        "productId": "40",
+        "status": "ACTIVE"
+      },
+      "createdAt": "2026-05-12T10:53:41.313Z",
+      "readAt": "2026-05-12T11:11:24.676Z"
+    },
+    {
+      "id": "9ec567e9-5f7f-4b94-aa8c-0e9ab031ae52",
+      "userId": "24",
+      "type": "INDIVIDUAL_VENDOR_PRODUCT_STATUS_CHANGED",
+      "title": "Product status changed",
+      "message": "skirt status changed to Pending vendor agreement.",
+      "data": {
+        "productId": "40",
+        "status": "PENDING_VENDOR_AGREEMENT"
+      },
+      "createdAt": "2026-05-12T10:53:23.155Z",
+      "readAt": "2026-05-12T11:11:24.676Z"
+    },
+    {
+      "id": "9b518079-3d59-4582-b935-bb9b42b26915",
+      "userId": "24",
+      "type": "INDIVIDUAL_VENDOR_PRODUCT_STATUS_CHANGED",
+      "title": "Product status changed",
+      "message": "skirt status changed to Approved 1.",
+      "data": {
+        "productId": "40",
+        "status": "APPROVED_1"
+      },
+      "createdAt": "2026-05-12T10:52:38.875Z",
+      "readAt": "2026-05-12T11:11:24.676Z"
+    },
+    {
+      "id": "fca21c89-c132-48a7-b000-3377e4a86b21",
+      "userId": "24",
+      "type": "INDIVIDUAL_VENDOR_PRODUCT_ADDED",
+      "title": "Product added successfully",
+      "message": "skirt has been added successfully. Current status: Inactive.",
+      "data": {
+        "productId": "40",
+        "status": "INACTIVE"
+      },
+      "createdAt": "2026-05-12T10:47:42.734Z",
+      "readAt": "2026-05-12T11:11:24.676Z"
+    },
+    {
+      "id": "6dea2ecd-22c0-4f65-a0b0-16ffd99b004d",
+      "userId": "24",
+      "type": "INDIVIDUAL_VENDOR_PRODUCT_STATUS_CHANGED",
+      "title": "Product status changed",
+      "message": "dress status changed to Active.",
+      "data": {
+        "productId": "38",
+        "status": "ACTIVE"
+      },
+      "createdAt": "2026-05-12T10:09:40.703Z",
+      "readAt": "2026-05-12T11:11:24.676Z"
+    },
+    {
+      "id": "6c4969d9-7d90-4c2e-a37f-a2382f53c539",
+      "userId": "24",
+      "type": "INDIVIDUAL_VENDOR_PRODUCT_STATUS_CHANGED",
+      "title": "Product status changed",
+      "message": "dress status changed to Pending vendor agreement.",
+      "data": {
+        "productId": "38",
+        "status": "PENDING_VENDOR_AGREEMENT"
+      },
+      "createdAt": "2026-05-12T10:09:16.177Z",
+      "readAt": "2026-05-12T11:11:24.676Z"
+    },
+    {
+      "id": "643de0b8-5534-489c-9633-c1301ffe814d",
+      "userId": "24",
+      "type": "INDIVIDUAL_VENDOR_PRODUCT_STATUS_CHANGED",
+      "title": "Product status changed",
+      "message": "dress status changed to Approved 1.",
+      "data": {
+        "productId": "38",
+        "status": "APPROVED_1"
+      },
+      "createdAt": "2026-05-12T10:08:30.925Z",
+      "readAt": "2026-05-12T11:11:24.676Z"
+    },
+    {
+      "id": "f17775f1-b32d-4684-b841-224f6bcf1afe",
+      "userId": "24",
+      "type": "INDIVIDUAL_VENDOR_PRODUCT_ADDED",
+      "title": "Product added successfully",
+      "message": "dress has been added successfully. Current status: Inactive.",
+      "data": {
+        "productId": "38",
+        "status": "INACTIVE"
+      },
+      "createdAt": "2026-05-12T09:59:18.577Z",
+      "readAt": "2026-05-12T11:11:24.676Z"
+    },
+    {
+      "id": "54a40810-066b-4bdd-a157-647e1d28f577",
+      "userId": "24",
+      "type": "INDIVIDUAL_VENDOR_PRODUCT_STATUS_CHANGED",
+      "title": "Product status changed",
+      "message": "wedding saree status changed to Active.",
+      "data": {
+        "productId": "37",
+        "status": "ACTIVE"
+      },
+      "createdAt": "2026-05-12T09:57:00.499Z",
+      "readAt": "2026-05-12T11:11:24.676Z"
+    },
+    {
+      "id": "ee5aa131-80f3-4715-926c-beae84551244",
+      "userId": "24",
+      "type": "INDIVIDUAL_VENDOR_PRODUCT_STATUS_CHANGED",
+      "title": "Product status changed",
+      "message": "wedding saree status changed to Pending vendor agreement.",
+      "data": {
+        "productId": "37",
+        "status": "PENDING_VENDOR_AGREEMENT"
+      },
+      "createdAt": "2026-05-12T09:56:43.535Z",
+      "readAt": "2026-05-12T11:11:24.676Z"
+    },
+    {
+      "id": "030a8453-6618-4b31-a3af-99d00658cfb8",
+      "userId": "24",
+      "type": "INDIVIDUAL_VENDOR_PRODUCT_STATUS_CHANGED",
+      "title": "Product status changed",
+      "message": "wedding saree status changed to Approved 1.",
+      "data": {
+        "productId": "37",
+        "status": "APPROVED_1"
+      },
+      "createdAt": "2026-05-12T09:56:16.184Z",
+      "readAt": "2026-05-12T11:11:24.676Z"
+    },
+    {
+      "id": "0dbd21e5-2c12-4dda-92d6-d3f42062572b",
+      "userId": "24",
+      "type": "INDIVIDUAL_VENDOR_PRODUCT_ADDED",
+      "title": "Product added successfully",
+      "message": "wedding saree has been added successfully. Current status: Inactive.",
+      "data": {
+        "productId": "37",
+        "status": "INACTIVE"
+      },
+      "createdAt": "2026-05-12T09:48:57.114Z",
+      "readAt": "2026-05-12T11:11:24.676Z"
+    },
+    {
+      "id": "c474785c-1ccc-4154-a937-131789b5aaa5",
+      "userId": "24",
+      "type": "INDIVIDUAL_VENDOR_PRODUCT_STATUS_CHANGED",
+      "title": "Product status changed",
+      "message": "skirt status changed to Active.",
+      "data": {
+        "productId": "36",
+        "status": "ACTIVE"
+      },
+      "createdAt": "2026-05-12T09:32:01.910Z",
+      "readAt": "2026-05-12T09:32:15.937Z"
+    },
+    {
+      "id": "6031e4d6-a350-4443-b410-711d24508933",
+      "userId": "24",
+      "type": "INDIVIDUAL_VENDOR_PRODUCT_STATUS_CHANGED",
+      "title": "Product status changed",
+      "message": "skirt status changed to Pending vendor agreement.",
+      "data": {
+        "productId": "36",
+        "status": "PENDING_VENDOR_AGREEMENT"
+      },
+      "createdAt": "2026-05-12T09:30:40.302Z",
+      "readAt": "2026-05-12T09:32:15.937Z"
+    },
+    {
+      "id": "741556b4-0512-445c-8ed7-8a80fe6102a0",
+      "userId": "24",
+      "type": "INDIVIDUAL_VENDOR_PRODUCT_STATUS_CHANGED",
+      "title": "Product status changed",
+      "message": "skirt status changed to Approved 1.",
+      "data": {
+        "productId": "36",
+        "status": "APPROVED_1"
+      },
+      "createdAt": "2026-05-12T07:27:09.950Z",
+      "readAt": "2026-05-12T09:32:15.937Z"
+    },
+    {
+      "id": "a7a1c290-cc52-46e3-9090-14bc01d9ed28",
+      "userId": "24",
+      "type": "INDIVIDUAL_VENDOR_PRODUCT_ADDED",
+      "title": "Product added successfully",
+      "message": "skirt has been added successfully. Current status: Inactive.",
+      "data": {
+        "productId": "36",
+        "status": "INACTIVE"
+      },
+      "createdAt": "2026-05-12T06:14:22.663Z",
+      "readAt": "2026-05-12T09:32:15.937Z"
+    },
+    {
+      "id": "7f50e2b8-e769-4160-84d4-35c4a70d6fb3",
+      "userId": "24",
+      "type": "INDIVIDUAL_VENDOR_PRODUCT_STATUS_CHANGED",
+      "title": "Product status changed",
+      "message": "jeans status changed to Inactive.",
+      "data": {
+        "productId": "26",
+        "status": "INACTIVE"
+      },
+      "createdAt": "2026-05-11T12:56:38.606Z",
+      "readAt": "2026-05-12T09:32:15.937Z"
+    },
+    {
+      "id": "6575d0da-17ce-40c7-8ef9-120a3de40668",
+      "userId": "24",
+      "type": "INDIVIDUAL_VENDOR_PRODUCT_STATUS_CHANGED",
+      "title": "Product status changed",
+      "message": "shirt status changed to Pending vendor agreement.",
+      "data": {
+        "productId": "28",
+        "status": "PENDING_VENDOR_AGREEMENT"
+      },
+      "createdAt": "2026-05-08T10:48:40.175Z",
+      "readAt": "2026-05-11T09:15:18.505Z"
+    },
+    {
+      "id": "dda0978f-3cef-4956-bbf0-9b51a25340a2",
+      "userId": "24",
+      "type": "INDIVIDUAL_VENDOR_PRODUCT_STATUS_CHANGED",
+      "title": "Product status changed",
+      "message": "shirt status changed to Approved 1.",
+      "data": {
+        "productId": "28",
+        "status": "APPROVED_1"
+      },
+      "createdAt": "2026-05-08T10:48:12.043Z",
+      "readAt": "2026-05-11T09:15:18.505Z"
+    },
+    {
+      "id": "900ec9e6-7663-4913-8251-cf1543b3bdfc",
+      "userId": "24",
+      "type": "INDIVIDUAL_VENDOR_PRODUCT_STATUS_CHANGED",
+      "title": "Product status changed",
+      "message": "jeans status changed to Active.",
+      "data": {
+        "productId": "26",
+        "status": "ACTIVE"
+      },
+      "createdAt": "2026-05-08T09:32:25.076Z",
+      "readAt": "2026-05-08T09:34:38.574Z"
+    },
+    {
+      "id": "7646de1e-bf44-4ad9-ad59-3174ec9140fc",
+      "userId": "24",
+      "type": "INDIVIDUAL_VENDOR_PRODUCT_ADDED",
+      "title": "Product added successfully",
+      "message": "jeans has been added successfully. Current status: Inactive.",
+      "data": {
+        "productId": "26",
+        "status": "INACTIVE"
+      },
+      "createdAt": "2026-05-08T09:29:47.010Z",
+      "readAt": "2026-05-08T09:29:59.893Z"
+    },
+    {
+      "id": "8cb86d82-aba6-4618-aa01-1dd3b033f016",
+      "userId": "24",
+      "type": "INDIVIDUAL_VENDOR_PRODUCT_STATUS_CHANGED",
+      "title": "Product status changed",
+      "message": "suit status changed to Inactive.",
+      "data": {
+        "productId": "23",
+        "status": "INACTIVE"
+      },
+      "createdAt": "2026-05-08T08:54:41.959Z",
+      "readAt": "2026-05-08T09:29:59.893Z"
+    },
+    {
+      "id": "76f0a32e-9757-428a-883f-db24b1ed1ce5",
+      "userId": "24",
+      "type": "INDIVIDUAL_VENDOR_PRODUCT_STATUS_CHANGED",
+      "title": "Product status changed",
+      "message": "suit status changed to Inactive.",
+      "data": {
+        "productId": "23",
+        "status": "INACTIVE"
+      },
+      "createdAt": "2026-05-08T08:47:27.498Z",
+      "readAt": "2026-05-08T09:29:59.893Z"
+    },
+    {
+      "id": "96689c58-9db4-4477-8027-287f9509b075",
+      "userId": "24",
+      "type": "INDIVIDUAL_VENDOR_PRODUCT_STATUS_CHANGED",
+      "title": "Product status changed",
+      "message": "suit status changed to Inactive.",
+      "data": {
+        "productId": "23",
+        "status": "INACTIVE"
+      },
+      "createdAt": "2026-05-08T08:47:27.264Z",
+      "readAt": "2026-05-08T09:29:59.893Z"
+    },
+    {
+      "id": "9c4171a7-d2c3-422d-8213-059c935ec46e",
+      "userId": "24",
+      "type": "INDIVIDUAL_VENDOR_PRODUCT_STATUS_CHANGED",
+      "title": "Product status changed",
+      "message": "suit status changed to Inactive.",
+      "data": {
+        "productId": "23",
+        "status": "INACTIVE"
+      },
+      "createdAt": "2026-05-08T08:47:27.047Z",
+      "readAt": "2026-05-08T09:29:59.893Z"
+    },
+    {
+      "id": "d43f85db-4db3-4ae9-a816-b51309e185e9",
+      "userId": "24",
+      "type": "INDIVIDUAL_VENDOR_PRODUCT_STATUS_CHANGED",
+      "title": "Product status changed",
+      "message": "suit status changed to Inactive.",
+      "data": {
+        "productId": "23",
+        "status": "INACTIVE"
+      },
+      "createdAt": "2026-05-08T08:47:26.970Z",
+      "readAt": "2026-05-08T09:29:59.893Z"
+    },
+    {
+      "id": "fb7d8c3a-644a-4f10-bfc2-26bc663d2d4f",
+      "userId": "24",
+      "type": "INDIVIDUAL_VENDOR_PRODUCT_STATUS_CHANGED",
+      "title": "Product status changed",
+      "message": "suit status changed to Inactive.",
+      "data": {
+        "productId": "23",
+        "status": "INACTIVE"
+      },
+      "createdAt": "2026-05-08T08:47:26.818Z",
+      "readAt": "2026-05-08T09:29:59.893Z"
+    },
+    {
+      "id": "63f25a98-70ce-42f2-88ae-de6a78fb98a9",
+      "userId": "24",
+      "type": "INDIVIDUAL_VENDOR_PRODUCT_STATUS_CHANGED",
+      "title": "Product status changed",
+      "message": "suit status changed to Inactive.",
+      "data": {
+        "productId": "23",
+        "status": "INACTIVE"
+      },
+      "createdAt": "2026-05-08T08:43:24.488Z",
+      "readAt": "2026-05-08T09:29:59.893Z"
+    },
+    {
+      "id": "ef085a79-2190-4f55-bd3b-7a584cb0945c",
+      "userId": "24",
+      "type": "INDIVIDUAL_VENDOR_PRODUCT_STATUS_CHANGED",
+      "title": "Product status changed",
+      "message": "suit status changed to Active.",
+      "data": {
+        "productId": "23",
+        "status": "ACTIVE"
+      },
+      "createdAt": "2026-05-08T07:15:31.521Z",
+      "readAt": "2026-05-08T09:29:59.893Z"
+    },
+    {
+      "id": "368fdd83-45a9-41bd-8ab6-b3e5d78a6b54",
+      "userId": "24",
+      "type": "INDIVIDUAL_VENDOR_PRODUCT_STATUS_CHANGED",
+      "title": "Product status changed",
+      "message": "suit status changed to Pending vendor agreement.",
+      "data": {
+        "productId": "23",
+        "status": "PENDING_VENDOR_AGREEMENT"
+      },
+      "createdAt": "2026-05-08T07:15:14.094Z",
+      "readAt": "2026-05-08T09:29:59.893Z"
+    },
+    {
+      "id": "4245b1c7-6681-4004-8d57-bc0e3514ac57",
+      "userId": "24",
+      "type": "INDIVIDUAL_VENDOR_PRODUCT_STATUS_CHANGED",
+      "title": "Product status changed",
+      "message": "suit status changed to Approved 1.",
+      "data": {
+        "productId": "23",
+        "status": "APPROVED_1"
+      },
+      "createdAt": "2026-05-08T07:14:53.195Z",
+      "readAt": "2026-05-08T09:29:59.893Z"
+    },
+    {
+      "id": "a19a3012-41f5-440f-895c-4ba71f9bf077",
+      "userId": "24",
+      "type": "INDIVIDUAL_VENDOR_PRODUCT_ADDED",
+      "title": "Product added successfully",
+      "message": "suit has been added successfully. Current status: Inactive.",
+      "data": {
+        "productId": "23",
+        "status": "INACTIVE"
+      },
+      "createdAt": "2026-05-08T07:14:29.214Z",
+      "readAt": "2026-05-08T09:29:59.893Z"
+    }
+  ],
+  "25": [
+    {
+      "id": "2b6744d6-f391-42ea-aa3b-e35be6728df3",
+      "userId": "25",
+      "type": "INDIVIDUAL_VENDOR_PRODUCT_STATUS_CHANGED",
+      "title": "Product status changed",
+      "message": "Wrist Watch status changed to Pending vendor agreement.",
+      "data": {
+        "productId": "31",
+        "status": "PENDING_VENDOR_AGREEMENT"
+      },
+      "createdAt": "2026-05-09T07:21:52.100Z",
+      "readAt": null
+    },
+    {
+      "id": "55b20fd8-58cd-488d-a0c7-eaa741f1d525",
+      "userId": "25",
+      "type": "INDIVIDUAL_VENDOR_PRODUCT_STATUS_CHANGED",
+      "title": "Product status changed",
+      "message": "Wrist Watch status changed to Approved 1.",
+      "data": {
+        "productId": "31",
+        "status": "APPROVED_1"
+      },
+      "createdAt": "2026-05-09T07:18:19.039Z",
+      "readAt": null
+    },
+    {
+      "id": "6719ed9b-6e36-42b5-b4f2-cb86b0b8431b",
+      "userId": "25",
+      "type": "INDIVIDUAL_VENDOR_PRODUCT_ADDED",
+      "title": "Product added successfully",
+      "message": "Wrist Watch has been added successfully. Current status: Inactive.",
+      "data": {
+        "productId": "31",
+        "status": "INACTIVE"
+      },
+      "createdAt": "2026-05-09T07:17:55.739Z",
+      "readAt": null
+    },
+    {
+      "id": "4c83f6e2-29b8-47d7-80e8-4727f1c73636",
+      "userId": "25",
+      "type": "INDIVIDUAL_VENDOR_PRODUCT_STATUS_CHANGED",
+      "title": "Product status changed",
+      "message": "Shoes status changed to Pending vendor agreement.",
+      "data": {
+        "productId": "20",
+        "status": "PENDING_VENDOR_AGREEMENT"
+      },
+      "createdAt": "2026-05-08T07:10:52.670Z",
+      "readAt": null
+    },
+    {
+      "id": "196ab9c2-144a-4ce4-b0b0-d28d6bc8e599",
+      "userId": "25",
+      "type": "INDIVIDUAL_VENDOR_PRODUCT_STATUS_CHANGED",
+      "title": "Product status changed",
+      "message": "Shoes status changed to Approved 1.",
+      "data": {
+        "productId": "20",
+        "status": "APPROVED_1"
+      },
+      "createdAt": "2026-05-08T07:10:33.579Z",
+      "readAt": null
+    },
+    {
+      "id": "e15a051f-222d-4a65-af26-080e547d7444",
+      "userId": "25",
+      "type": "INDIVIDUAL_VENDOR_PRODUCT_STATUS_CHANGED",
+      "title": "Product status changed",
+      "message": "Shoes status changed to Pending vendor agreement.",
+      "data": {
+        "productId": "18",
+        "status": "PENDING_VENDOR_AGREEMENT"
+      },
+      "createdAt": "2026-05-08T05:40:14.794Z",
+      "readAt": null
+    },
+    {
+      "id": "c6250793-e1fe-4209-b1d6-618d857878ef",
+      "userId": "25",
+      "type": "INDIVIDUAL_VENDOR_PRODUCT_STATUS_CHANGED",
+      "title": "Product status changed",
+      "message": "Shoes status changed to Approved 1.",
+      "data": {
+        "productId": "18",
+        "status": "APPROVED_1"
+      },
+      "createdAt": "2026-05-08T05:39:45.230Z",
+      "readAt": null
+    },
+    {
+      "id": "e862730c-5965-45ee-822e-24ff239f677f",
+      "userId": "25",
+      "type": "INDIVIDUAL_VENDOR_PRODUCT_ADDED",
+      "title": "Product added successfully",
+      "message": "Shoes has been added successfully. Current status: Inactive.",
+      "data": {
+        "productId": "18",
+        "status": "INACTIVE"
+      },
+      "createdAt": "2026-05-08T04:58:21.782Z",
+      "readAt": "2026-05-08T04:59:15.126Z"
+    },
+    {
+      "id": "8a23fb71-3919-442f-bcb6-5e7b778fe0e8",
+      "userId": "25",
+      "type": "INDIVIDUAL_VENDOR_PRODUCT_STATUS_CHANGED",
+      "title": "Product status changed",
+      "message": "blazer status changed to Rejected.",
+      "data": {
+        "productId": "17",
+        "status": "REJECTED"
+      },
+      "createdAt": "2026-05-07T13:04:38.301Z",
+      "readAt": "2026-05-07T13:15:26.477Z"
+    },
+    {
+      "id": "42738194-c686-46aa-ab58-d092f56f0647",
+      "userId": "25",
+      "type": "INDIVIDUAL_VENDOR_PRODUCT_ADDED",
+      "title": "Product added successfully",
+      "message": "blazer has been added successfully. Current status: Inactive.",
+      "data": {
+        "productId": "17",
+        "status": "INACTIVE"
+      },
+      "createdAt": "2026-05-07T13:00:23.966Z",
+      "readAt": "2026-05-07T13:03:10.746Z"
+    },
+    {
+      "id": "13e3e53f-5491-494e-8094-17d3dc1cfba9",
+      "userId": "25",
+      "type": "INDIVIDUAL_VENDOR_PRODUCT_STATUS_CHANGED",
+      "title": "Product status changed",
+      "message": "Kurta Pajama status changed to Active.",
+      "data": {
+        "productId": "16",
+        "status": "ACTIVE"
+      },
+      "createdAt": "2026-05-07T12:52:20.424Z",
+      "readAt": "2026-05-07T13:03:10.746Z"
+    },
+    {
+      "id": "5cd94bf6-9d5e-4100-81df-36398de19f24",
+      "userId": "25",
+      "type": "INDIVIDUAL_VENDOR_PRODUCT_ADDED",
+      "title": "Product added successfully",
+      "message": "Kurta Pajama has been added successfully. Current status: Inactive.",
+      "data": {
+        "productId": "16",
+        "status": "INACTIVE"
+      },
+      "createdAt": "2026-05-07T12:27:53.070Z",
+      "readAt": "2026-05-07T12:30:51.121Z"
+    },
+    {
+      "id": "e34c0c44-9b07-4f21-b29d-9f92338ea2d3",
+      "userId": "25",
+      "type": "INDIVIDUAL_VENDOR_PRODUCT_ADDED",
+      "title": "Product added successfully",
+      "message": "Sherwani has been added successfully. Current status: Inactive.",
+      "data": {
+        "productId": "15",
+        "status": "INACTIVE"
+      },
+      "createdAt": "2026-05-07T12:20:41.876Z",
+      "readAt": "2026-05-07T12:25:05.437Z"
+    }
+  ],
+  "26": [
+    {
+      "id": "cd3ccae8-8044-45d8-8203-39174cde88be",
+      "userId": "26",
+      "type": "ORDER_PLACED_VENDOR",
+      "title": "Return completed",
+      "message": "Return workflow is completed for order item 26.",
+      "data": {
+        "orderItemId": "26"
+      },
+      "createdAt": "2026-05-21T09:48:37.741Z",
+      "readAt": null
+    },
+    {
+      "id": "d4b7b56d-45a5-4a85-aa0b-a8ac35b607d2",
+      "userId": "26",
+      "type": "INDIVIDUAL_VENDOR_PRODUCT_ADDED",
+      "title": "Product added successfully",
+      "message": "sfsdfsdf has been added successfully. Current status: Inactive.",
+      "data": {
+        "productId": "65",
+        "status": "INACTIVE"
+      },
+      "createdAt": "2026-05-19T12:18:19.049Z",
+      "readAt": "2026-05-21T05:23:44.124Z"
+    },
+    {
+      "id": "f92b3a6f-3f7d-4401-ac77-2c1835b849f0",
+      "userId": "26",
+      "type": "INDIVIDUAL_VENDOR_PRODUCT_STATUS_CHANGED",
+      "title": "Product status changed",
+      "message": "taxedo status changed to Active.",
+      "data": {
+        "productId": "27",
+        "status": "ACTIVE"
+      },
+      "createdAt": "2026-05-14T09:10:50.256Z",
+      "readAt": "2026-05-21T05:23:44.124Z"
+    },
+    {
+      "id": "f77fff22-f113-4c01-bdb8-0a93d40a880c",
+      "userId": "26",
+      "type": "INDIVIDUAL_VENDOR_PRODUCT_STATUS_CHANGED",
+      "title": "Product status changed",
+      "message": "taxedo status changed to Inactive.",
+      "data": {
+        "productId": "27",
+        "status": "INACTIVE"
+      },
+      "createdAt": "2026-05-14T09:10:20.907Z",
+      "readAt": "2026-05-21T05:23:44.124Z"
+    },
+    {
+      "id": "6c6ccc3a-90d5-4afa-955d-f7da5cd2220b",
+      "userId": "26",
+      "type": "ORDER_PLACED_VENDOR",
+      "title": "Return completed",
+      "message": "Return workflow is completed for order item 39.",
+      "data": {
+        "orderItemId": "39"
+      },
+      "createdAt": "2026-05-14T06:08:25.383Z",
+      "readAt": null
+    },
+    {
+      "id": "bd3e541d-4046-4350-9365-20c551c7d76a",
+      "userId": "26",
+      "type": "INDIVIDUAL_VENDOR_PRODUCT_STATUS_CHANGED",
+      "title": "Product status changed",
+      "message": "product now status changed to Active.",
+      "data": {
+        "productId": "35",
+        "status": "ACTIVE"
+      },
+      "createdAt": "2026-05-12T11:13:52.878Z",
+      "readAt": "2026-05-21T05:23:44.124Z"
+    },
+    {
+      "id": "6dbc338d-2076-4c16-91e8-f0c1b11535ac",
+      "userId": "26",
+      "type": "INDIVIDUAL_VENDOR_PRODUCT_STATUS_CHANGED",
+      "title": "Product status changed",
+      "message": "product now status changed to Inactive.",
+      "data": {
+        "productId": "35",
+        "status": "INACTIVE"
+      },
+      "createdAt": "2026-05-12T11:08:01.123Z",
+      "readAt": "2026-05-21T05:23:44.124Z"
+    },
+    {
+      "id": "0be7a475-2f17-40b7-a257-6745e3d7d2cd",
+      "userId": "26",
+      "type": "INDIVIDUAL_VENDOR_PRODUCT_STATUS_CHANGED",
+      "title": "Product status changed",
+      "message": "product now status changed to Active.",
+      "data": {
+        "productId": "35",
+        "status": "ACTIVE"
+      },
+      "createdAt": "2026-05-11T11:27:46.590Z",
+      "readAt": "2026-05-11T11:29:29.397Z"
+    },
+    {
+      "id": "7fe59412-decb-4c38-b2e9-40e556221619",
+      "userId": "26",
+      "type": "INDIVIDUAL_VENDOR_PRODUCT_ADDED",
+      "title": "Product added successfully",
+      "message": "product now has been added successfully. Current status: Inactive.",
+      "data": {
+        "productId": "35",
+        "status": "INACTIVE"
+      },
+      "createdAt": "2026-05-11T11:20:49.371Z",
+      "readAt": "2026-05-11T11:25:54.205Z"
+    },
+    {
+      "id": "12eb4573-5ce0-4e41-818f-e00bcedb9f9b",
+      "userId": "26",
+      "type": "ORDER_PLACED_VENDOR",
+      "title": "New order received",
+      "message": "New order received! Order ID: 16. Please accept within 24 hours.",
+      "data": {
+        "orderId": "16"
+      },
+      "createdAt": "2026-05-08T12:30:23.780Z",
+      "readAt": null
+    },
+    {
+      "id": "df1fb522-61c9-40fe-aec8-d0be2c5acce8",
+      "userId": "26",
+      "type": "INDIVIDUAL_VENDOR_PRODUCT_STATUS_CHANGED",
+      "title": "Product status changed",
+      "message": "taxedo status changed to Active.",
+      "data": {
+        "productId": "27",
+        "status": "ACTIVE"
+      },
+      "createdAt": "2026-05-08T10:41:19.049Z",
+      "readAt": "2026-05-08T10:41:28.694Z"
+    },
+    {
+      "id": "5112c8d7-9100-49b4-8d23-bea6a5fb6bbd",
+      "userId": "26",
+      "type": "INDIVIDUAL_VENDOR_PRODUCT_STATUS_CHANGED",
+      "title": "Product status changed",
+      "message": "taxedo status changed to Pending vendor agreement.",
+      "data": {
+        "productId": "27",
+        "status": "PENDING_VENDOR_AGREEMENT"
+      },
+      "createdAt": "2026-05-08T10:39:26.159Z",
+      "readAt": "2026-05-08T10:40:59.977Z"
+    },
+    {
+      "id": "a7910e56-8371-4ed2-8fad-b8768d25513d",
+      "userId": "26",
+      "type": "INDIVIDUAL_VENDOR_PRODUCT_STATUS_CHANGED",
+      "title": "Product status changed",
+      "message": "taxedo status changed to Approved 1.",
+      "data": {
+        "productId": "27",
+        "status": "APPROVED_1"
+      },
+      "createdAt": "2026-05-08T10:35:26.788Z",
+      "readAt": "2026-05-08T10:40:59.977Z"
+    },
+    {
+      "id": "8e83ef4d-4f6b-444a-9099-a62f5b930c83",
+      "userId": "26",
+      "type": "INDIVIDUAL_VENDOR_PRODUCT_ADDED",
+      "title": "Product added successfully",
+      "message": "taxedo has been added successfully. Current status: Inactive.",
+      "data": {
+        "productId": "27",
+        "status": "INACTIVE"
+      },
+      "createdAt": "2026-05-08T09:52:31.460Z",
+      "readAt": "2026-05-08T09:52:42.573Z"
+    },
+    {
+      "id": "3cfc5083-22ac-4751-abc0-2ca2cece3cec",
+      "userId": "26",
+      "type": "INDIVIDUAL_VENDOR_PRODUCT_STATUS_CHANGED",
+      "title": "Product status changed",
+      "message": "Kurta Pajama status changed to Pending vendor agreement.",
+      "data": {
+        "productId": "22",
+        "status": "PENDING_VENDOR_AGREEMENT"
+      },
+      "createdAt": "2026-05-08T07:15:08.202Z",
+      "readAt": "2026-05-08T09:52:42.573Z"
+    },
+    {
+      "id": "a185ed37-1741-4bd4-9b87-2d85725fc511",
+      "userId": "26",
+      "type": "INDIVIDUAL_VENDOR_PRODUCT_STATUS_CHANGED",
+      "title": "Product status changed",
+      "message": "Kurta Pajama status changed to Approved 1.",
+      "data": {
+        "productId": "22",
+        "status": "APPROVED_1"
+      },
+      "createdAt": "2026-05-08T07:14:47.712Z",
+      "readAt": "2026-05-08T09:52:42.573Z"
+    }
+  ],
+  "27": [
+    {
+      "id": "legacy-83",
+      "userId": "27",
+      "type": "ORDER_PLACED_VENDOR",
+      "title": "New order received",
+      "message": "New order received! Order ID: 26. Please accept within 24 hours.",
+      "data": {
+        "orderId": "26"
+      },
+      "createdAt": "2026-05-11T10:15:29.355Z",
+      "readAt": null
+    },
+    {
+      "id": "c0224dc7-68f7-4fab-af4b-68e8cce08f6e",
+      "userId": "27",
+      "type": "ORDER_PLACED_VENDOR",
+      "title": "New order received",
+      "message": "New order received! Order ID: 26. Please accept within 24 hours.",
+      "data": {
+        "orderId": "26"
+      },
+      "createdAt": "2026-05-11T10:15:29.349Z",
+      "readAt": "2026-05-13T08:40:24.316Z"
+    },
+    {
+      "id": "legacy-79",
+      "userId": "27",
+      "type": "ORDER_PLACED_VENDOR",
+      "title": "New order received",
+      "message": "New order received! Order ID: 25. Please accept within 24 hours.",
+      "data": {
+        "orderId": "25"
+      },
+      "createdAt": "2026-05-11T09:14:22.958Z",
+      "readAt": null
+    },
+    {
+      "id": "e4dfce10-dcc5-43db-8f56-0ed0e66a00b5",
+      "userId": "27",
+      "type": "ORDER_PLACED_VENDOR",
+      "title": "New order received",
+      "message": "New order received! Order ID: 25. Please accept within 24 hours.",
+      "data": {
+        "orderId": "25"
+      },
+      "createdAt": "2026-05-11T09:14:22.947Z",
+      "readAt": "2026-05-13T08:40:24.316Z"
+    },
+    {
+      "id": "legacy-51",
+      "userId": "27",
+      "type": "TRIAL_BOOKED",
+      "title": "New trial request",
+      "message": "New trial request for jeeva prod 1. Preferred date: 9/5/2026.",
+      "data": {
+        "productId": "34",
+        "trialRequestId": "7"
+      },
+      "createdAt": "2026-05-09T11:01:05.169Z",
+      "readAt": null
+    },
+    {
+      "id": "7ab27334-bb79-46f6-ad1f-6f437c27335c",
+      "userId": "27",
+      "type": "TRIAL_BOOKED",
+      "title": "New trial request",
+      "message": "New trial request for jeeva prod 1. Preferred date: 9/5/2026.",
+      "data": {
+        "trialRequestId": "7",
+        "productId": "34"
+      },
+      "createdAt": "2026-05-09T11:01:05.164Z",
+      "readAt": "2026-05-13T08:40:24.316Z"
+    }
+  ],
+  "28": [
+    {
+      "id": "2bc85c5f-775c-4bab-be62-0a2f805c83b8",
+      "userId": "28",
+      "type": "INDIVIDUAL_VENDOR_PRODUCT_STATUS_CHANGED",
+      "title": "Product status changed",
+      "message": "sariii status changed to Pending vendor agreement.",
+      "data": {
+        "productId": "54",
+        "status": "PENDING_VENDOR_AGREEMENT"
+      },
+      "createdAt": "2026-05-19T10:30:08.240Z",
+      "readAt": "2026-05-19T10:56:12.185Z"
+    },
+    {
+      "id": "e49b20bf-c78b-44b8-b09a-6de0f27b39f3",
+      "userId": "28",
+      "type": "INDIVIDUAL_VENDOR_PRODUCT_STATUS_CHANGED",
+      "title": "Product status changed",
+      "message": "sariii status changed to Approved 1.",
+      "data": {
+        "productId": "54",
+        "status": "APPROVED_1"
+      },
+      "createdAt": "2026-05-18T10:41:51.662Z",
+      "readAt": "2026-05-19T10:56:12.185Z"
+    },
+    {
+      "id": "8c773a0f-865f-40d1-ac34-388361eefa1b",
+      "userId": "28",
+      "type": "INDIVIDUAL_VENDOR_PRODUCT_ADDED",
+      "title": "Product added successfully",
+      "message": "Saree has been added successfully. Current status: Inactive.",
+      "data": {
+        "productId": "51",
+        "status": "INACTIVE"
+      },
+      "createdAt": "2026-05-18T05:50:47.455Z",
+      "readAt": "2026-05-19T10:56:12.185Z"
+    }
+  ],
+  "34": [
+    {
+      "id": "7b5db081-934d-4d07-a9ba-c19085eb2b55",
+      "userId": "34",
+      "type": "ORDER_PLACED_VENDOR",
+      "title": "Return completed",
+      "message": "Return workflow is completed for order item 87.",
+      "data": {
+        "orderItemId": "87"
+      },
+      "createdAt": "2026-04-23T10:52:48.540Z",
+      "readAt": null
+    },
+    {
+      "id": "2d9988a3-a790-4692-a2f4-9f37f3b395cb",
+      "userId": "34",
+      "type": "ORDER_PLACED_VENDOR",
+      "title": "New order received",
+      "message": "New order received! Order ID: 96. Please accept within 24 hours.",
+      "data": {
+        "orderId": "96"
+      },
+      "createdAt": "2026-04-23T10:47:35.300Z",
+      "readAt": null
+    },
+    {
+      "id": "51eb8b10-f33e-48e3-b94d-dfc29856a751",
+      "userId": "34",
+      "type": "ORDER_PLACED_VENDOR",
+      "title": "New order received",
+      "message": "New order received! Order ID: 95. Please accept within 24 hours.",
+      "data": {
+        "orderId": "95"
+      },
+      "createdAt": "2026-04-23T08:57:39.148Z",
+      "readAt": null
+    },
+    {
+      "id": "54eafab7-fe3e-4274-a5f5-e28dbb1525e9",
+      "userId": "34",
+      "type": "TRIAL_BOOKED",
+      "title": "New trial request",
+      "message": "New trial request for Bridal Lehanga from Anukriti. Preferred date: 22/4/2026.",
+      "data": {
+        "trialRequestId": "31",
+        "productId": "49"
+      },
+      "createdAt": "2026-04-21T11:42:58.079Z",
+      "readAt": null
+    },
+    {
+      "id": "legacy-38",
+      "userId": "34",
+      "type": "TRIAL_BOOKED",
+      "title": "New trial request",
+      "message": "New trial request for sample1. Preferred date: 22/4/2026.",
+      "data": {},
+      "createdAt": "2026-04-21T07:39:57.481Z",
+      "readAt": null
+    },
+    {
+      "id": "legacy-36",
+      "userId": "34",
+      "type": "ORDER_PLACED_VENDOR",
+      "title": "New order received",
+      "message": "New order received! Order ID: 83. Please accept within 24 hours.",
+      "data": {},
+      "createdAt": "2026-04-20T10:53:11.888Z",
+      "readAt": null
+    },
+    {
+      "id": "legacy-34",
+      "userId": "34",
+      "type": "TRIAL_BOOKED",
+      "title": "New trial request",
+      "message": "New trial request for sample1. Preferred date: 20/4/2026.",
+      "data": {},
+      "createdAt": "2026-04-20T09:54:27.982Z",
+      "readAt": null
+    }
+  ],
+  "49": [
+    {
+      "id": "84018b5a-e073-4877-af66-b587cf76b9e6",
+      "userId": "49",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order status updated",
+      "message": "Order item 89 status changed to RETURNED.",
+      "data": {
+        "orderItemId": "89",
+        "status": "RETURNED"
+      },
+      "createdAt": "2026-05-01T09:25:08.184Z",
+      "readAt": null
+    },
+    {
+      "id": "4b701300-5d33-46ae-87c5-d1585fa13317",
+      "userId": "49",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order status updated",
+      "message": "Order item 89 status changed to RETURN SCHEDULED.",
+      "data": {
+        "orderItemId": "89",
+        "status": "RETURN_SCHEDULED"
+      },
+      "createdAt": "2026-05-01T09:25:03.671Z",
+      "readAt": null
+    },
+    {
+      "id": "bb05119d-1c3a-4e62-b3d3-623d0a811d1d",
+      "userId": "49",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order status updated",
+      "message": "Order item 89 status changed to PICKED UP.",
+      "data": {
+        "orderItemId": "89",
+        "status": "PICKED_UP"
+      },
+      "createdAt": "2026-05-01T09:24:58.063Z",
+      "readAt": null
+    },
+    {
+      "id": "a3bddd0b-522c-47d7-b703-319677279b48",
+      "userId": "49",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order status updated",
+      "message": "Order item 89 status changed to READY FOR PICKUP.",
+      "data": {
+        "orderItemId": "89",
+        "status": "READY_FOR_PICKUP"
+      },
+      "createdAt": "2026-05-01T09:24:46.326Z",
+      "readAt": null
+    },
+    {
+      "id": "4995ebd4-61e3-4786-9f5d-ff0eadd359a0",
+      "userId": "49",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order accepted",
+      "message": "Great! Your order has been accepted by the vendor. Order Item: 89",
+      "data": {
+        "orderItemId": "89"
+      },
+      "createdAt": "2026-05-01T09:24:40.434Z",
+      "readAt": null
+    },
+    {
+      "id": "f11f4271-cb0e-42a0-a10f-376dfd198add",
+      "userId": "49",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order status changed by admin",
+      "message": "Order ORD1777549793012L75U status has been updated to CANCELLED by admin.",
+      "data": {
+        "orderId": "97",
+        "status": "CANCELLED"
+      },
+      "createdAt": "2026-04-30T12:27:59.891Z",
+      "readAt": null
+    },
+    {
+      "id": "2e212997-c4c6-4423-a290-32db3b57cbd0",
+      "userId": "49",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order placed",
+      "message": "Your order 98 has been placed successfully and is pending vendor confirmation.",
+      "data": {
+        "orderId": "98"
+      },
+      "createdAt": "2026-04-30T11:54:06.933Z",
+      "readAt": null
+    },
+    {
+      "id": "9c843762-d571-4d0c-b1cc-bf2456e4322a",
+      "userId": "49",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Security deposit reviewed",
+      "message": "Refund decision completed for order item 87. Refund amount: Rs 6000.",
+      "data": {
+        "orderItemId": "87",
+        "refundAmount": "6000"
+      },
+      "createdAt": "2026-04-23T10:52:47.521Z",
+      "readAt": "2026-04-24T04:46:59.374Z"
+    },
+    {
+      "id": "d9c570ed-2e6a-4d2a-a5bc-897754ab7c0e",
+      "userId": "49",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order status updated",
+      "message": "Order item 87 status changed to RETURNED.",
+      "data": {
+        "orderItemId": "87",
+        "status": "RETURNED"
+      },
+      "createdAt": "2026-04-23T10:51:31.211Z",
+      "readAt": "2026-04-24T04:46:59.374Z"
+    },
+    {
+      "id": "885a7dee-9420-4c3a-a2db-85d79657cfa3",
+      "userId": "49",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order status updated",
+      "message": "Order item 87 status changed to RETURN SCHEDULED.",
+      "data": {
+        "orderItemId": "87",
+        "status": "RETURN_SCHEDULED"
+      },
+      "createdAt": "2026-04-23T10:51:28.723Z",
+      "readAt": "2026-04-24T04:46:59.374Z"
+    },
+    {
+      "id": "14cd5117-1508-4746-bb7a-46304714dab8",
+      "userId": "49",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order status updated",
+      "message": "Order item 87 status changed to PICKED UP.",
+      "data": {
+        "orderItemId": "87",
+        "status": "PICKED_UP"
+      },
+      "createdAt": "2026-04-23T10:51:25.848Z",
+      "readAt": "2026-04-24T04:46:59.374Z"
+    },
+    {
+      "id": "d2058237-fe8e-440d-b991-7831c8eabd84",
+      "userId": "49",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order status updated",
+      "message": "Order item 87 status changed to READY FOR PICKUP.",
+      "data": {
+        "orderItemId": "87",
+        "status": "READY_FOR_PICKUP"
+      },
+      "createdAt": "2026-04-23T10:51:22.950Z",
+      "readAt": "2026-04-24T04:46:59.374Z"
+    },
+    {
+      "id": "5395bab8-a5af-44a9-84f1-7113dda7464c",
+      "userId": "49",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order accepted",
+      "message": "Great! Your order has been accepted by the vendor. Order Item: 87",
+      "data": {
+        "orderItemId": "87"
+      },
+      "createdAt": "2026-04-23T10:51:19.528Z",
+      "readAt": "2026-04-24T04:46:59.374Z"
+    },
+    {
+      "id": "aa3bdcad-7097-478c-8864-5cb11607e0fb",
+      "userId": "49",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order placed",
+      "message": "Your order 96 has been placed successfully and is pending vendor confirmation.",
+      "data": {
+        "orderId": "96"
+      },
+      "createdAt": "2026-04-23T10:47:36.839Z",
+      "readAt": "2026-04-24T04:46:59.374Z"
+    },
+    {
+      "id": "b6c49839-360c-429e-8e67-c612ae90bdf8",
+      "userId": "49",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order status updated",
+      "message": "Order item 84 status changed to RETURNED.",
+      "data": {
+        "orderItemId": "84",
+        "status": "RETURNED"
+      },
+      "createdAt": "2026-04-23T10:43:50.628Z",
+      "readAt": "2026-04-24T04:46:59.374Z"
+    },
+    {
+      "id": "73b33ba0-f87a-49a0-b175-eaa1a956a610",
+      "userId": "49",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order status updated",
+      "message": "Order item 84 status changed to RETURN SCHEDULED.",
+      "data": {
+        "orderItemId": "84",
+        "status": "RETURN_SCHEDULED"
+      },
+      "createdAt": "2026-04-23T10:43:49.141Z",
+      "readAt": "2026-04-24T04:46:59.374Z"
+    },
+    {
+      "id": "2213101c-3e64-4a1b-8909-984730ddaa72",
+      "userId": "49",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order status updated",
+      "message": "Order item 84 status changed to PICKED UP.",
+      "data": {
+        "orderItemId": "84",
+        "status": "PICKED_UP"
+      },
+      "createdAt": "2026-04-23T10:43:46.877Z",
+      "readAt": "2026-04-24T04:46:59.374Z"
+    },
+    {
+      "id": "335f45a6-5968-4976-abc3-2ac156766296",
+      "userId": "49",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order status updated",
+      "message": "Order item 84 status changed to READY FOR PICKUP.",
+      "data": {
+        "orderItemId": "84",
+        "status": "READY_FOR_PICKUP"
+      },
+      "createdAt": "2026-04-23T10:43:45.457Z",
+      "readAt": "2026-04-24T04:46:59.374Z"
+    },
+    {
+      "id": "311ccc67-b1cf-4f69-a806-d8145c55b4f3",
+      "userId": "49",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order accepted",
+      "message": "Great! Your order has been accepted by the vendor. Order Item: 84",
+      "data": {
+        "orderItemId": "84"
+      },
+      "createdAt": "2026-04-23T10:43:43.574Z",
+      "readAt": "2026-04-24T04:46:59.374Z"
+    },
+    {
+      "id": "048d6077-bac6-4a51-a9a7-0f2a08d28db0",
+      "userId": "49",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order status updated",
+      "message": "Order item 86 status changed to RETURNED.",
+      "data": {
+        "orderItemId": "86",
+        "status": "RETURNED"
+      },
+      "createdAt": "2026-04-23T10:43:28.619Z",
+      "readAt": "2026-04-24T04:46:59.374Z"
+    },
+    {
+      "id": "a01691ec-280c-4e53-8d52-6a546196c7f1",
+      "userId": "49",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order status updated",
+      "message": "Order item 86 status changed to RETURN SCHEDULED.",
+      "data": {
+        "orderItemId": "86",
+        "status": "RETURN_SCHEDULED"
+      },
+      "createdAt": "2026-04-23T10:43:26.782Z",
+      "readAt": "2026-04-24T04:46:59.374Z"
+    },
+    {
+      "id": "bc552612-52ca-4a28-b6c8-1d67e82499d8",
+      "userId": "49",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order status updated",
+      "message": "Order item 86 status changed to PICKED UP.",
+      "data": {
+        "orderItemId": "86",
+        "status": "PICKED_UP"
+      },
+      "createdAt": "2026-04-23T10:43:23.816Z",
+      "readAt": "2026-04-24T04:46:59.374Z"
+    },
+    {
+      "id": "418d5121-caf3-4a43-8642-e63abffdcc55",
+      "userId": "49",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order status updated",
+      "message": "Order item 86 status changed to READY FOR PICKUP.",
+      "data": {
+        "orderItemId": "86",
+        "status": "READY_FOR_PICKUP"
+      },
+      "createdAt": "2026-04-23T10:43:22.479Z",
+      "readAt": "2026-04-24T04:46:59.374Z"
+    },
+    {
+      "id": "06b3194f-6833-49d8-b366-b5669b9d34b9",
+      "userId": "49",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order accepted",
+      "message": "Great! Your order has been accepted by the vendor. Order Item: 86",
+      "data": {
+        "orderItemId": "86"
+      },
+      "createdAt": "2026-04-23T10:43:20.341Z",
+      "readAt": "2026-04-24T04:46:59.374Z"
+    },
+    {
+      "id": "266676ba-3f07-4e7d-af5f-71b0d2689b8d",
+      "userId": "49",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order status updated",
+      "message": "Order item 82 status changed to RETURNED.",
+      "data": {
+        "orderItemId": "82",
+        "status": "RETURNED"
+      },
+      "createdAt": "2026-04-23T10:42:52.623Z",
+      "readAt": "2026-04-24T04:46:59.374Z"
+    },
+    {
+      "id": "35492361-bcb5-4e96-97b9-79fe1c40ad55",
+      "userId": "49",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order status updated",
+      "message": "Order item 82 status changed to RETURN SCHEDULED.",
+      "data": {
+        "orderItemId": "82",
+        "status": "RETURN_SCHEDULED"
+      },
+      "createdAt": "2026-04-23T10:42:50.552Z",
+      "readAt": "2026-04-24T04:46:59.374Z"
+    },
+    {
+      "id": "450043f5-1e29-475c-9882-798ea999918b",
+      "userId": "49",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order status updated",
+      "message": "Order item 82 status changed to PICKED UP.",
+      "data": {
+        "orderItemId": "82",
+        "status": "PICKED_UP"
+      },
+      "createdAt": "2026-04-23T10:42:48.184Z",
+      "readAt": "2026-04-24T04:46:59.374Z"
+    },
+    {
+      "id": "8f2b1e23-395e-4346-be9f-c279c1f4d0eb",
+      "userId": "49",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order status updated",
+      "message": "Order item 82 status changed to READY FOR PICKUP.",
+      "data": {
+        "orderItemId": "82",
+        "status": "READY_FOR_PICKUP"
+      },
+      "createdAt": "2026-04-23T10:42:45.668Z",
+      "readAt": "2026-04-24T04:46:59.374Z"
+    },
+    {
+      "id": "58acba88-b520-478d-bd2d-37c89c1855bc",
+      "userId": "49",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order accepted",
+      "message": "Great! Your order has been accepted by the vendor. Order Item: 82",
+      "data": {
+        "orderItemId": "82"
+      },
+      "createdAt": "2026-04-23T10:42:39.076Z",
+      "readAt": "2026-04-24T04:46:59.374Z"
+    },
+    {
+      "id": "7dc75997-c78b-4896-a2e0-0fb602a6b793",
+      "userId": "49",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order placed",
+      "message": "Your order 95 has been placed successfully and is pending vendor confirmation.",
+      "data": {
+        "orderId": "95"
+      },
+      "createdAt": "2026-04-23T08:57:40.056Z",
+      "readAt": "2026-04-23T10:35:17.005Z"
+    },
+    {
+      "id": "8f2bcb2a-e86e-4604-aaec-b2a8f8540d62",
+      "userId": "49",
+      "type": "TRIAL_APPROVED",
+      "title": "Trial request accepted",
+      "message": "Your trial request for Bridal Lehanga from Anukriti is accepted. Your code: TRL-G7R7XHQ2",
+      "data": {
+        "trialRequestId": "31",
+        "productId": "49",
+        "trialCode": "TRL-G7R7XHQ2"
+      },
+      "createdAt": "2026-04-21T11:43:56.217Z",
+      "readAt": "2026-04-21T11:44:10.498Z"
+    },
+    {
+      "id": "8cf65a40-a760-44c6-858d-60378d302296",
+      "userId": "49",
+      "type": "TRIAL_CANCELLED",
+      "title": "Trial request rejected",
+      "message": "Your trial request for sample1 was rejected.",
+      "data": {
+        "trialRequestId": "30",
+        "productId": "48"
+      },
+      "createdAt": "2026-04-21T11:43:50.989Z",
+      "readAt": "2026-04-21T11:44:10.498Z"
+    },
+    {
+      "id": "legacy-37",
+      "userId": "49",
+      "type": "ORDER_ACCEPTED_CUSTOMER",
+      "title": "Order accepted",
+      "message": "Great! Your order has been accepted by the vendor. Order Item: 74",
+      "data": {},
+      "createdAt": "2026-04-20T11:07:21.066Z",
+      "readAt": "2026-04-21T11:42:00.216Z"
+    },
+    {
+      "id": "legacy-35",
+      "userId": "49",
+      "type": "TRIAL_APPROVED",
+      "title": "Trial request accepted",
+      "message": "Your trial request for sample1 is accepted. Your code: TRL-H9MPGIG7",
+      "data": {},
+      "createdAt": "2026-04-20T10:12:07.383Z",
+      "readAt": "2026-04-21T11:42:00.216Z"
+    }
+  ],
+  "99": [
+    {
+      "id": "ffc7a8a3-5223-4cf6-843c-e633c56a3472",
+      "userId": "99",
+      "type": "ORDER_PLACED_VENDOR",
+      "title": "New order received",
+      "message": "New order received! Order ID: 98. Please accept within 24 hours.",
+      "data": {
+        "orderId": "98"
+      },
+      "createdAt": "2026-04-30T11:54:05.916Z",
+      "readAt": null
+    }
+  ]
+}ll
+    }
+  ]
+}

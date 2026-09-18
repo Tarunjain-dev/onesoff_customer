@@ -1,0 +1,47 @@
+{
+  "14": {
+    "productId": "14",
+    "currentStage": "LIVE",
+    "submittedAt": "Wed May 06 2026 16:58:39 GMT+0530 (India Standard Time)",
+    "finalRentalPrice": 190,
+    "approved1At": "2026-05-06T13:04:43.723Z",
+    "rejectedAt": null,
+    "vendorDecision": "AGREE",
+    "vendorDecisionAt": "2026-05-06T13:14:23.568Z",
+    "approved2At": "2026-05-06T13:05:27.470Z",
+    "listedAt": "2026-05-06T13:14:23.568Z"
+  },
+  "15": {
+    "productId": "15",
+    "currentStage": "LIVE",
+    "submittedAt": "Thu May 07 2026 17:50:41 GMT+0530 (India Standard Time)",
+    "finalRentalPrice": 1685,
+    "approved1At": "2026-05-07T12:23:16.982Z",
+    "rejectedAt": null,
+    "vendorDecision": "AGREE",
+    "vendorDecisionAt": "2026-05-07T12:30:54.573Z",
+    "approved2At": "2026-05-07T12:23:51.982Z",
+    "listedAt": "2026-05-07T12:30:54.573Z"
+  },
+  "16": {
+    "productId": "16",
+    "currentStage": "LIVE",
+    "submittedAt": "Thu May 07 2026 17:57:52 GMT+0530 (India Standard Time)",
+    "finalRentalPrice": 111111,
+    "approved1At": "2026-05-07T12:28:56.167Z",
+    "rejectedAt": null,
+    "vendorDecision": "AGREE",
+    "vendorDecisionAt": "2026-05-07T12:52:20.172Z",
+    "approved2At": "2026-05-07T12:42:03.375Z",
+    "listedAt": "2026-05-07T12:52:20.172Z"
+  },
+  "17": {
+    "productId": "17",
+    "currentStage": "REJECTED",
+    "submittedAt": "Thu May 07 2026 18:30:23 GMT+0530 (India Standard Time)",
+    "finalRentalPrice": 599,
+    "rejectedAt": "2026-05-07T13:04:38.228Z",
+    "vendorDecision": null,
+    "vendorDecisionAt": null
+  }
+}

@@ -1,0 +1,7 @@
+ALTER TABLE "Cart"
+ADD COLUMN "alterationRequired" BOOLEAN NOT NULL DEFAULT false,
+ADD COLUMN "alterationCharge" DECIMAL NOT NULL DEFAULT 0;
+
+ALTER TABLE "OrderItem"
+ADD COLUMN "alterationRequired" BOOLEAN NOT NULL DEFAULT false,
+ADD COLUMN "alterationCharge" DECIMAL NOT NULL DEFAULT 0;

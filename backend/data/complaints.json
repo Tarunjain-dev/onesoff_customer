@@ -1,0 +1,486 @@
+[
+  {
+    "id": "11",
+    "complaintNo": "CMP-000011",
+    "customerId": "7",
+    "vendorId": "9",
+    "orderId": "30",
+    "orderItemId": "41",
+    "category": "Product Issues",
+    "subCategory": "Damaged",
+    "type": "Product Issues - Damaged",
+    "title": "Damaged - Shoes",
+    "description": "i received damaged product.",
+    "attachments": [],
+    "status": "PENDING",
+    "priority": "HIGH",
+    "adminResponse": null,
+    "adminRespondedAt": null,
+    "resolution": null,
+    "resolutionNotes": null,
+    "feedback": null,
+    "createdAt": "2026-05-21T06:13:45.550Z",
+    "updatedAt": "2026-05-21T06:13:45.550Z",
+    "resolvedAt": null,
+    "raisedByRole": "CUSTOMER",
+    "raisedByUserId": "7",
+    "messages": [
+      {
+        "id": "msg-1779344025550-fghbyfg4",
+        "senderUserId": "7",
+        "senderRole": "CUSTOMER",
+        "senderName": "Customer",
+        "message": "i received damaged product.",
+        "attachments": [],
+        "isInternal": false,
+        "createdAt": "2026-05-21T06:13:45.550Z"
+      }
+    ]
+  },
+  {
+    "id": "10",
+    "complaintNo": "CMP-000010",
+    "customerId": "7",
+    "vendorId": "4",
+    "orderId": "30",
+    "orderItemId": "40",
+    "category": "Refund & Deposit",
+    "subCategory": "Deposit Not Refunded",
+    "type": "Refund & Deposit - Deposit Not Refunded",
+    "title": "Deposit Not Refunded - Party wear lehenga",
+    "description": "testing",
+    "attachments": [],
+    "status": "PENDING",
+    "priority": "HIGH",
+    "adminResponse": null,
+    "adminRespondedAt": null,
+    "resolution": null,
+    "resolutionNotes": null,
+    "feedback": null,
+    "createdAt": "2026-05-20T10:25:21.191Z",
+    "updatedAt": "2026-05-20T10:25:21.191Z",
+    "resolvedAt": null,
+    "raisedByRole": "CUSTOMER",
+    "raisedByUserId": "7",
+    "messages": [
+      {
+        "id": "msg-1779272721191-ikqpuo6t",
+        "senderUserId": "7",
+        "senderRole": "CUSTOMER",
+        "senderName": "Customer",
+        "message": "testing",
+        "attachments": [],
+        "isInternal": false,
+        "createdAt": "2026-05-20T10:25:21.191Z"
+      }
+    ]
+  },
+  {
+    "id": "9",
+    "complaintNo": "CMP-000009",
+    "customerId": "7",
+    "vendorId": "10",
+    "orderId": "16",
+    "orderItemId": "26",
+    "category": "Order Issues",
+    "subCategory": "Late Delivery",
+    "type": "Order Issues - Late Delivery",
+    "title": "Late Delivery - Kurta Pajama",
+    "description": "qwerty",
+    "attachments": [
+      "https://ones-off.s3.ap-south-1.amazonaws.com/complaints/f24f5193-a06f-4d55-8909-c179ef530cba.jfif"
+    ],
+    "status": "PENDING",
+    "priority": "MEDIUM",
+    "adminResponse": "hello",
+    "adminRespondedAt": "2026-05-18T06:46:51.545Z",
+    "resolution": null,
+    "resolutionNotes": null,
+    "feedback": null,
+    "createdAt": "2026-05-14T10:17:00.999Z",
+    "updatedAt": "2026-05-18T06:46:51.545Z",
+    "resolvedAt": null,
+    "raisedByRole": "CUSTOMER",
+    "raisedByUserId": "7",
+    "messages": [
+      {
+        "id": "msg-1778753820999-gmlyfcau",
+        "senderUserId": "7",
+        "senderRole": "CUSTOMER",
+        "senderName": "Customer",
+        "message": "qwerty",
+        "attachments": [
+          "https://ones-off.s3.ap-south-1.amazonaws.com/complaints/f24f5193-a06f-4d55-8909-c179ef530cba.jfif"
+        ],
+        "isInternal": false,
+        "createdAt": "2026-05-14T10:17:00.999Z"
+      },
+      {
+        "id": "msg-1779086811546-3rg3iysu",
+        "senderUserId": "5",
+        "senderRole": "ADMIN_AS_VENDOR",
+        "senderName": "Admin as Vendor",
+        "message": "hello",
+        "attachments": [],
+        "isInternal": false,
+        "createdAt": "2026-05-18T06:46:51.545Z"
+      }
+    ]
+  },
+  {
+    "id": "8",
+    "complaintNo": "CMP-000008",
+    "customerId": "7",
+    "vendorId": "8",
+    "orderId": "19",
+    "orderItemId": "29",
+    "category": "Vendor Disputes",
+    "subCategory": "Unprofessional Behavior",
+    "type": "Vendor Disputes - Unprofessional Behavior",
+    "title": "Unprofessional Behavior - jeans",
+    "description": "qwerty",
+    "attachments": [
+      "https://ones-off.s3.ap-south-1.amazonaws.com/complaints/4a0d0c4c-56d9-4854-b6b8-b004fd69e9c6.jfif"
+    ],
+    "status": "PENDING",
+    "priority": "HIGH",
+    "adminResponse": "hi",
+    "adminRespondedAt": "2026-05-14T10:22:32.670Z",
+    "resolution": null,
+    "resolutionNotes": null,
+    "feedback": null,
+    "createdAt": "2026-05-14T10:14:35.271Z",
+    "updatedAt": "2026-05-14T10:22:32.670Z",
+    "resolvedAt": null,
+    "raisedByRole": "CUSTOMER",
+    "raisedByUserId": "7",
+    "messages": [
+      {
+        "id": "msg-1778753675271-brl979s7",
+        "senderUserId": "7",
+        "senderRole": "CUSTOMER",
+        "senderName": "Customer",
+        "message": "qwerty",
+        "attachments": [
+          "https://ones-off.s3.ap-south-1.amazonaws.com/complaints/4a0d0c4c-56d9-4854-b6b8-b004fd69e9c6.jfif"
+        ],
+        "isInternal": false,
+        "createdAt": "2026-05-14T10:14:35.271Z"
+      },
+      {
+        "id": "msg-1778754152670-wfddzyyf",
+        "senderUserId": "5",
+        "senderRole": "ADMIN_AS_VENDOR",
+        "senderName": "Admin as Vendor",
+        "message": "hi",
+        "attachments": [],
+        "isInternal": false,
+        "createdAt": "2026-05-14T10:22:32.670Z"
+      }
+    ]
+  },
+  {
+    "id": "7",
+    "complaintNo": "CMP-000007",
+    "customerId": "4",
+    "vendorId": "2",
+    "orderId": null,
+    "orderItemId": null,
+    "category": "payout",
+    "subCategory": null,
+    "type": "payout",
+    "title": "payment issue",
+    "description": "payment issue related with product",
+    "attachments": [],
+    "status": "PENDING",
+    "priority": "MEDIUM",
+    "adminResponse": null,
+    "adminRespondedAt": null,
+    "resolution": null,
+    "resolutionNotes": null,
+    "feedback": null,
+    "createdAt": "2026-05-07T07:13:32.561Z",
+    "updatedAt": "2026-05-07T07:13:32.561Z",
+    "resolvedAt": null,
+    "raisedByRole": "INDIVIDUAL_VENDOR",
+    "raisedByUserId": "4",
+    "messages": [
+      {
+        "id": "msg-1778138012561-34ygb8jz",
+        "senderUserId": "4",
+        "senderRole": "INDIVIDUAL_VENDOR",
+        "senderName": "Individual Vendor Shop",
+        "message": "payment issue related with product",
+        "attachments": [],
+        "isInternal": false,
+        "createdAt": "2026-05-07T07:13:32.561Z"
+      }
+    ]
+  },
+  {
+    "id": "6",
+    "complaintNo": "CMP-000006",
+    "customerId": "4",
+    "vendorId": "2",
+    "orderId": null,
+    "orderItemId": null,
+    "category": "order",
+    "subCategory": null,
+    "type": "order",
+    "title": "product damage",
+    "description": "product damage claim payment",
+    "attachments": [
+      "https://ones-off.s3.ap-south-1.amazonaws.com/complaints/ab51121e-7928-4f6a-a7fd-782e8bb04200.jpg"
+    ],
+    "status": "PENDING",
+    "priority": "MEDIUM",
+    "adminResponse": "sdfsdgsdgsdgsg",
+    "adminRespondedAt": "2026-05-07T06:54:47.562Z",
+    "resolution": null,
+    "resolutionNotes": null,
+    "feedback": null,
+    "createdAt": "2026-05-07T06:51:26.724Z",
+    "updatedAt": "2026-05-07T06:54:47.562Z",
+    "resolvedAt": null,
+    "raisedByRole": "INDIVIDUAL_VENDOR",
+    "raisedByUserId": "4",
+    "messages": [
+      {
+        "id": "msg-1778136686724-65ggpcbh",
+        "senderUserId": "4",
+        "senderRole": "INDIVIDUAL_VENDOR",
+        "senderName": "Individual Vendor Shop",
+        "message": "product damage claim payment",
+        "attachments": [
+          "https://ones-off.s3.ap-south-1.amazonaws.com/complaints/ab51121e-7928-4f6a-a7fd-782e8bb04200.jpg"
+        ],
+        "isInternal": false,
+        "createdAt": "2026-05-07T06:51:26.724Z"
+      },
+      {
+        "id": "msg-1778136887562-rcmmcpc9",
+        "senderUserId": "5",
+        "senderRole": "ADMIN_AS_VENDOR",
+        "senderName": "Admin as Vendor",
+        "message": "sdfsdgsdgsdgsg",
+        "attachments": [],
+        "isInternal": false,
+        "createdAt": "2026-05-07T06:54:47.562Z"
+      }
+    ]
+  },
+  {
+    "id": "5",
+    "complaintNo": "CMP-000005",
+    "customerId": "5",
+    "vendorId": null,
+    "orderId": null,
+    "orderItemId": null,
+    "category": "technical",
+    "subCategory": null,
+    "type": "technical",
+    "title": "Techincal isuue",
+    "description": "Techincal isuue Techincal isuue Techincal isuue",
+    "attachments": [
+      "https://ones-off.s3.ap-south-1.amazonaws.com/complaints/b4ebfdb1-b445-4fe6-99dd-f56142f0ba6e.jfif"
+    ],
+    "status": "PENDING",
+    "priority": "URGENT",
+    "adminResponse": null,
+    "adminRespondedAt": null,
+    "resolution": null,
+    "resolutionNotes": null,
+    "feedback": null,
+    "createdAt": "2026-05-06T11:01:30.947Z",
+    "updatedAt": "2026-05-06T11:50:22.060Z",
+    "resolvedAt": null,
+    "raisedByRole": "ADMIN_AS_VENDOR",
+    "raisedByUserId": "5",
+    "messages": [
+      {
+        "id": "msg-1778065290947-ap9161ow",
+        "senderUserId": "5",
+        "senderRole": "ADMIN_AS_VENDOR",
+        "senderName": "Admin as Vendor",
+        "message": "Techincal isuue Techincal isuue Techincal isuue",
+        "attachments": [
+          "https://ones-off.s3.ap-south-1.amazonaws.com/complaints/b4ebfdb1-b445-4fe6-99dd-f56142f0ba6e.jfif"
+        ],
+        "isInternal": false,
+        "createdAt": "2026-05-06T11:01:30.947Z"
+      },
+      {
+        "id": "msg-1778068222061-awbt931b",
+        "senderUserId": "5",
+        "senderRole": "ADMIN_AS_VENDOR",
+        "senderName": "Admin as Vendor",
+        "message": "ghi",
+        "attachments": [],
+        "isInternal": false,
+        "createdAt": "2026-05-06T11:50:22.060Z"
+      }
+    ]
+  },
+  {
+    "id": "4",
+    "complaintNo": "CMP-000004",
+    "customerId": "5",
+    "vendorId": null,
+    "orderId": null,
+    "orderItemId": null,
+    "category": "product",
+    "subCategory": null,
+    "type": "product",
+    "title": "new ticket",
+    "description": "convsaction filed added",
+    "attachments": [
+      "https://ones-off.s3.ap-south-1.amazonaws.com/complaints/56512ba2-b434-4845-b340-03f914987a35.jfif"
+    ],
+    "status": "RESOLVED",
+    "priority": "URGENT",
+    "adminResponse": "hiii",
+    "adminRespondedAt": "2026-05-06T11:00:13.026Z",
+    "resolution": "RESOLVED",
+    "resolutionNotes": "dfnienf",
+    "feedback": null,
+    "createdAt": "2026-05-06T10:33:59.399Z",
+    "updatedAt": "2026-05-06T11:00:13.026Z",
+    "resolvedAt": "2026-05-06T10:34:49.568Z",
+    "raisedByRole": "ADMIN_AS_VENDOR",
+    "raisedByUserId": "5",
+    "messages": [
+      {
+        "id": "msg-1778063639399-ev27xrp4",
+        "senderUserId": "5",
+        "senderRole": "ADMIN_AS_VENDOR",
+        "senderName": "Admin as Vendor",
+        "message": "convsaction filed added",
+        "attachments": [
+          "https://ones-off.s3.ap-south-1.amazonaws.com/complaints/56512ba2-b434-4845-b340-03f914987a35.jfif"
+        ],
+        "isInternal": false,
+        "createdAt": "2026-05-06T10:33:59.399Z"
+      },
+      {
+        "id": "msg-1778063689568-akp9hdhj",
+        "senderUserId": "admin",
+        "senderRole": "ADMIN",
+        "senderName": "Admin User",
+        "message": "okkk",
+        "attachments": [],
+        "isInternal": false,
+        "createdAt": "2026-05-06T10:34:49.568Z"
+      },
+      {
+        "id": "msg-1778063742101-ede9y373",
+        "senderUserId": "5",
+        "senderRole": "ADMIN_AS_VENDOR",
+        "senderName": "Admin as Vendor",
+        "message": "done",
+        "attachments": [],
+        "isInternal": true,
+        "createdAt": "2026-05-06T10:35:42.101Z"
+      },
+      {
+        "id": "msg-1778065213026-ifb3dbn8",
+        "senderUserId": "1",
+        "senderRole": "ADMIN",
+        "senderName": "Admin User",
+        "message": "hiii",
+        "attachments": [],
+        "isInternal": false,
+        "createdAt": "2026-05-06T11:00:13.026Z"
+      }
+    ]
+  },
+  {
+    "id": "3",
+    "complaintNo": "CMP-000003",
+    "customerId": "5",
+    "vendorId": null,
+    "orderId": null,
+    "orderItemId": null,
+    "category": "payment",
+    "subCategory": null,
+    "type": "payment",
+    "title": "testt",
+    "description": "testing the ticket issue",
+    "attachments": [],
+    "status": "IN_PROGRESS",
+    "priority": "MEDIUM",
+    "adminResponse": "okk pay it",
+    "adminRespondedAt": "2026-05-06T10:09:55.860Z",
+    "resolution": null,
+    "resolutionNotes": null,
+    "feedback": null,
+    "createdAt": "2026-05-06T10:08:41.544Z",
+    "updatedAt": "2026-05-06T10:32:43.982Z",
+    "resolvedAt": null,
+    "raisedByRole": "ADMIN_AS_VENDOR",
+    "raisedByUserId": "5",
+    "messages": [
+      {
+        "id": "msg-1778063563982-4v0s5iwm",
+        "senderUserId": "5",
+        "senderRole": "ADMIN_AS_VENDOR",
+        "senderName": "Admin as Vendor",
+        "message": "revieved",
+        "attachments": [],
+        "isInternal": true,
+        "createdAt": "2026-05-06T10:32:43.982Z"
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "complaintNo": "CMP-000002",
+    "customerId": "49",
+    "vendorId": "17",
+    "orderId": "89",
+    "orderItemId": "80",
+    "category": "Product Issues",
+    "subCategory": "Damaged",
+    "type": "Product Issues - Damaged",
+    "title": "Damaged - sample1",
+    "description": "adsfdgfghj",
+    "attachments": [
+      "https://ones-off.s3.ap-south-1.amazonaws.com/complaints/ea2ed612-4719-4502-8955-4b30ed900fd7.png"
+    ],
+    "status": "PENDING",
+    "priority": "HIGH",
+    "adminResponse": null,
+    "adminRespondedAt": null,
+    "resolution": null,
+    "resolutionNotes": null,
+    "feedback": null,
+    "createdAt": "2026-04-24T09:43:24.979Z",
+    "updatedAt": "2026-04-24T09:43:24.979Z",
+    "resolvedAt": null
+  },
+  {
+    "id": "1",
+    "complaintNo": "CMP-000001",
+    "customerId": "49",
+    "vendorId": "17",
+    "orderId": "96",
+    "orderItemId": "87",
+    "category": "Product Issues",
+    "subCategory": "Damaged",
+    "type": "Product Issues - Damaged",
+    "title": "Damaged - Men's Party Suit",
+    "description": "dsagedgthg",
+    "attachments": [
+      "https://ones-off.s3.ap-south-1.amazonaws.com/complaints/fd7ff541-ac9b-405f-9594-3cae288489a7.jpg"
+    ],
+    "status": "RESOLVED",
+    "priority": "HIGH",
+    "adminResponse": "defgh",
+    "adminRespondedAt": "2026-04-24T08:18:40.077Z",
+    "resolution": "RESOLVED",
+    "resolutionNotes": "safdvfgn",
+    "feedback": null,
+    "createdAt": "2026-04-24T08:17:55.242Z",
+    "updatedAt": "2026-04-24T08:18:40.077Z",
+    "resolvedAt": "2026-04-24T08:18:40.077Z"
+  }
+]

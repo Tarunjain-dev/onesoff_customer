@@ -1,0 +1,9 @@
+DO $$
+BEGIN
+  CREATE TYPE "FulfillmentType" AS ENUM ('SELF_PICKUP', 'HOME_DELIVERY');
+EXCEPTION
+  WHEN duplicate_object THEN NULL;
+END $$;
+
+ALTER TABLE "OrderItem"
+ADD COLUMN IF NOT EXISTS "fulfillmentType" "FulfillmentType" NOT NULL DEFAULT 'SELF_PICKUP';

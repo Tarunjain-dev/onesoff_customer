@@ -1,0 +1,96 @@
+{
+  "4": {
+    "accountHolder": "Individual vendor",
+    "bankName": null,
+    "accountNumber": "324523452345234",
+    "ifscCode": "121cfksd123",
+    "upiId": "example@upi",
+    "payoutCycle": null
+  },
+  "22": {
+    "accountHolder": "vikash",
+    "bankName": null,
+    "accountNumber": "435345345345345345",
+    "ifscCode": "HDFC0008989",
+    "upiId": "example@upi",
+    "payoutCycle": null
+  },
+  "24": {
+    "accountHolder": null,
+    "bankName": null,
+    "accountNumber": null,
+    "ifscCode": null,
+    "upiId": null,
+    "payoutCycle": null
+  },
+  "25": {
+    "accountHolder": "azam vohra",
+    "bankName": null,
+    "accountNumber": "346532463463345634",
+    "ifscCode": "HDFC0002354",
+    "upiId": "exqample@upi",
+    "payoutCycle": null
+  },
+  "27": {
+    "accountHolder": "jeeva chauhan",
+    "bankName": null,
+    "accountNumber": "532534534532535345",
+    "ifscCode": "DFSS0002342",
+    "upiId": "jeevacbi@upi",
+    "payoutCycle": null
+  },
+  "28": {
+    "accountHolder": "jeetesh salve",
+    "bankName": null,
+    "accountNumber": "867956978568568585",
+    "ifscCode": "GSDG0004546",
+    "upiId": "jeeteshsbi@upi",
+    "payoutCycle": null
+  },
+  "29": {
+    "accountHolder": "Tarun",
+    "bankName": "central bank of india",
+    "branchName": "Vijay nagar branch",
+    "accountNumber": "243234234234234234",
+    "ifscCode": "HDFG0002132",
+    "upiId": "tarunpay@upi",
+    "payoutCycle": null
+  },
+  "30": {
+    "accountHolder": "Vendor One",
+    "bankName": "BOB",
+    "accountNumber": "1211223234343",
+    "ifscCode": "abcd1243",
+    "payoutCycle": "30 Days"
+  },
+  "34": {
+    "accountHolder": null,
+    "bankName": null,
+    "accountNumber": null,
+    "ifscCode": null,
+    "upiId": null,
+    "payoutCycle": null
+  },
+  "35": {
+    "accountHolder": "AMISHA",
+    "bankName": "HDFC Bank",
+    "accountNumber": "123456789123",
+    "ifscCode": "HDFC0001234",
+    "payoutCycle": "Weekly"
+  },
+  "95": {
+    "accountHolder": null,
+    "bankName": null,
+    "accountNumber": null,
+    "ifscCode": null,
+    "payoutCycle": null
+  },
+  "99": {
+    "accountHolder": "suneel",
+    "bankName": null,
+    "accountNumber": "876868688876868766",
+    "ifscCode": "HDCF0006768",
+    "upiId": "example@upi",
+    "payoutCycle": null
+  }
+}

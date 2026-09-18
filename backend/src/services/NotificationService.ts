@@ -1,0 +1,1718 @@
+import prisma from '../config/db';
+import { FirebaseService } from './FirebaseService';
+import { SmsService } from './SmsService';
+import { EmailService } from './EmailService';
+import { emitDataUpdatedToUser, emitNotificationUpdated } from '../realtime/socketServer';
+import { ADMIN_AS_VENDOR_ROLES, ADMIN_PORTAL_ROLES } from '../utils/roles';
+
+export type NotificationType =
+  | 'OTP'
+  | 'TRIAL_BOOKED'
+  | 'TRIAL_APPROVED'
+  | 'TRIAL_REMINDER'
+  | 'FINAL_REMINDER'
+  | 'TRIAL_CANCELLED'
+  | 'BOOKING_CANCELLED'
+  | 'VENDOR_UNAVAILABLE'
+  | 'RESCHEDULED'
+  | 'ORDER_PLACED_VENDOR'
+  | 'ORDER_ACCEPTED_CUSTOMER'
+  | 'ORDER_REJECTED_CUSTOMER'
+  | 'REVIEW_SUBMITTED'
+  | 'REVIEW_INVALID_PRODUCT'
+  | 'ADMIN_VENDOR_ORDER'
+  | 'ADMIN_VENDOR_INVENTORY'
+  | 'ADMIN_VENDOR_FINANCE'
+  | 'ADMIN_VENDOR_PRODUCT'
+  | 'ADMIN_VENDOR_SUPPORT'
+  | 'ADMIN_VENDOR_SYSTEM'
+  | 'INDIVIDUAL_VENDOR_PRODUCT_ADDED'
+  | 'INDIVIDUAL_VENDOR_CONTRACT_UPDATED'
+  | 'INDIVIDUAL_VENDOR_PRODUCT_STATUS_CHANGED'
+  | 'INDIVIDUAL_VENDOR_EARNING'
+  | 'INDIVIDUAL_VENDOR_SUPPORT';
+
+type NotificationChannel = 'FCM' | 'SMS' | 'EMAIL';
+type DeliveryStatus = 'SENT' | 'FAILED';
+type InAppNotification = {
+  id: string;
+  userId: string;
+  type: NotificationType;
+  title: string;
+  message: string;
+  data: Record<string, string>;
+  createdAt: string;
+  readAt: string | null;
+};
+type RealtimeDataDomain =
+  | 'orders'
+  | 'products'
+  | 'trials'
+  | 'operations'
+  | 'refunds'
+  | 'finance'
+  | 'support'
+  | 'dashboard';
+
+const INDIVIDUAL_VENDOR_NOTIFICATION_TYPES = new Set<NotificationType>([
+  'INDIVIDUAL_VENDOR_PRODUCT_ADDED',
+  'INDIVIDUAL_VENDOR_CONTRACT_UPDATED',
+  'INDIVIDUAL_VENDOR_PRODUCT_STATUS_CHANGED',
+  'INDIVIDUAL_VENDOR_EARNING',
+  'INDIVIDUAL_VENDOR_SUPPORT'
+]);
+
+const ADMIN_AS_VENDOR_NOTIFICATION_TYPES = new Set<NotificationType>([
+  'ADMIN_VENDOR_ORDER',
+  'ADMIN_VENDOR_INVENTORY',
+  'ADMIN_VENDOR_FINANCE',
+  'ADMIN_VENDOR_PRODUCT',
+  'ADMIN_VENDOR_SUPPORT',
+  'ADMIN_VENDOR_SYSTEM'
+]);
+
+const NOTIFICATION_LOG_COMPATIBLE_TYPES = new Set<NotificationType>([
+  'OTP',
+  'TRIAL_BOOKED',
+  'TRIAL_APPROVED',
+  'TRIAL_REMINDER',
+  'FINAL_REMINDER',
+  'TRIAL_CANCELLED',
+  'BOOKING_CANCELLED',
+  'VENDOR_UNAVAILABLE',
+  'RESCHEDULED',
+  'ORDER_PLACED_VENDOR',
+  'ORDER_ACCEPTED_CUSTOMER',
+  'ORDER_REJECTED_CUSTOMER',
+  'REVIEW_SUBMITTED',
+  'REVIEW_INVALID_PRODUCT',
+  'ADMIN_VENDOR_ORDER',
+  'ADMIN_VENDOR_INVENTORY',
+  'ADMIN_VENDOR_FINANCE',
+  'ADMIN_VENDOR_PRODUCT',
+  'ADMIN_VENDOR_SUPPORT',
+  'ADMIN_VENDOR_SYSTEM'
+]);
+
+const getNotificationLogQueryableTypes = (
+  allowedTypes?: ReadonlySet<NotificationType>
+) => {
+  if (!allowedTypes) return undefined;
+  return Array.from(allowedTypes).filter((type) =>
+    NOTIFICATION_LOG_COMPATIBLE_TYPES.has(type)
+  );
+};
+
+const isCriticalType = (type: NotificationType) =>
+  type === 'TRIAL_APPROVED' ||
+  type === 'FINAL_REMINDER' ||
+  type === 'TRIAL_CANCELLED' ||
+  type === 'BOOKING_CANCELLED' ||
+  type === 'VENDOR_UNAVAILABLE' ||
+  type === 'ORDER_PLACED_VENDOR' ||
+  type === 'ORDER_ACCEPTED_CUSTOMER' ||
+  type === 'ORDER_REJECTED_CUSTOMER';
+
+const isOtpType = (type: NotificationType) => type === 'OTP';
+
+const shouldSendSmsForType = (type: NotificationType) =>
+  isOtpType(type) || isCriticalType(type);
+
+const now = () => new Date();
+const toBigInt = (id: string | bigint) => (typeof id === 'bigint' ? id : BigInt(id));
+const normalizeUserKey = (value: string | bigint | number) => String(value).trim();
+const normalizeTypeKey = (value: unknown) => String(value || '').trim().toUpperCase();
+const hasAllowedType = (
+  type: unknown,
+  allowedTypes?: ReadonlySet<NotificationType>
+) => !allowedTypes || allowedTypes.has(normalizeTypeKey(type) as NotificationType);
+
+const formatNotificationLabel = (value: unknown) =>
+  String(value || '')
+    .trim()
+    .toLowerCase()
+    .split(/[_\s-]+/)
+    .filter(Boolean)
+    .map((part, index) =>
+      index === 0
+        ? `${part.charAt(0).toUpperCase()}${part.slice(1)}`
+        : part
+    )
+    .join(' ');
+
+const buildRealtimeRefs = (data?: Record<string, string>) => {
+  const normalized = Object.fromEntries(
+    Object.entries(data || {}).map(([key, value]) => [key, String(value || '').trim()])
+  );
+  return Object.fromEntries(
+    Object.entries(normalized).filter(([, value]) => value)
+  );
+};
+
+const getRealtimeDomainsForNotification = (
+  type: NotificationType
+): RealtimeDataDomain[] => {
+  switch (type) {
+    case 'TRIAL_BOOKED':
+    case 'TRIAL_APPROVED':
+    case 'TRIAL_REMINDER':
+    case 'FINAL_REMINDER':
+    case 'TRIAL_CANCELLED':
+      return ['trials', 'dashboard'];
+    case 'ORDER_PLACED_VENDOR':
+    case 'ORDER_ACCEPTED_CUSTOMER':
+    case 'ORDER_REJECTED_CUSTOMER':
+      return ['orders', 'dashboard'];
+    case 'ADMIN_VENDOR_ORDER':
+      return ['orders', 'operations', 'dashboard'];
+    case 'ADMIN_VENDOR_PRODUCT':
+    case 'INDIVIDUAL_VENDOR_PRODUCT_ADDED':
+    case 'INDIVIDUAL_VENDOR_PRODUCT_STATUS_CHANGED':
+      return ['products', 'dashboard'];
+    case 'ADMIN_VENDOR_FINANCE':
+    case 'INDIVIDUAL_VENDOR_EARNING':
+      return ['finance', 'dashboard'];
+    case 'ADMIN_VENDOR_SUPPORT':
+    case 'INDIVIDUAL_VENDOR_SUPPORT':
+      return ['support', 'dashboard'];
+    case 'ADMIN_VENDOR_INVENTORY':
+    case 'ADMIN_VENDOR_SYSTEM':
+      return ['products', 'operations', 'dashboard'];
+    case 'BOOKING_CANCELLED':
+    case 'VENDOR_UNAVAILABLE':
+    case 'RESCHEDULED':
+      return ['orders', 'trials', 'dashboard'];
+    case 'REVIEW_SUBMITTED':
+    case 'REVIEW_INVALID_PRODUCT':
+      return ['orders'];
+    default:
+      return [];
+  }
+};
+
+const isIndividualVendorRole = (value: unknown) =>
+  normalizeTypeKey(value) === 'INDIVIDUAL_VENDOR';
+
+const normalizeNotificationDataRecord = (value: unknown): Record<string, string> => {
+  if (!value || typeof value !== 'object' || Array.isArray(value)) return {};
+  return Object.fromEntries(
+    Object.entries(value as Record<string, unknown>).map(([entryKey, entryValue]) => [
+      entryKey,
+      String(entryValue)
+    ])
+  );
+};
+
+const NOTIFICATION_DEDUPE_WINDOW_MS = 2 * 60 * 1000;
+const NOTIFICATION_DEDUPE_FETCH_CAP = 250;
+const NOTIFICATION_FINGERPRINT_IGNORED_DATA_KEYS = new Set([
+  'source',
+  'notificationId',
+  'createdAt',
+  'readAt',
+  'timestamp',
+  'updatedAt'
+]);
+
+const normalizeNotificationText = (value: unknown) =>
+  String(value || '')
+    .trim()
+    .replace(/\s+/g, ' ')
+    .toLowerCase();
+
+const serializeNotificationDataForFingerprint = (
+  value: unknown,
+  options?: { includeIgnoredKeys?: boolean }
+) => {
+  const normalized = normalizeNotificationDataRecord(value);
+  const orderedEntries = Object.entries(normalized).sort(([a], [b]) =>
+    a.localeCompare(b)
+  );
+  const filteredEntries = orderedEntries.filter(([key, entryValue]) => {
+    if (!String(entryValue || '').trim()) return false;
+    if (options?.includeIgnoredKeys) return true;
+    return !NOTIFICATION_FINGERPRINT_IGNORED_DATA_KEYS.has(key);
+  });
+  return JSON.stringify(filteredEntries);
+};
+
+const buildNotificationFingerprint = (
+  payload: {
+    type?: unknown;
+    title?: unknown;
+    message?: unknown;
+    data?: unknown;
+  },
+  options?: { includeType?: boolean; includeIgnoredKeys?: boolean }
+) => {
+  const parts = [
+    normalizeNotificationText(payload.title),
+    normalizeNotificationText(payload.message),
+    serializeNotificationDataForFingerprint(payload.data, {
+      includeIgnoredKeys: options?.includeIgnoredKeys
+    })
+  ];
+
+  if (options?.includeType !== false) {
+    parts.unshift(normalizeTypeKey(payload.type));
+  }
+
+  return parts.join('|');
+};
+
+const getNotificationCreatedAtMs = (value: unknown) => {
+  const ts = new Date(value ? String(value) : now().toISOString()).getTime();
+  return Number.isFinite(ts) ? ts : 0;
+};
+
+const dedupeRecentNotificationRows = <T extends {
+  type?: unknown;
+  title?: unknown;
+  message?: unknown;
+  data?: unknown;
+  createdAt?: unknown;
+}>(rows: T[]) => {
+  const latestByFingerprint = new Map<string, number>();
+  const deduped: T[] = [];
+
+  for (const row of rows) {
+    const fingerprint = buildNotificationFingerprint(row, {
+      includeType: false
+    });
+    const createdAtMs = getNotificationCreatedAtMs(row?.createdAt);
+    const latestSeen = latestByFingerprint.get(fingerprint);
+
+    if (
+      latestSeen !== undefined &&
+      Math.abs(latestSeen - createdAtMs) <= NOTIFICATION_DEDUPE_WINDOW_MS
+    ) {
+      continue;
+    }
+
+    latestByFingerprint.set(fingerprint, createdAtMs);
+    deduped.push(row);
+  }
+
+  return deduped;
+};
+
+const getInAppNotificationModel = () => (prisma as any).inAppNotification;
+
+const buildLegacyLogNotificationId = (rowId: unknown) =>
+  `legacy-log-${String(rowId || '')}`;
+
+const buildBootstrapNotificationId = (targetUserId: string, sourceId: unknown) =>
+  `bootstrap-${normalizeUserKey(targetUserId)}-${String(sourceId || '')}`;
+
+const mapInAppNotificationRow = (row: any): InAppNotification => ({
+  id: String(row?.id || ''),
+  userId: normalizeUserKey(row?.userId || ''),
+  type: String(row?.type || 'ORDER_ACCEPTED_CUSTOMER') as NotificationType,
+  title: String(row?.title || 'Notification'),
+  message: String(row?.message || ''),
+  data: normalizeNotificationDataRecord(row?.data),
+  createdAt: row?.createdAt
+    ? new Date(row.createdAt).toISOString()
+    : now().toISOString(),
+  readAt: row?.readAt ? new Date(row.readAt).toISOString() : null
+});
+
+const buildInAppWhere = (
+  userIdBig: bigint,
+  allowedTypes?: ReadonlySet<NotificationType>
+) => {
+  const where: Record<string, unknown> = { userId: userIdBig };
+  if (allowedTypes && allowedTypes.size > 0) {
+    where.type = { in: Array.from(allowedTypes) };
+  }
+  return where;
+};
+
+const countUnreadInAppNotifications = async (
+  userId: string,
+  allowedTypes?: ReadonlySet<NotificationType>
+) => {
+  const model = getInAppNotificationModel();
+  if (!model?.findMany) return 0;
+
+  const where = {
+    ...buildInAppWhere(toBigInt(normalizeUserKey(userId)), allowedTypes),
+    readAt: null
+  };
+
+  const rows = await model.findMany({
+    where,
+    orderBy: { createdAt: 'desc' },
+    take: NOTIFICATION_DEDUPE_FETCH_CAP
+  });
+
+  return dedupeRecentNotificationRows(rows || []).length;
+};
+
+const appendInAppNotification = async (payload: {
+  userId: string;
+  type: NotificationType;
+  title: string;
+  message: string;
+  data?: Record<string, string>;
+}) => {
+  const model = getInAppNotificationModel();
+  if (!model?.create || !model?.findMany) {
+    throw new Error(
+      'InAppNotification table not available. Run prisma migrate + prisma generate.'
+    );
+  }
+
+  const key = normalizeUserKey(payload.userId);
+  const incomingStrictFingerprint = buildNotificationFingerprint(payload, {
+    includeIgnoredKeys: true
+  });
+  const incomingDisplayFingerprint = buildNotificationFingerprint(payload, {
+    includeType: false
+  });
+  const dedupeCutoff = new Date(Date.now() - NOTIFICATION_DEDUPE_WINDOW_MS);
+  const recentCandidates = await model.findMany({
+    where: {
+      userId: toBigInt(key),
+      createdAt: {
+        gt: dedupeCutoff
+      }
+    },
+    orderBy: { createdAt: 'desc' },
+    take: 20
+  });
+
+  const existingDuplicate = (recentCandidates || []).find((row: any) => {
+    const strictFingerprint = buildNotificationFingerprint(row, {
+      includeIgnoredKeys: true
+    });
+    const displayFingerprint = buildNotificationFingerprint(row, {
+      includeType: false
+    });
+    if (
+      strictFingerprint !== incomingStrictFingerprint &&
+      displayFingerprint !== incomingDisplayFingerprint
+    ) {
+      return false;
+    }
+    return (
+      Math.abs(
+        getNotificationCreatedAtMs(row?.createdAt) - Date.now()
+      ) <= NOTIFICATION_DEDUPE_WINDOW_MS
+    );
+  });
+
+  if (existingDuplicate) {
+    return mapInAppNotificationRow(existingDuplicate);
+  }
+
+  const created = await model.create({
+    data: {
+      userId: toBigInt(key),
+      type: payload.type,
+      title: payload.title,
+      message: payload.message,
+      data: payload.data || {}
+    }
+  });
+
+  const notification = mapInAppNotificationRow(created);
+  const unreadCount = await countUnreadInAppNotifications(key);
+  emitNotificationUpdated(key, {
+    unreadCount,
+    notification: {
+      ...notification,
+      read: false
+    }
+  });
+  return notification;
+};
+
+const listInAppNotifications = async (
+  userId: string,
+  page: number,
+  limit: number,
+  allowedTypes?: ReadonlySet<NotificationType>
+) => {
+  const model = getInAppNotificationModel();
+  if (!model?.findMany || !model?.count) {
+    return {
+      notifications: [],
+      pagination: { page, limit, total: 0, pages: 0 },
+      unreadCount: 0
+    };
+  }
+
+  const key = normalizeUserKey(userId);
+  const where = buildInAppWhere(toBigInt(key), allowedTypes);
+  const scanLimit = Math.min(
+    Math.max(page * limit * 3, limit * 3),
+    NOTIFICATION_DEDUPE_FETCH_CAP
+  );
+
+  const [rawTotal, unreadCount, rows] = await Promise.all([
+    model.count({ where }),
+    countUnreadInAppNotifications(key, allowedTypes),
+    model.findMany({
+      where,
+      orderBy: { createdAt: 'desc' },
+      take: scanLimit
+    })
+  ]);
+
+  const dedupedRows = dedupeRecentNotificationRows(rows || []);
+  const pageStart = (page - 1) * limit;
+  const pageRows = dedupedRows.slice(pageStart, pageStart + limit);
+  const visibleTotal = Math.max(
+    Number(rawTotal || 0) - Math.max(0, (rows || []).length - dedupedRows.length),
+    dedupedRows.length
+  );
+
+  return {
+    notifications: pageRows.map((row: any) => ({
+      ...mapInAppNotificationRow(row),
+      read: row?.readAt !== null
+    })),
+    pagination: {
+      page,
+      limit,
+      total: visibleTotal,
+      pages: visibleTotal > 0 ? Math.ceil(visibleTotal / limit) : 0
+    },
+    unreadCount
+  };
+};
+
+const markInAppNotificationsRead = async (
+  userId: string,
+  options?: { ids?: string[]; markAll?: boolean },
+  allowedTypes?: ReadonlySet<NotificationType>
+) => {
+  const model = getInAppNotificationModel();
+  if (!model?.updateMany) {
+    return { updated: 0, unreadCount: 0 };
+  }
+
+  const key = normalizeUserKey(userId);
+  const ids = Array.isArray(options?.ids)
+    ? options!.ids.map((id) => String(id || '').trim()).filter(Boolean)
+    : [];
+  const markAll = options?.markAll === true || ids.length === 0;
+
+  const where: Record<string, unknown> = {
+    ...buildInAppWhere(toBigInt(key), allowedTypes),
+    readAt: null
+  };
+
+  if (!markAll) {
+    where.id = { in: ids };
+  }
+
+  const result = await model.updateMany({
+    where,
+    data: {
+      readAt: now()
+    }
+  });
+
+  const updated = Number(result?.count || 0);
+  const unreadCount = await countUnreadInAppNotifications(key, allowedTypes);
+  if (updated > 0) {
+    emitNotificationUpdated(key, { unreadCount });
+  }
+  return { updated, unreadCount };
+};
+
+const resolveVendorNotificationTarget = async (vendorIdentifier: string) => {
+  let vendorIdBig: bigint;
+  try {
+    vendorIdBig = BigInt(vendorIdentifier);
+  } catch {
+    return null;
+  }
+
+  const vendor = await prisma.vendorProfile.findFirst({
+    where: {
+      OR: [{ id: vendorIdBig }, { userId: vendorIdBig }]
+    },
+    select: {
+      userId: true,
+      user: {
+        select: {
+          role: true
+        }
+      }
+    }
+  });
+
+  if (!vendor?.userId) return null;
+
+  return {
+    userId: vendor.userId.toString(),
+    role: String(vendor.user?.role || '')
+  };
+};
+
+const safeLog = async (params: {
+  userId: bigint;
+  type: NotificationType;
+  channel: NotificationChannel;
+  status: DeliveryStatus;
+  title?: string | null;
+  message: string;
+  provider?: string | null;
+  error?: string | null;
+  metadata?: any;
+  sentAt?: Date | null;
+}) => {
+  const model = (prisma as any).notificationLog;
+  if (!model?.create) {
+    console.log('NotificationLog skipped (prisma generate/migration pending)', {
+      ...params,
+      userId: params.userId.toString()
+    });
+    return;
+  }
+
+  if (!NOTIFICATION_LOG_COMPATIBLE_TYPES.has(params.type)) {
+    return;
+  }
+
+  try {
+    await model.create({
+      data: {
+        userId: params.userId,
+        type: params.type,
+        channel: params.channel,
+        status: params.status,
+        title: params.title ?? null,
+        message: params.message,
+        provider: params.provider ?? null,
+        error: params.error ?? null,
+        metadata: params.metadata ?? undefined,
+        sentAt: params.sentAt ?? null
+      }
+    });
+  } catch (error) {
+    console.error('NotificationLog write failed; continuing without dashboard log.', {
+      error,
+      type: params.type,
+      channel: params.channel,
+      userId: params.userId.toString()
+    });
+  }
+};
+
+const fetchActiveFcmTokens = async (userId: bigint) => {
+  const model = (prisma as any).userDevice;
+  if (!model?.findMany) return [];
+  try {
+    const rows = await model.findMany({
+      where: { userId, isActive: true },
+      select: { fcmToken: true }
+    });
+    return (rows || []).map((row: any) => String(row.fcmToken)).filter(Boolean);
+  } catch (error) {
+    console.error('UserDevice read failed; treating as no FCM tokens.', {
+      error,
+      userId: userId.toString()
+    });
+    return [];
+  }
+};
+
+const deactivateBadTokens = async (tokens: string[]) => {
+  if (tokens.length === 0) return;
+  const model = (prisma as any).userDevice;
+  if (!model?.updateMany) return;
+  try {
+    await model.updateMany({
+      where: { fcmToken: { in: tokens } },
+      data: { isActive: false, lastUsedAt: now() }
+    });
+  } catch (error) {
+    console.error('UserDevice token deactivation failed; continuing.', { error });
+  }
+};
+
+const resolveVendorUserId = async (vendorIdentifier: string) => {
+  const target = await resolveVendorNotificationTarget(vendorIdentifier);
+  return target?.userId || null;
+};
+
+const resolveOrderItemNotificationContext = async (orderItemIdentifier: string) => {
+  const normalizedOrderItemId = String(orderItemIdentifier || '').trim();
+  if (!normalizedOrderItemId) return null;
+
+  let orderItemIdBig: bigint;
+  try {
+    orderItemIdBig = BigInt(normalizedOrderItemId);
+  } catch {
+    return null;
+  }
+
+  const orderItem = await prisma.orderItem.findUnique({
+    where: { id: orderItemIdBig },
+    select: {
+      id: true,
+      orderId: true,
+      order: {
+        select: {
+          orderNo: true
+        }
+      },
+      product: {
+        select: {
+          name: true
+        }
+      }
+    }
+  }).catch(() => null);
+
+  if (!orderItem) return null;
+
+  const orderNo = String(orderItem.order?.orderNo || `ORD-${orderItem.orderId.toString()}`).trim();
+  const productName = String(orderItem.product?.name || 'Product').trim() || 'Product';
+
+  return {
+    orderItemId: orderItem.id.toString(),
+    orderNo,
+    productName,
+    itemLabel: `${orderNo} - ${productName}`
+  };
+};
+
+const notifyAdminAsVendorUsers = async (payload: {
+  type: NotificationType;
+  title: string;
+  message: string;
+  data?: Record<string, string>;
+}) => {
+  const admins = await prisma.user.findMany({
+    where: {
+      role: { in: ADMIN_AS_VENDOR_ROLES },
+      status: 'ACTIVE'
+    },
+    select: { id: true }
+  });
+
+  if (!admins.length) return;
+
+  await Promise.all(
+    admins.map((admin) =>
+      NotificationService.sendNotification({
+        userId: admin.id.toString(),
+        type: payload.type,
+        title: payload.title,
+        message: payload.message,
+        data: payload.data
+      })
+    )
+  );
+};
+
+const readNotificationLogRowsForBackfill = async (
+  userIdBig: bigint,
+  allowedTypes?: ReadonlySet<NotificationType>
+) => {
+  const model = (prisma as any).notificationLog;
+  if (!model?.findMany) return [];
+
+  const baseWhere: Record<string, unknown> = { userId: userIdBig };
+  const queryableTypes = getNotificationLogQueryableTypes(allowedTypes);
+  if (allowedTypes && (!queryableTypes || queryableTypes.length === 0)) {
+    return [];
+  }
+  if (queryableTypes && queryableTypes.length > 0) {
+    baseWhere.type = { in: queryableTypes };
+  }
+
+  try {
+    const inAppRows = await model.findMany({
+      where: {
+        ...baseWhere,
+        provider: 'IN_APP'
+      },
+      orderBy: { createdAt: 'desc' },
+      take: 500
+    });
+
+    if (Array.isArray(inAppRows) && inAppRows.length > 0) {
+      return inAppRows;
+    }
+
+    return model.findMany({
+      where: baseWhere,
+      orderBy: { createdAt: 'desc' },
+      take: 500
+    });
+  } catch (error) {
+    console.error('NotificationLog read for backfill failed.', {
+      error,
+      userId: userIdBig.toString()
+    });
+    return [];
+  }
+};
+
+const logInAppNotificationReplica = async (params: {
+  userId: bigint;
+  type: NotificationType;
+  title: string;
+  message: string;
+  data?: Record<string, string>;
+}) => {
+  await safeLog({
+    userId: params.userId,
+    type: params.type,
+    channel: 'FCM',
+    status: 'SENT',
+    title: params.title,
+    message: params.message,
+    provider: 'IN_APP',
+    metadata: {
+      inApp: true,
+      data: params.data || {}
+    },
+    sentAt: now()
+  });
+};
+
+const mapNotificationLogRowToInAppCreateData = (
+  row: any,
+  userId: string
+) => {
+  const metadata =
+    row?.metadata && typeof row.metadata === 'object' && row.metadata !== null
+      ? (row.metadata as Record<string, unknown>)
+      : {};
+
+  return {
+    id: buildLegacyLogNotificationId(row?.id),
+    userId: toBigInt(userId),
+    type: String(row?.type || 'ORDER_ACCEPTED_CUSTOMER'),
+    title: String(row?.title || row?.type || 'Notification'),
+    message: String(row?.message || ''),
+    data: normalizeNotificationDataRecord(metadata.data),
+    createdAt: row?.createdAt ? new Date(row.createdAt) : now(),
+    readAt: null
+  };
+};
+
+const backfillFromLegacyNotificationLog = async (
+  userId: string,
+  allowedTypes?: ReadonlySet<NotificationType>
+) => {
+  const normalizedUserId = normalizeUserKey(userId);
+  const inAppModel = getInAppNotificationModel();
+  const logModel = (prisma as any).notificationLog;
+  if (!inAppModel?.count || !inAppModel?.createMany || !logModel?.findMany) {
+    return false;
+  }
+
+  const userIdBig = toBigInt(normalizedUserId);
+  const existingCount = await inAppModel.count({
+    where: buildInAppWhere(userIdBig, allowedTypes)
+  });
+  if (Number(existingCount || 0) > 0) {
+    return false;
+  }
+
+  const rows = await readNotificationLogRowsForBackfill(userIdBig, allowedTypes);
+  if (!Array.isArray(rows) || rows.length === 0) return false;
+
+  const data = rows
+    .filter((entry: any) => hasAllowedType(entry?.type, allowedTypes))
+    .map((row: any) =>
+      mapNotificationLogRowToInAppCreateData(row, normalizedUserId)
+    );
+
+  if (data.length === 0) return false;
+
+  await inAppModel.createMany({
+    data,
+    skipDuplicates: true
+  });
+  return true;
+};
+
+const cloneNotificationsToUser = async (
+  targetUserId: string,
+  sourceRows: InAppNotification[]
+) => {
+  const inAppModel = getInAppNotificationModel();
+  if (!inAppModel?.count || !inAppModel?.createMany) {
+    return false;
+  }
+
+  const normalizedTargetUserId = normalizeUserKey(targetUserId);
+  if (sourceRows.length === 0) {
+    return false;
+  }
+
+  const existingCount = await inAppModel.count({
+    where: {
+      userId: toBigInt(normalizedTargetUserId),
+      type: { in: sourceRows.map((row) => String(row.type)) }
+    }
+  });
+  if (Number(existingCount || 0) > 0) {
+    return false;
+  }
+
+  const data = sourceRows.map((row) => ({
+    id: buildBootstrapNotificationId(normalizedTargetUserId, row.id),
+    userId: toBigInt(normalizedTargetUserId),
+    type: String(row.type),
+    title: row.title,
+    message: row.message,
+    data: row.data || {},
+    createdAt: row.createdAt ? new Date(row.createdAt) : now(),
+    readAt: null
+  }));
+
+  await inAppModel.createMany({
+    data,
+    skipDuplicates: true
+  });
+  return true;
+};
+
+const bootstrapAdminAsVendorNotificationsFromPeers = async (userId: string) => {
+  const normalizedUserId = normalizeUserKey(userId);
+  const admins = await prisma.user.findMany({
+    where: {
+      role: { in: ADMIN_AS_VENDOR_ROLES },
+      status: 'ACTIVE'
+    },
+    select: { id: true }
+  });
+
+  const peerIds = admins
+    .map((row) => normalizeUserKey(row.id))
+    .filter((id) => id !== normalizedUserId);
+
+  if (peerIds.length === 0) return false;
+
+  const inAppModel = getInAppNotificationModel();
+  if (inAppModel?.findMany) {
+    const peerRows = await inAppModel.findMany({
+      where: {
+        userId: { in: peerIds.map((id) => toBigInt(id)) },
+        type: { in: Array.from(ADMIN_AS_VENDOR_NOTIFICATION_TYPES) }
+      },
+      orderBy: { createdAt: 'desc' },
+      take: 50
+    });
+
+    if (Array.isArray(peerRows) && peerRows.length > 0) {
+      return cloneNotificationsToUser(
+        normalizedUserId,
+        peerRows.map(mapInAppNotificationRow)
+      );
+    }
+  }
+
+  const model = (prisma as any).notificationLog;
+  if (!model?.findMany) return false;
+
+  try {
+    const notificationTypes = Array.from(ADMIN_AS_VENDOR_NOTIFICATION_TYPES);
+    const rows = await model.findMany({
+      where: {
+        userId: { in: peerIds.map((id) => toBigInt(id)) },
+        type: { in: notificationTypes },
+        provider: 'IN_APP'
+      },
+      orderBy: { createdAt: 'desc' },
+      take: 50
+    });
+
+    if (!Array.isArray(rows) || rows.length === 0) {
+      return false;
+    }
+
+    const mapped: InAppNotification[] = rows.map((row: any) => ({
+      id: buildLegacyLogNotificationId(row?.id),
+      userId: normalizedUserId,
+      type: String(row?.type || 'ADMIN_VENDOR_SYSTEM') as NotificationType,
+      title: String(row?.title || row?.type || 'Notification'),
+      message: String(row?.message || ''),
+      data:
+        row?.metadata && typeof row.metadata === 'object' && row.metadata !== null
+          ? Object.fromEntries(
+              Object.entries(
+                ((row.metadata as Record<string, unknown>).data as Record<
+                  string,
+                  unknown
+                >) || {}
+              ).map(([entryKey, entryValue]) => [entryKey, String(entryValue)])
+            )
+          : {},
+      createdAt: row?.createdAt
+        ? new Date(row.createdAt).toISOString()
+        : now().toISOString(),
+      readAt: null
+    }));
+
+    return cloneNotificationsToUser(normalizedUserId, mapped);
+  } catch (error) {
+    console.error('Admin-as-vendor notification bootstrap failed.', {
+      error,
+      userId: normalizedUserId
+    });
+    return false;
+  }
+};
+export const NotificationService = {
+  async registerFcmToken(userId: string, token: string, platform?: string) {
+    const trimmed = String(token || '').trim();
+    if (!trimmed) {
+      return { success: false, error: 'Token is required' };
+    }
+
+    const model = (prisma as any).userDevice;
+    if (!model?.upsert) {
+      return {
+        success: false,
+        error: 'UserDevice table not available. Run prisma migrate + prisma generate.'
+      };
+    }
+
+    const userIdBig = toBigInt(userId);
+
+    await model.upsert({
+      where: { fcmToken: trimmed },
+      update: { userId: userIdBig, platform: platform || null, isActive: true, lastUsedAt: now() },
+      create: { userId: userIdBig, fcmToken: trimmed, platform: platform || null, isActive: true, lastUsedAt: now() }
+    });
+
+    return { success: true };
+  },
+
+  async unregisterFcmToken(userId: string, token: string) {
+    const trimmed = String(token || '').trim();
+    if (!trimmed) {
+      return { success: false, error: 'Token is required' };
+    }
+
+    const model = (prisma as any).userDevice;
+    if (!model?.updateMany) {
+      return {
+        success: false,
+        error: 'UserDevice table not available. Run prisma migrate + prisma generate.'
+      };
+    }
+
+    const userIdBig = toBigInt(userId);
+    await model.updateMany({
+      where: { userId: userIdBig, fcmToken: trimmed },
+      data: { isActive: false, lastUsedAt: now() }
+    });
+
+    return { success: true };
+  },
+
+  async listMyNotifications(userId: string, query?: { page?: any; limit?: any }) {
+    const pageRaw = Number(query?.page ?? 1);
+    const limitRaw = Number(query?.limit ?? 20);
+    const page = Number.isFinite(pageRaw) && pageRaw > 0 ? Math.floor(pageRaw) : 1;
+    const limit = Number.isFinite(limitRaw) && limitRaw > 0 ? Math.min(Math.floor(limitRaw), 50) : 20;
+    const normalizedUserId = normalizeUserKey(userId);
+    await backfillFromLegacyNotificationLog(normalizedUserId);
+    return listInAppNotifications(normalizedUserId, page, limit);
+  },
+
+  async listIndividualVendorNotifications(
+    userId: string,
+    query?: { page?: any; limit?: any }
+  ) {
+    const pageRaw = Number(query?.page ?? 1);
+    const limitRaw = Number(query?.limit ?? 20);
+    const page = Number.isFinite(pageRaw) && pageRaw > 0 ? Math.floor(pageRaw) : 1;
+    const limit = Number.isFinite(limitRaw) && limitRaw > 0 ? Math.min(Math.floor(limitRaw), 50) : 20;
+    const normalizedUserId = normalizeUserKey(userId);
+    await backfillFromLegacyNotificationLog(
+      normalizedUserId,
+      INDIVIDUAL_VENDOR_NOTIFICATION_TYPES
+    );
+    return listInAppNotifications(
+      normalizedUserId,
+      page,
+      limit,
+      INDIVIDUAL_VENDOR_NOTIFICATION_TYPES
+    );
+  },
+
+  async listAdminAsVendorNotifications(
+    userId: string,
+    query?: { page?: any; limit?: any }
+  ) {
+    const pageRaw = Number(query?.page ?? 1);
+    const limitRaw = Number(query?.limit ?? 20);
+    const page = Number.isFinite(pageRaw) && pageRaw > 0 ? Math.floor(pageRaw) : 1;
+    const limit = Number.isFinite(limitRaw) && limitRaw > 0 ? Math.min(Math.floor(limitRaw), 50) : 20;
+    const normalizedUserId = normalizeUserKey(userId);
+    await backfillFromLegacyNotificationLog(
+      normalizedUserId,
+      ADMIN_AS_VENDOR_NOTIFICATION_TYPES
+    );
+
+    const inApp = await listInAppNotifications(
+      normalizedUserId,
+      page,
+      limit,
+      ADMIN_AS_VENDOR_NOTIFICATION_TYPES
+    );
+    if (inApp.pagination.total > 0) {
+      return inApp;
+    }
+
+    const bootstrapped = await bootstrapAdminAsVendorNotificationsFromPeers(
+      normalizedUserId
+    );
+    if (bootstrapped) {
+      return listInAppNotifications(
+        normalizedUserId,
+        page,
+        limit,
+        ADMIN_AS_VENDOR_NOTIFICATION_TYPES
+      );
+    }
+
+    return {
+      notifications: [],
+      pagination: { page, limit, total: 0, pages: 0 },
+      unreadCount: 0
+    };
+  },
+
+  async markMyNotificationsRead(userId: string, payload?: { ids?: string[]; markAll?: boolean }) {
+    const normalizedUserId = normalizeUserKey(userId);
+    await backfillFromLegacyNotificationLog(normalizedUserId);
+    return markInAppNotificationsRead(normalizedUserId, payload);
+  },
+
+  async markIndividualVendorNotificationsRead(
+    userId: string,
+    payload?: { ids?: string[]; markAll?: boolean }
+  ) {
+    const normalizedUserId = normalizeUserKey(userId);
+    await backfillFromLegacyNotificationLog(
+      normalizedUserId,
+      INDIVIDUAL_VENDOR_NOTIFICATION_TYPES
+    );
+    return markInAppNotificationsRead(
+      normalizedUserId,
+      payload,
+      INDIVIDUAL_VENDOR_NOTIFICATION_TYPES
+    );
+  },
+
+  async markAdminAsVendorNotificationsRead(
+    userId: string,
+    payload?: { ids?: string[]; markAll?: boolean }
+  ) {
+    const normalizedUserId = normalizeUserKey(userId);
+    await backfillFromLegacyNotificationLog(
+      normalizedUserId,
+      ADMIN_AS_VENDOR_NOTIFICATION_TYPES
+    );
+    await bootstrapAdminAsVendorNotificationsFromPeers(normalizedUserId);
+    return markInAppNotificationsRead(
+      normalizedUserId,
+      payload,
+      ADMIN_AS_VENDOR_NOTIFICATION_TYPES
+    );
+  },
+
+  async sendNotification(params: {
+    userId: string;
+    type: NotificationType;
+    title: string;
+    message: string;
+    data?: Record<string, string>;
+  }) {
+    const userIdBig = toBigInt(params.userId);
+    const user = await prisma.user.findUnique({
+      where: { id: userIdBig },
+      select: { id: true, phone: true, email: true, name: true }
+    });
+
+    if (!user) {
+      return { success: false, error: 'User not found' };
+    }
+
+    await appendInAppNotification({
+      userId: user.id.toString(),
+      type: params.type,
+      title: params.title,
+      message: params.message,
+      data: params.data
+    }).catch((error) => {
+      console.error('In-app notification write failed; continuing.', {
+        error,
+        userId: user.id.toString(),
+        type: params.type
+      });
+    });
+
+    await logInAppNotificationReplica({
+      userId: userIdBig,
+      type: params.type,
+      title: params.title,
+      message: params.message,
+      data: params.data
+    }).catch((error) => {
+      console.error('In-app notification log mirror failed; continuing.', {
+        error,
+        userId: user.id.toString(),
+        type: params.type
+      });
+    });
+
+    const realtimeDomains = getRealtimeDomainsForNotification(params.type);
+    if (realtimeDomains.length > 0) {
+      emitDataUpdatedToUser(user.id.toString(), {
+        domains: realtimeDomains,
+        refs: buildRealtimeRefs(params.data),
+        reason: params.type
+      });
+    }
+
+    // Some vendor records store phone in VendorProfile instead of User.phone.
+    const vendorPhoneFallback = !user.phone
+      ? await prisma.vendorProfile
+          .findUnique({ where: { userId: userIdBig }, select: { phone: true } })
+          .catch(() => null)
+      : null;
+
+    const resolvedPhone = String(user.phone || vendorPhoneFallback?.phone || '').trim() || null;
+
+    const fcmTokens = await fetchActiveFcmTokens(userIdBig);
+    const wantSms = shouldSendSmsForType(params.type);
+    const canTryFcm = !isOtpType(params.type) && fcmTokens.length > 0;
+
+    let fcmOk = false;
+    let fcmError: any = null;
+
+    if (canTryFcm) {
+      const result = await FirebaseService.sendMultipleNotifications(
+        fcmTokens,
+        params.title,
+        params.message,
+        params.data || {}
+      );
+
+      if ((result as any)?.success && (result as any)?.result) {
+        const multicast = (result as any).result;
+        fcmOk = Boolean(multicast.ok || multicast.successCount > 0);
+
+        const badTokens = (multicast.failures || [])
+          .filter((f: any) =>
+            String(f.code || '').includes('registration-token-not-registered') ||
+            String(f.code || '').includes('invalid-registration-token')
+          )
+          .map((f: any) => f.token);
+        await deactivateBadTokens(badTokens);
+
+        await safeLog({
+          userId: userIdBig,
+          type: params.type,
+          channel: 'FCM',
+          status: fcmOk ? 'SENT' : 'FAILED',
+          title: params.title,
+          message: params.message,
+          provider: 'FCM',
+          error: fcmOk ? null : 'FCM multicast had failures',
+          metadata: multicast,
+          sentAt: fcmOk ? now() : null
+        });
+      } else {
+        fcmError = (result as any)?.error || 'FCM failed';
+        await safeLog({
+          userId: userIdBig,
+          type: params.type,
+          channel: 'FCM',
+          status: 'FAILED',
+          title: params.title,
+          message: params.message,
+          provider: 'FCM',
+          error: String(fcmError),
+          sentAt: null
+        });
+      }
+    }
+
+    const shouldFallbackToSms =
+      (!canTryFcm || !fcmOk) && !isOtpType(params.type) && params.type !== 'TRIAL_REMINDER';
+    const shouldSendSms = (wantSms || shouldFallbackToSms) && Boolean(resolvedPhone);
+
+    let smsOk = false;
+    if ((wantSms || shouldFallbackToSms) && !resolvedPhone) {
+      await safeLog({
+        userId: userIdBig,
+        type: params.type,
+        channel: 'SMS',
+        status: 'FAILED',
+        title: params.title,
+        message: params.message,
+        provider: null,
+        error: 'User has no phone number',
+        sentAt: null
+      });
+    }
+
+    if (shouldSendSms) {
+      smsOk = await SmsService.sendSms(resolvedPhone!, params.message, { forceProvider: 'MSG91_THEN_TWILIO' });
+      await safeLog({
+        userId: userIdBig,
+        type: params.type,
+        channel: 'SMS',
+        status: smsOk ? 'SENT' : 'FAILED',
+        title: params.title,
+        message: params.message,
+        provider: smsOk ? 'MSG91/TWILIO' : null,
+        error: smsOk ? null : 'SMS provider failed',
+        sentAt: smsOk ? now() : null
+      });
+    }
+
+    if (String(process.env.EMAIL_ENABLED || '').toLowerCase() === 'true' && user.email) {
+      const emailResult = await EmailService.sendEmail({
+        to: user.email,
+        subject: params.title,
+        text: params.message
+      });
+      const emailOk = Boolean((emailResult as any)?.success);
+      await safeLog({
+        userId: userIdBig,
+        type: params.type,
+        channel: 'EMAIL',
+        status: emailOk ? 'SENT' : 'FAILED',
+        title: params.title,
+        message: params.message,
+        provider: 'EMAIL',
+        error: emailOk ? null : String((emailResult as any)?.error || 'Email failed'),
+        sentAt: emailOk ? now() : null
+      });
+    }
+
+    return {
+      success: Boolean((canTryFcm ? fcmOk : true) || smsOk),
+      channels: {
+        fcm: canTryFcm ? fcmOk : null,
+        sms: shouldSendSms ? smsOk : null,
+        fcmError: fcmError ? String(fcmError) : null
+      }
+    };
+  },
+
+  async notifyIndividualVendorProductAdded(
+    userId: string,
+    product: { id?: string | number | bigint; name?: string; status?: string | null }
+  ) {
+    const productId = String(product?.id || '').trim();
+    const productName = String(product?.name || 'Product').trim() || 'Product';
+    const statusLabel = formatNotificationLabel(product?.status || 'PENDING_APPROVAL');
+
+    await NotificationService.sendNotification({
+      userId,
+      type: 'INDIVIDUAL_VENDOR_PRODUCT_ADDED',
+      title: 'Product added successfully',
+      message: `${productName} has been added successfully. Current status: ${statusLabel}.`,
+      data: {
+        ...(productId ? { productId } : {}),
+        status: String(product?.status || 'PENDING_APPROVAL')
+      }
+    });
+  },
+
+  async notifyIndividualVendorContractUpdated(
+    userId: string,
+    payload?: { contractVersion?: string | null; revenueSharePercent?: number | null }
+  ) {
+    const contractVersion = String(payload?.contractVersion || '').trim();
+    const revenueSharePercent = Number(payload?.revenueSharePercent);
+    const hasRevenueShare =
+      Number.isFinite(revenueSharePercent) && revenueSharePercent >= 0;
+
+    const message = contractVersion
+      ? `Your contract version has been updated to ${contractVersion}.`
+      : hasRevenueShare
+        ? `Your agreement terms were updated. Revenue share is now ${revenueSharePercent}%.`
+        : 'Your agreement terms have been updated.';
+
+    await NotificationService.sendNotification({
+      userId,
+      type: 'INDIVIDUAL_VENDOR_CONTRACT_UPDATED',
+      title: 'Contract terms updated',
+      message,
+      data: {
+        ...(contractVersion ? { contractVersion } : {}),
+        ...(hasRevenueShare
+          ? { revenueSharePercent: String(revenueSharePercent) }
+          : {})
+      }
+    });
+  },
+
+  async notifyIndividualVendorProductStatusChanged(
+    userId: string,
+    payload: {
+      productId?: string | number | bigint;
+      productName?: string;
+      status: string;
+    }
+  ) {
+    const productId = String(payload?.productId || '').trim();
+    const productName = String(payload?.productName || 'Product').trim() || 'Product';
+    const status = String(payload?.status || '').trim() || 'UPDATED';
+    const statusLabel = formatNotificationLabel(status);
+
+    await NotificationService.sendNotification({
+      userId,
+      type: 'INDIVIDUAL_VENDOR_PRODUCT_STATUS_CHANGED',
+      title: 'Product status changed',
+      message: `${productName} status changed to ${statusLabel}.`,
+      data: {
+        ...(productId ? { productId } : {}),
+        status
+      }
+    });
+  },
+
+  async notifyIndividualVendorEarning(userId: string, amount: number) {
+    await NotificationService.sendNotification({
+      userId,
+      type: 'INDIVIDUAL_VENDOR_EARNING',
+      title: 'Earning update',
+      message: `Payout settlement of Rs ${amount} has been recorded for your account.`,
+      data: { amount: String(amount) }
+    });
+  },
+
+  async notifyIndividualVendorSupport(
+    userId: string,
+    payload: {
+      title: string;
+      message: string;
+      ticketId?: string;
+      complaintNo?: string;
+      status?: string;
+    }
+  ) {
+    await NotificationService.sendNotification({
+      userId,
+      type: 'INDIVIDUAL_VENDOR_SUPPORT',
+      title: payload.title,
+      message: payload.message,
+      data: {
+        ...(payload.ticketId ? { ticketId: payload.ticketId } : {}),
+        ...(payload.complaintNo ? { complaintNo: payload.complaintNo } : {}),
+        ...(payload.status ? { status: payload.status } : {})
+      }
+    });
+  },
+
+  async notifyAdminAsVendorProductUpdate(payload: {
+    title: string;
+    message: string;
+    productId?: string;
+    status?: string;
+    vendorId?: string;
+  }) {
+    await notifyAdminAsVendorUsers({
+      type: 'ADMIN_VENDOR_PRODUCT',
+      title: payload.title,
+      message: payload.message,
+      data: {
+        ...(payload.productId ? { productId: payload.productId } : {}),
+        ...(payload.status ? { status: payload.status } : {}),
+        ...(payload.vendorId ? { vendorId: payload.vendorId } : {})
+      }
+    });
+  },
+
+  async notifyAdminAsVendorOrderUpdate(payload: {
+    title: string;
+    message: string;
+    orderId?: string;
+    orderItemId?: string;
+    productId?: string;
+    trialRequestId?: string;
+    status?: string;
+  }) {
+    await notifyAdminAsVendorUsers({
+      type: 'ADMIN_VENDOR_ORDER',
+      title: payload.title,
+      message: payload.message,
+      data: {
+        ...(payload.orderId ? { orderId: payload.orderId } : {}),
+        ...(payload.orderItemId ? { orderItemId: payload.orderItemId } : {}),
+        ...(payload.productId ? { productId: payload.productId } : {}),
+        ...(payload.trialRequestId ? { trialRequestId: payload.trialRequestId } : {}),
+        ...(payload.status ? { status: payload.status } : {})
+      }
+    });
+  },
+
+  async notifyAdminAsVendorFinanceUpdate(payload: {
+    title: string;
+    message: string;
+    orderId?: string;
+    orderItemId?: string;
+    amount?: string | number;
+  }) {
+    await notifyAdminAsVendorUsers({
+      type: 'ADMIN_VENDOR_FINANCE',
+      title: payload.title,
+      message: payload.message,
+      data: {
+        ...(payload.orderId ? { orderId: payload.orderId } : {}),
+        ...(payload.orderItemId ? { orderItemId: payload.orderItemId } : {}),
+        ...(payload.amount !== undefined ? { amount: String(payload.amount) } : {})
+      }
+    });
+  },
+
+  async notifyAdminAsVendorSupportUpdate(payload: {
+    title: string;
+    message: string;
+    ticketId?: string;
+    complaintNo?: string;
+    status?: string;
+  }) {
+    await notifyAdminAsVendorUsers({
+      type: 'ADMIN_VENDOR_SUPPORT',
+      title: payload.title,
+      message: payload.message,
+      data: {
+        ...(payload.ticketId ? { ticketId: payload.ticketId } : {}),
+        ...(payload.complaintNo ? { complaintNo: payload.complaintNo } : {}),
+        ...(payload.status ? { status: payload.status } : {})
+      }
+    });
+  },
+
+  // Backward-compatible helpers (existing code calls these)
+  async notifyVendorNewOrder(vendorId: string, orderId: string) {
+    const vendor = await prisma.vendorProfile.findUnique({
+      where: { id: BigInt(vendorId) },
+      include: { user: true }
+    });
+    if (!vendor) return;
+
+    await NotificationService.sendNotification({
+      userId: vendor.userId.toString(),
+      type: 'ORDER_PLACED_VENDOR',
+      title: 'New order received',
+      message: `New order received! Order ID: ${orderId}. Please accept within 24 hours.`,
+      data: { orderId }
+    });
+
+    if (isIndividualVendorRole(vendor.user?.role)) {
+      await NotificationService.notifyAdminAsVendorOrderUpdate({
+        title: 'New rental order',
+        message: `A new rental order ${orderId} was placed for ${vendor.shopName || vendor.ownerName || 'an individual vendor'} inventory.`,
+        orderId
+      }).catch(() => null);
+    }
+  },
+
+  async notifyCustomerOrderAccepted(customerId: string, orderItemId: string) {
+    await NotificationService.sendNotification({
+      userId: customerId,
+      type: 'ORDER_ACCEPTED_CUSTOMER',
+      title: 'Order accepted',
+      message: `Great! Your order has been accepted by the vendor. Order Item: ${orderItemId}`,
+      data: { orderItemId }
+    });
+  },
+
+  async notifyCustomerOrderRejected(customerId: string, orderItemId: string) {
+    await NotificationService.sendNotification({
+      userId: customerId,
+      type: 'ORDER_REJECTED_CUSTOMER',
+      title: 'Order rejected',
+      message: `Your order has been rejected. Refund request is now pending admin processing. Order Item: ${orderItemId}`,
+      data: { orderItemId }
+    });
+  },
+
+  async notifyVendorReturnInitiated(vendorId: string, orderItemId: string) {
+    const vendorTarget = await resolveVendorNotificationTarget(vendorId);
+    const vendorUserId = vendorTarget?.userId || null;
+    if (!vendorUserId) return;
+
+    await NotificationService.sendNotification({
+      userId: vendorUserId,
+      type: 'ORDER_PLACED_VENDOR',
+      title: 'Return initiated',
+      message: `A customer initiated return for order item ${orderItemId}. Please inspect on return.`,
+      data: { orderItemId }
+    });
+
+    if (isIndividualVendorRole(vendorTarget?.role)) {
+      await NotificationService.notifyAdminAsVendorOrderUpdate({
+        title: 'Return initiated',
+        message: `A return was initiated for order item ${orderItemId} on individual-vendor inventory.`,
+        orderItemId,
+        status: 'RETURN_REQUESTED'
+      }).catch(() => null);
+    }
+  },
+
+  async notifyAdminReturnReview(orderItemId: string) {
+    const admins = await prisma.user.findMany({
+      where: { role: { in: ADMIN_PORTAL_ROLES }, status: 'ACTIVE' },
+      select: { id: true }
+    });
+
+    if (!admins.length) return;
+
+    await Promise.all(
+      admins.map((admin) =>
+        NotificationService.sendNotification({
+          userId: admin.id.toString(),
+          type: 'ORDER_PLACED_VENDOR',
+          title: 'Return review pending',
+          message: `Return inspection is submitted for order item ${orderItemId}. Please review refund decision.`,
+          data: { orderItemId }
+        })
+      )
+    );
+  },
+
+  async notifyCustomerRefundDecision(customerId: string, orderItemId: string, refundAmount: number) {
+    const context = await resolveOrderItemNotificationContext(orderItemId);
+    const itemLabel = context?.itemLabel || `order item ${orderItemId}`;
+
+    await NotificationService.sendNotification({
+      userId: customerId,
+      type: 'ORDER_ACCEPTED_CUSTOMER',
+      title: 'Security deposit reviewed',
+      message: `Refund decision completed for ${itemLabel}. Refund amount: Rs ${refundAmount} will be credited within 5-10 working days.`,
+      data: {
+        orderItemId: context?.orderItemId || orderItemId,
+        ...(context?.orderNo ? { orderNo: context.orderNo } : {}),
+        ...(context?.productName ? { productName: context.productName } : {}),
+        refundAmount: String(refundAmount)
+      }
+    });
+  },
+
+  async notifyCustomerTrialCompleted(
+    customerId: string,
+    trialRequestId: string,
+    productName: string,
+    productId?: string
+  ) {
+    await NotificationService.sendNotification({
+      userId: customerId,
+      type: 'TRIAL_APPROVED',
+      title: 'Trial completed',
+      message: `Your trial for ${productName} has been completed successfully.`,
+      data: {
+        trialRequestId,
+        ...(productId ? { productId } : {})
+      }
+    });
+  },
+
+  async notifyCustomerTrialStarted(
+    customerId: string,
+    trialRequestId: string,
+    productName: string,
+    productId?: string
+  ) {
+    await NotificationService.sendNotification({
+      userId: customerId,
+      type: 'TRIAL_APPROVED',
+      title: 'Trial started',
+      message: `Your trial for ${productName} has started. The vendor will mark it completed after the item is returned.`,
+      data: {
+        trialRequestId,
+        ...(productId ? { productId } : {})
+      }
+    });
+  },
+
+  async notifyCustomerOrderPlaced(customerId: string, orderId: string) {
+    await NotificationService.sendNotification({
+      userId: customerId,
+      type: 'ORDER_ACCEPTED_CUSTOMER',
+      title: 'Order booked',
+      message: `Your order ${orderId} has been booked successfully. The vendor will update pickup and return steps here.`,
+      data: { orderId }
+    });
+  },
+
+  async notifyCustomerOrderStatusUpdate(customerId: string, orderItemId: string, status: string) {
+    const context = await resolveOrderItemNotificationContext(orderItemId);
+    const itemLabel = context?.itemLabel || `order item ${orderItemId}`;
+
+    await NotificationService.sendNotification({
+      userId: customerId,
+      type: 'ORDER_ACCEPTED_CUSTOMER',
+      title: 'Order status updated',
+      message: `${itemLabel} status changed to ${status.replace(/_/g, ' ')}.`,
+      data: {
+        orderItemId: context?.orderItemId || orderItemId,
+        ...(context?.orderNo ? { orderNo: context.orderNo } : {}),
+        ...(context?.productName ? { productName: context.productName } : {}),
+        status
+      }
+    });
+  },
+
+  async notifyVendorReturnCompleted(vendorId: string, orderItemId: string) {
+    const vendorTarget = await resolveVendorNotificationTarget(vendorId);
+    const vendorUserId = vendorTarget?.userId || null;
+    if (!vendorUserId) return;
+
+    await NotificationService.sendNotification({
+      userId: vendorUserId,
+      type: 'ORDER_PLACED_VENDOR',
+      title: 'Return completed',
+      message: `Return workflow is completed for order item ${orderItemId}.`,
+      data: { orderItemId }
+    });
+
+    if (isIndividualVendorRole(vendorTarget?.role)) {
+      await NotificationService.notifyAdminAsVendorOrderUpdate({
+        title: 'Return completed',
+        message: `Return workflow was completed for order item ${orderItemId} on individual-vendor inventory.`,
+        orderItemId,
+        status: 'COMPLETED'
+      }).catch(() => null);
+    }
+  },
+
+  async notifyVendorSettlement(vendorId: string, amount: number) {
+    const vendorTarget = await resolveVendorNotificationTarget(vendorId);
+    if (!vendorTarget?.userId) return;
+
+    if (isIndividualVendorRole(vendorTarget.role)) {
+      await NotificationService.notifyIndividualVendorEarning(
+        vendorTarget.userId,
+        amount
+      );
+      await NotificationService.notifyAdminAsVendorFinanceUpdate({
+        title: 'Vendor payout recorded',
+        message: `Payout settlement of Rs ${amount} was recorded for an individual vendor account.`,
+        amount
+      }).catch(() => null);
+      return;
+    }
+
+    await NotificationService.sendNotification({
+      userId: vendorTarget.userId,
+      type: 'ORDER_PLACED_VENDOR',
+      title: 'Settlement completed',
+      message: `Payout settlement of Rs ${amount} has been recorded for your account.`,
+      data: { amount: String(amount) }
+    });
+  }
+};
+

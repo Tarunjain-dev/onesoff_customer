@@ -1,0 +1,2 @@
+ALTER TABLE "BadgeRule"
+ADD COLUMN IF NOT EXISTS "imageUrl" TEXT;

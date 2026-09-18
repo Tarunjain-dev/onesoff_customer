@@ -1,0 +1,20 @@
+/*
+Create Express controller using AuthService.
+
+Routes:
+
+POST /auth/register
+POST /auth/login
+POST /auth/vendor/send-otp
+POST /auth/vendor/verify-otp
+POST /auth/refresh
+POST /auth/logout
+
+Controller responsibilities:
+- validate body
+- call service
+- return JSON response
+- catch errors and send 400/401
+
+Do not put business logic here.
+*/
