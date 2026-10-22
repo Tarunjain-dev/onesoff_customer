@@ -1,0 +1,16 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const multer_1 = require("../config/multer");
+const ComplaintController_1 = require("../controllers/ComplaintController");
+const auth_1 = require("../middlewares/auth");
+const router = (0, express_1.Router)();
+router.use(auth_1.authenticate);
+router.use((0, auth_1.authorize)(['ADMIN_AS_VENDOR']));
+router.use(auth_1.vendorFilter);
+router.get('/tickets', ComplaintController_1.ComplaintController.getAdminAsVendorTickets);
+router.get('/tickets/:ticketId', ComplaintController_1.ComplaintController.getAdminAsVendorTicketDetail);
+router.post('/tickets/:ticketId/resolve', ComplaintController_1.ComplaintController.resolveAdminAsVendorTicket);
+router.post('/tickets/:ticketId/messages', multer_1.upload.array('images', 5), ComplaintController_1.ComplaintController.addMessageToTicket);
+router.post('/tickets', multer_1.upload.array('images', 5), ComplaintController_1.ComplaintController.createAdminAsVendorTicket);
+exports.default = router;

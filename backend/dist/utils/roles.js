@@ -1,0 +1,23 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.expandAuthorizedRoles = exports.isAdminAsVendorRole = exports.isAdminRole = exports.isVendorRole = exports.ADMIN_PORTAL_ROLES = exports.ADMIN_AS_VENDOR_ROLES = exports.ADMIN_ROLES = exports.MANAGED_VENDOR_ROLES = exports.VENDOR_ROLES = exports.INDIVIDUAL_VENDOR_ROLES = exports.SHOP_VENDOR_ROLES = exports.ADMIN_AS_VENDOR_ROLE = exports.INDIVIDUAL_VENDOR_ROLE = void 0;
+const client_1 = require("@prisma/client");
+exports.INDIVIDUAL_VENDOR_ROLE = client_1.UserRole.INDIVIDUAL_VENDOR;
+exports.ADMIN_AS_VENDOR_ROLE = client_1.UserRole.ADMIN_AS_VENDOR;
+exports.SHOP_VENDOR_ROLES = [client_1.UserRole.VENDOR];
+exports.INDIVIDUAL_VENDOR_ROLES = [exports.INDIVIDUAL_VENDOR_ROLE];
+exports.VENDOR_ROLES = [client_1.UserRole.VENDOR, exports.INDIVIDUAL_VENDOR_ROLE];
+exports.MANAGED_VENDOR_ROLES = [exports.INDIVIDUAL_VENDOR_ROLE];
+exports.ADMIN_ROLES = [client_1.UserRole.ADMIN];
+exports.ADMIN_AS_VENDOR_ROLES = [exports.ADMIN_AS_VENDOR_ROLE];
+exports.ADMIN_PORTAL_ROLES = [client_1.UserRole.ADMIN, exports.ADMIN_AS_VENDOR_ROLE];
+const isVendorRole = (role) => exports.VENDOR_ROLES.includes(String(role || ''));
+exports.isVendorRole = isVendorRole;
+const isAdminRole = (role) => exports.ADMIN_ROLES.includes(String(role || ''));
+exports.isAdminRole = isAdminRole;
+const isAdminAsVendorRole = (role) => exports.ADMIN_AS_VENDOR_ROLES.includes(String(role || ''));
+exports.isAdminAsVendorRole = isAdminAsVendorRole;
+const expandAuthorizedRoles = (roles) => {
+    return Array.from(new Set(roles));
+};
+exports.expandAuthorizedRoles = expandAuthorizedRoles;

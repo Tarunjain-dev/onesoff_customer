@@ -75,6 +75,23 @@ export const OrderController = {
     }
   },
 
+  async cancelCustomerOrder(req: AuthRequest, res: Response) {
+    try {
+      const customerId = req.user?.customerId || req.user?.userId;
+      if (!customerId) throw new ValidationError('Customer ID is required');
+      const orderId = String(req.params.orderId || '').trim();
+      if (!/^\d+$/.test(orderId)) throw new ValidationError('Valid orderId is required');
+      const result = await OrderService.cancelCustomerOrder(
+        String(customerId),
+        orderId,
+        'Cancelled by customer'
+      );
+      return ApiResponse.success(res, result, 'Order cancelled. Refund is pending processing.');
+    } catch (error: any) {
+      return ApiResponse.error(res, error.message);
+    }
+  },
+
   async updateOrderStatus(req: AuthRequest, res: Response) {
     try {
       const { orderItemId, status } = req.body;

@@ -4,6 +4,7 @@ import 'package:onesoff_customer/app/data/api/api_client.dart';
 import 'package:onesoff_customer/app/data/repositories/auth_repository.dart';
 import 'package:onesoff_customer/app/data/repositories/customer_cart_repository.dart';
 import 'package:onesoff_customer/app/data/repositories/customer_profile_repository.dart';
+import 'package:onesoff_customer/app/data/repositories/customer_order_repository.dart';
 import 'package:onesoff_customer/app/data/repositories/customer_product_repository.dart';
 import 'package:onesoff_customer/app/data/repositories/customer_wishlist_repository.dart';
 import 'package:onesoff_customer/app/data/repositories/vendor_details_repository.dart';
@@ -21,6 +22,7 @@ void main() {
   Get.put(AuthRepository(apiClient, authStorage), permanent: true);
   Get.put(CustomerCartRepository(apiClient), permanent: true);
   Get.put(CustomerProfileRepository(apiClient), permanent: true);
+  Get.put(CustomerOrderRepository(apiClient), permanent: true);
   Get.put(CustomerProductRepository(apiClient), permanent: true);
   Get.put(CustomerWishlistRepository(apiClient), permanent: true);
   Get.put(VendorDetailsRepository(apiClient), permanent: true);

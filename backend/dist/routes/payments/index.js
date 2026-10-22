@@ -1,0 +1,12 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const auth_1 = require("../../middlewares/auth");
+const PaymentController_1 = require("../../controllers/PaymentController");
+const router = (0, express_1.Router)();
+router.post('/razorpay/webhook', PaymentController_1.PaymentController.razorpayWebhook);
+router.post('/razorpay/init', auth_1.authenticate, (0, auth_1.authorize)(['CUSTOMER']), PaymentController_1.PaymentController.initRazorpay);
+router.post('/razorpay/verify', auth_1.authenticate, (0, auth_1.authorize)(['CUSTOMER']), PaymentController_1.PaymentController.verifyRazorpay);
+router.post('/razorpay/cancel', auth_1.authenticate, (0, auth_1.authorize)(['CUSTOMER']), PaymentController_1.PaymentController.cancelRazorpay);
+router.post('/payment-failure', auth_1.authenticate, (0, auth_1.authorize)(['CUSTOMER']), PaymentController_1.PaymentController.handlePaymentFailure);
+exports.default = router;

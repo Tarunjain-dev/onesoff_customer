@@ -1,0 +1,15 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const AgreementController_1 = require("../controllers/AgreementController");
+const auth_1 = require("../middlewares/auth");
+const router = (0, express_1.Router)();
+router.use(auth_1.authenticate);
+router.use(auth_1.authorizeAdmin);
+router.get('/', AgreementController_1.AgreementController.getAdminAgreements);
+router.get('/:agreementId', AgreementController_1.AgreementController.getAdminAgreementDetail);
+router.get('/:agreementId/history', AgreementController_1.AgreementController.getAgreementHistory);
+router.post('/', AgreementController_1.AgreementController.createAgreement);
+router.put('/:agreementId', AgreementController_1.AgreementController.updateAgreement);
+router.delete('/:agreementId', AgreementController_1.AgreementController.deleteAgreement);
+exports.default = router;

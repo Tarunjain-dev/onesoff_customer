@@ -1,4 +1,4 @@
-package com.example.onesoff_customer
+package com.onesoff.onesoff_customer
 
 import io.flutter.embedding.android.FlutterActivity
 

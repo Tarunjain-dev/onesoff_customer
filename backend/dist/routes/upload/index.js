@@ -1,0 +1,13 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const UploadController_1 = require("../../controllers/UploadController");
+const auth_1 = require("../../middlewares/auth");
+const multer_1 = require("../../config/multer");
+const router = (0, express_1.Router)();
+router.post('/vendor-profile', auth_1.authenticate, (0, auth_1.authorize)(['VENDOR', 'INDIVIDUAL_VENDOR']), multer_1.upload.single('image'), UploadController_1.UploadController.uploadVendorProfileImage);
+router.post('/badges', auth_1.authenticate, (0, auth_1.authorize)(['ADMIN']), multer_1.upload.single('image'), UploadController_1.UploadController.uploadBadgeImage);
+router.post('/products', auth_1.authenticate, (0, auth_1.authorize)(['VENDOR', 'INDIVIDUAL_VENDOR']), multer_1.upload.array('images', 5), UploadController_1.UploadController.uploadProductImages);
+router.post('/kyc', auth_1.authenticate, (0, auth_1.authorize)(['VENDOR', 'INDIVIDUAL_VENDOR']), multer_1.upload.single('document'), UploadController_1.UploadController.uploadKycDocument);
+router.delete('/image', auth_1.authenticate, UploadController_1.UploadController.deleteImage);
+exports.default = router;

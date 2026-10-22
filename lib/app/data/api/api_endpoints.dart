@@ -2,6 +2,7 @@ class ApiEndpoints {
   ApiEndpoints._();
 
   static const String baseUrl = 'https://api.onesoff.com';
+  // static const String baseUrl = 'http://localhost:3001';
   static const String sendOtp = '/auth/send-otp';
   static const String verifyOtp = '/auth/verify-otp';
   static const String refresh = '/auth/refresh';
@@ -21,6 +22,9 @@ class ApiEndpoints {
   static const String cartAdd = '/cart/add';
   static String cartRemove(String id) => '/cart/remove/$id';
   static const String cartClear = '/cart/clear';
+  static const String customerOrders = '/orders/customer';
+  static String cancelCustomerOrder(String id) => '/orders/customer/$id/cancel';
+  static const String customerRefundDetails = '/customers/refund-details';
   static const String firstOrderOffer = '/coupons/first-order-offer';
   static const String validateCoupon = '/coupons/validate';
   static const String razorpayInit = '/payments/razorpay/init';

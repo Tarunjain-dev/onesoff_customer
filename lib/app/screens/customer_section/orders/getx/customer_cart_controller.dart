@@ -329,6 +329,7 @@ class CustomerCartController extends GetxController {
         'Your booking has been confirmed.',
         snackPosition: SnackPosition.BOTTOM,
       );
+      Get.toNamed(AppRoutes.customerOrderHistory);
     } catch (error) {
       Get.snackbar(
         'Payment Verification Failed',

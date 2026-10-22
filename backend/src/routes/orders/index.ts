@@ -7,6 +7,7 @@ const router = Router();
 // Customer routes
 router.post('/create', authenticate, authorize(['CUSTOMER']), OrderController.createOrder);
 router.get('/customer', authenticate, authorize(['CUSTOMER']), OrderController.getCustomerOrders);
+router.post('/customer/:orderId/cancel', authenticate, authorize(['CUSTOMER']), OrderController.cancelCustomerOrder);
 router.post('/review', authenticate, authorize(['CUSTOMER']), OrderController.submitReview);
 
 // Vendor routes

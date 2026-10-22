@@ -1557,6 +1557,9 @@ export const OrderService = {
       },
       include: {
         Coupon: true,
+        payments: {
+          select: { refundedAmount: true }
+        },
         items: {
           include: {
             product: {
@@ -1600,6 +1603,10 @@ export const OrderService = {
       orders.map(async (order: any) => ({
         ...order,
         pricingBreakdown: buildOrderPricingBreakdown(order),
+        refundAmount: (order.payments || []).reduce(
+          (sum: number, payment: any) => sum + toSafeNumber(payment.refundedAmount),
+          0
+        ),
         items: await Promise.all(
           (order?.items || []).map(async (item: any) => {
             const accessibleItem = await withAccessibleOrderImages(item);
@@ -1632,6 +1639,98 @@ export const OrderService = {
       }
     });
     return { orders: ordersWithAccessibleImages, pagination: { page, limit, total, pages: Math.ceil(total / limit) } };
+  },
+
+  async cancelCustomerOrder(customerId: string, orderId: string, _reason: string) {
+    const cancellableStatuses: OrderItemStatus[] = [
+      'PLACED',
+      'BOOKED',
+      'RENTAL_CONFIRMED',
+      'ACCEPTED',
+      'READY_FOR_PICKUP'
+    ];
+    const order = await prisma.order.findFirst({
+      where: {
+        id: BigInt(orderId),
+        customerId: BigInt(customerId),
+        paymentStatus: 'PAID'
+      },
+      include: { Coupon: true, items: { include: { product: { select: { name: true } } } } }
+    });
+
+    if (!order) throw new ValidationError('Order not found or payment not completed');
+    const activeItems = order.items.filter(
+      (item) => !['CANCELLED', 'REJECTED', 'COMPLETED'].includes(item.status)
+    );
+    if (activeItems.length === 0) {
+      throw new BusinessLogicError('This order is already cancelled or closed');
+    }
+    if (activeItems.some((item) => !cancellableStatuses.includes(item.status))) {
+      throw new BusinessLogicError('This order cannot be cancelled after pickup has started');
+    }
+    const cancellableItems = activeItems;
+
+    const now = new Date();
+    const refundBreakdown = cancellableItems.map((item: any) => {
+      const rentalWindow = resolvePersistedOrderItemWindow(order.createdAt, item);
+      const pickupDistanceInDays = Math.floor(
+        (rentalWindow.rentalStartDate.getTime() - now.getTime()) / (24 * 60 * 60 * 1000)
+      );
+      const bookingAgeInHours = (now.getTime() - order.createdAt.getTime()) / (60 * 60 * 1000);
+      const rentalRefundPercent = bookingAgeInHours <= 24
+        ? 100
+        : pickupDistanceInDays >= 7
+          ? 80
+          : pickupDistanceInDays >= 3
+            ? 50
+            : 0;
+      const rentalAmount = roundMoney(toSafeNumber(item.rentPrice));
+      const rentalDiscountAmount = getOrderItemDiscountAllocation({ ...item, order });
+      const paidRentalAmount = roundMoney(Math.max(0, rentalAmount - rentalDiscountAmount));
+      const rentalRefundAmount = roundMoney(paidRentalAmount * rentalRefundPercent / 100);
+      const securityDepositAmount = roundMoney(toSafeNumber(item.deposit));
+
+      return {
+        orderItemId: item.id.toString(),
+        productName: item.product?.name || 'Rental item',
+        pickupDate: rentalWindow.rentalStartDate.toISOString(),
+        rentalAmount,
+        rentalDiscountAmount,
+        paidRentalAmount,
+        rentalRefundPercent,
+        rentalRefundAmount,
+        securityDepositAmount,
+        totalRefundAmount: roundMoney(rentalRefundAmount + securityDepositAmount)
+      };
+    });
+    const totalRefundAmount = roundMoney(
+      refundBreakdown.reduce((sum, item) => sum + item.totalRefundAmount, 0)
+    );
+
+    await prisma.$transaction(async (tx) => {
+      await tx.orderItem.updateMany({
+        where: { orderId: order.id, status: { in: cancellableStatuses } },
+        data: { status: 'CANCELLED' }
+      });
+      await tx.order.update({
+        where: { id: order.id },
+        data: { paymentStatus: 'REFUND_PENDING' }
+      });
+    });
+
+    await NotificationService.notifyCustomerOrderRejected(customerId, order.id.toString()).catch(() => null);
+    return {
+      order: {
+        id: order.id.toString(),
+        orderNo: order.orderNo,
+        paymentStatus: 'REFUND_PENDING',
+        items: cancellableItems.map((item) => ({ id: item.id.toString(), status: 'CANCELLED' }))
+      },
+      refundBreakdown,
+      totalRefundAmount,
+      paymentRefunds: [],
+      refundWindow: '7-10 working days'
+    };
   },
 
   async updateOrderStatus(vendorId: string, orderItemId: string, status: string) {

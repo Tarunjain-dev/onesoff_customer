@@ -164,6 +164,14 @@ class _CartHeader extends StatelessWidget {
                 ],
               ),
             ),
+            IconButton(
+              tooltip: 'My Orders',
+              onPressed: () => Get.toNamed(AppRoutes.customerOrderHistory),
+              icon: const Icon(
+                Icons.receipt_long_outlined,
+                color: AppColors.white,
+              ),
+            ),
           ],
         ),
       ),

@@ -9,6 +9,10 @@ import 'package:onesoff_customer/app/screens/customer_section/customer_bottom_na
 import 'package:onesoff_customer/app/screens/customer_section/dashboard/getx/customer_product_listing_controller.dart';
 import 'package:onesoff_customer/app/screens/customer_section/dashboard/screens/customer_product_listing_screen.dart';
 import 'package:onesoff_customer/app/screens/customer_section/orders/getx/customer_cart_controller.dart';
+import 'package:onesoff_customer/app/screens/customer_section/orders/getx/customer_order_controller.dart';
+import 'package:onesoff_customer/app/screens/customer_section/orders/screens/customer_order_detail_screen.dart';
+import 'package:onesoff_customer/app/screens/customer_section/orders/screens/customer_order_history_screen.dart';
+import 'package:onesoff_customer/app/screens/customer_section/orders/screens/customer_refund_details_screen.dart';
 import 'package:onesoff_customer/app/screens/customer_section/product_detail/getx/product_detail_controller.dart';
 import 'package:onesoff_customer/app/screens/customer_section/product_detail/screen/product_detail_screen.dart';
 import 'package:onesoff_customer/app/screens/customer_section/profile/getx/customer_profile_controller.dart';
@@ -37,6 +41,9 @@ abstract class AppRoutes {
   static const String personalDeliveryInformation =
       '/personal-delivery-information';
   static const String platformAgreements = '/platform-agreements';
+  static const String customerOrderHistory = '/customer-orders';
+  static const String customerOrderDetail = '/customer-order-detail';
+  static const String customerRefundDetails = '/customer-refund-details';
 
   // -- App Pages
   static final List<GetPage<dynamic>> pages = <GetPage<dynamic>>[
@@ -117,6 +124,24 @@ abstract class AppRoutes {
     GetPage(
       name: AppRoutes.platformAgreements,
       page: () => const PlatformAgreementsScreen(),
+      transition: Transition.rightToLeft,
+    ),
+    GetPage(
+      name: AppRoutes.customerOrderHistory,
+      page: () => const CustomerOrderHistoryScreen(),
+      binding: BindingsBuilder(
+        () => Get.lazyPut(() => CustomerOrderController()),
+      ),
+      transition: Transition.rightToLeft,
+    ),
+    GetPage(
+      name: AppRoutes.customerOrderDetail,
+      page: () => const CustomerOrderDetailScreen(),
+      transition: Transition.rightToLeft,
+    ),
+    GetPage(
+      name: AppRoutes.customerRefundDetails,
+      page: () => const CustomerRefundDetailsScreen(),
       transition: Transition.rightToLeft,
     ),
   ];

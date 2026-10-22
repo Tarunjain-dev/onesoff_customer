@@ -1,0 +1,13 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const VendorProfileController_1 = require("../../controllers/VendorProfileController");
+const auth_1 = require("../../middlewares/auth");
+const multer_1 = require("../../config/multer");
+const router = (0, express_1.Router)();
+router.post('/', auth_1.authenticate, (0, auth_1.authorize)(['VENDOR', 'INDIVIDUAL_VENDOR']), VendorProfileController_1.VendorProfileController.createProfile);
+router.get('/', auth_1.authenticate, (0, auth_1.authorize)(['VENDOR', 'INDIVIDUAL_VENDOR']), VendorProfileController_1.VendorProfileController.getProfile);
+router.get('/application-status', auth_1.authenticate, (0, auth_1.authorize)(['VENDOR', 'INDIVIDUAL_VENDOR']), VendorProfileController_1.VendorProfileController.getApplicationStatus);
+router.post('/resubmit-documents', auth_1.authenticate, (0, auth_1.authorize)(['VENDOR', 'INDIVIDUAL_VENDOR']), multer_1.onboardingUpload.any(), VendorProfileController_1.VendorProfileController.resubmitDocuments);
+router.patch('/', auth_1.authenticate, (0, auth_1.authorize)(['VENDOR', 'INDIVIDUAL_VENDOR']), VendorProfileController_1.VendorProfileController.updateProfile);
+exports.default = router;

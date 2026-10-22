@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const KycController_1 = require("../../controllers/KycController");
+const auth_1 = require("../../middlewares/auth");
+const router = (0, express_1.Router)();
+router.post('/upload', auth_1.authenticate, (0, auth_1.authorize)(['VENDOR', 'INDIVIDUAL_VENDOR']), KycController_1.KycController.uploadKyc);
+router.get('/status', auth_1.authenticate, (0, auth_1.authorize)(['VENDOR', 'INDIVIDUAL_VENDOR']), KycController_1.KycController.getKycStatus);
+router.post('/review', auth_1.authenticate, (0, auth_1.authorize)(['ADMIN']), KycController_1.KycController.reviewKyc);
+router.get('/pending', auth_1.authenticate, (0, auth_1.authorize)(['ADMIN']), KycController_1.KycController.getPendingKyc);
+exports.default = router;
